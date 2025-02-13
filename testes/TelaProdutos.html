@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>LayoutProdutos</title>
+
+    <style>
+        @media screen and (max-width: 576px){
+            *{
+                padding: 0px;
+                margin: 0px;
+            }
+            body{
+                background-color: rgb(224, 224, 224);
+            }
+            main{
+                width: 100%;
+            }
+            div#container{
+                width: 95%;
+                height: 370px;
+                margin: auto;
+                margin-top: 20px;
+                margin-bottom: 40px;
+                padding-top: 10px;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: space-around;
+                box-shadow: 0px 2px 4px rgb(105, 105, 105);
+                border: 2px solid rgb(211, 211, 211);
+                border-radius: 5px;
+                overflow-y: hidden;
+            }
+            div.box_prod{
+                width: 47%;
+                height: 250px;
+                background-color: white;
+                border-radius: 5px;
+                border: 2px solid rgb(177, 177, 177);
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div id="container">
+            <div class="box_prod"></div>
+            <div class="box_prod"></div>
+            <div class="box_prod"></div>
+            <div class="box_prod"></div>
+        </div>
+
+        <div id="container">
+            <div class="box_prod"></div>
+            <div class="box_prod"></div>
+            <div class="box_prod"></div>
+            <div class="box_prod"></div>
+        </div>
+
+    </main>
+</body>
+</html>

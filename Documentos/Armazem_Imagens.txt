@@ -1,0 +1,21 @@
+Armazenamento de imagens
+
+Para armazenar imagens de produtos para seu site de supermercado, você pode usar plataformas de hospedagem de imagens ou serviços de armazenamento em nuvem. Aqui estão algumas opções:
+1. Serviços de Armazenamento em Nuvem
+    • Google Drive: Permite armazenar imagens e criar links compartilháveis.
+    • Dropbox: Ótimo para organizar arquivos e gerar links diretos para as imagens.
+    • OneDrive: Integrado ao Microsoft Office, ideal para quem já usa a suíte.
+2. Plataformas de Hospedagem de Imagens
+    • Imgur: Simples, rápido e gratuito para hospedar imagens.
+    • Flickr: Permite organizar e armazenar imagens em alta resolução.
+    • PostImage: Ideal para armazenar imagens e obter links diretos.
+3. Serviços de Hospedagem Especializada
+    • Cloudinary: Plataforma dedicada ao gerenciamento e otimização de imagens para sites. Oferece transformação e redimensionamento de imagens.
+    • ImageKit: Similar ao Cloudinary, com foco em velocidade de carregamento e otimização para web.
+4. Serviços de Hospedagem Web
+    • Amazon S3 (AWS): Oferece armazenamento escalável e confiável, mas exige configuração.
+    • Firebase Storage: Boa opção para integração com sites e apps.
+Considerações
+    • Links diretos: Verifique se a plataforma escolhida permite criar links diretos para uso no site.
+    • Otimização: Algumas plataformas, como Cloudinary e ImageKit, oferecem ferramentas para otimizar as imagens automaticamente.
+    • Segurança: Certifique-se de proteger imagens sensíveis com permissões ou autenticação.

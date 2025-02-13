@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Documento</title>
+
+    <style>
+        img{   
+            opacity: 1;
+            transition: opacity 0.6s ease-in-out;
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+<body>
+    <img src="abaca.png" alt="" id="hortiIcon">
+
+    <script>
+        const images = [
+            "abaca.png",
+            "broco.png",
+            "ace.png",
+            "pimen.png"
+        ];
+        let i = 0;
+        let hortiicon = document.getElementById("hortiIcon");
+        
+        function changeImage() {
+            i = (i + 1) % images.length;
+            hortiicon.src = images[i];
+        }
+
+        // Troca a imagem a cada 7 segundo
+        setInterval(changeImage, 7000);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Supermercado Online</title>
+    <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 572px)">
+    <!--Fonte Poppins 300 a 700, 400 tem italic-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div id="cabecalho">
+            <div id="for_logo"></div>
+            <div id="for_user"></div>
+        </div>
+
+        <form action="/search" method="post" id="for_search">
+            <input type="search" id="search" name="query" placeholder="     O que você quer comprar?">
+            <button type="submit">B</button>
+        </form>
+    </header>
+
+    <main>
+        <div id="anuncio">
+            <p>Novidades pra você!</p>
+            <div id="imgs_anun">
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+            </div>
+        </div>
+  
+        <div id="for_sections">
+            <button>&gt;</button>
+            <div>
+                <div class="divNameSection">
+                    <p>Promoções</p>
+                </div>
+                <img src="" alt="" id="secPromos">
+            </div>
+            <div>
+                <div class="divNameSection" >
+                    <p>Mercearia</p>
+                </div>
+                <img src="" alt="" id="merce">
+            </div>
+            <div>
+                <div class="divNameSection">
+                    <p>Doces e Biscoitos</p>
+                </div>
+                <img src="iconesDoces/choco.png" alt="" id="doces">
+            </div>
+            <div>
+                <div class="divNameSection">
+                    <p>Hortifruit</p>
+                </div>
+                <img src="iconesHortifruit/banana.png" alt="" id="horti">
+            </div>
+            <div>
+                <div class="divNameSection">
+                    <p>Padaria</p>
+                </div>
+                <img src="" alt="" id="pada">
+            </div>
+            <div>
+                <div class="divNameSection">
+                    <p>Açougue</p>
+                </div>
+                <img src="" alt="" id="acou">
+            </div>
+            <div>
+                <div class="divNameSection">
+                    <p>Frios e Congelados</p>
+                </div>
+                <img src="" alt="" id="frios">
+            </div>
+            <div>
+                <div class="divNameSection">
+                    <p>Casa e Cozinha</p>
+                </div>
+                <img src="" alt="" id="casaCozi">
+            </div>
+
+            <div>
+                <div class="divNameSection">
+                    <p>Limpeza Doméstica</p>
+                </div>
+                <img src="" alt="" id="limpe">
+            </div>
+
+            <div>
+                <div class="divNameSection">
+                    <p>Higiene e Cuidados pessoais</p>
+                </div>
+                <img src="" alt="" id="higi">
+            </div>
+            <div>
+                <div class="divNameSection">
+                    <p>Bazar</p>
+                </div>
+                <img src="" alt="" id="bazar">
+            </div>
+            <div>
+                <div class="divNameSection">
+                    <p>PetShop</p>
+                </div>
+                <img src="" alt="" id="pet">
+            </div>
+        </div>
+        
+        <div id="promos">
+            <div id="nav">
+                <div id="nav2">
+                    <p>&lt;</p>
+                    <p>Mercearia</p>
+                    <p>&gt;</p>
+                </div>
+                <div id="div_vermais">
+                    <p>Ver mais</p>
+                </div>
+            </div>
+
+            <button id="avancar">&gt;</button>
+
+            <div class="parte">
+                <div class="for_prod">
+                    <div class="oferta">
+                        <p class="desconto">-28%</p>
+                        <div class="div_img">
+                            <img src="Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg" alt="">
+                        </div>
+                        <p class="peso"></p>
+                    </div>
+                
+                    <div class="divDescOferta">
+                        <p class="nome">BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA</p>
+                        <p class="preco">2,99</p>
+                        <div class="for_quant">
+                            <img src="" alt="" class="lixeira">
+                            <div id="di_quant"><p>1 uni</p><p>1</p><p>2</p><p>3</p></div>
+                            <p>+</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="for_prod">
+                    <div class="oferta">
+                        <p class="desconto">-28%</p>
+                        <div class="div_img">
+                            <img src="Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg" alt="">
+                        </div>
+                        <p class="peso"></p>
+                    </div>
+                
+                    <div class="divDescOferta">
+                        <p class="nome">BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA</p>
+                        <p class="preco">2,99</p>
+                        <div class="for_quant">
+                            <img src="" alt="" class="lixeira">
+                            <div class="div_quant"></div>
+                            <img src="" alt="" class="mais">
+                        </div>
+                    </div>
+                </div>
+                <div class="for_prod">
+                    <div class="oferta">
+                        <p class="desconto">-28%</p>
+                        <div class="div_img">
+                            <img src="Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg" alt="">
+                        </div>
+                        <p class="peso"></p>
+                    </div>
+                
+                    <div class="divDescOferta">
+                        <p class="nome">BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA</p>
+                        <p class="preco">2,99</p>
+                        <div class="for_quant">
+                            <img src="" alt="" class="lixeira">
+                            <div class="div_quant"></div>
+                            <img src="" alt="" class="mais">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="parte">
+                <div class="for_prod">
+                    <div class="oferta">
+                        <p class="desconto">-28%</p>
+                        <div class="div_img">
+                            <img src="Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg" alt="">
+                        </div>
+                        <p class="peso"></p>
+                    </div>
+                
+                    <div class="divDescOferta">
+                        <p class="nome">BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA</p>
+                        <p class="preco">2,99</p>
+                        <div class="for_quant">
+                            <img src="" alt="" class="lixeira">
+                            <div class="div_quant"></div>
+                            <img src="" alt="" class="mais">
+                        </div>
+                    </div>
+                </div>
+                <div class="for_prod">
+                    <div class="oferta">
+                        <p class="desconto">-28%</p>
+                        <div class="div_img">
+                            <img src="Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg" alt="">
+                        </div>
+                        <p class="peso"></p>
+                    </div>
+                
+                    <div class="divDescOferta">
+                        <p class="nome">BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA</p>
+                        <p class="preco">2,99</p>
+                        <div class="for_quant">
+                            <img src="" alt="" class="lixeira">
+                            <div class="div_quant"></div>
+                            <img src="" alt="" class="mais">
+                        </div>
+                    </div>
+                </div>
+                <div class="for_prod">
+                    <div class="oferta">
+                        <p class="desconto">-28%</p>
+                        <div class="div_img">
+                            <img src="Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg" alt="">
+                        </div>
+                        <p class="peso">128g</p>
+                    </div>
+                
+                    <div class="divDescOferta">
+                        <p class="nome">BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA</p>
+                        <p class="preco">2,99</p>
+                        <div class="for_quant">
+                            <img src="" alt="" class="lixeira">
+                            <div class="div_quant"></div>
+                            <img src="" alt="" class="mais">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="parte">
+                <div class="for_prod">
+                    <div class="oferta">
+                        <p class="desconto">-28%</p>
+                        <div class="div_img">
+                            <img src="Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg" alt="">
+                        </div>
+                        <p class="peso"></p>
+                    </div>
+                
+                    <div class="divDescOferta">
+                        <p class="nome">BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA</p>
+                        <p class="preco">2,99</p>
+                        <div class="for_quant">
+                            <img src="" alt="" class="lixeira">
+                            <div class="div_quant"></div>
+                            <img src="" alt="" class="mais">
+                        </div>
+                    </div>
+                </div>
+                <div class="for_prod">
+                    <div class="oferta">
+                        <p class="desconto">-28%</p>
+                        <div class="div_img">
+                            <img src="Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg" alt="">
+                        </div>
+                        <p class="peso"></p>
+                    </div>
+                
+                    <div class="divDescOferta">
+                        <p class="nome">BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA</p>
+                        <p class="preco">2,99</p>
+                        <div class="for_quant">
+                            <img src="" alt="" class="lixeira">
+                            <div class="div_quant"></div>
+                            <img src="" alt="" class="mais">
+                        </div>
+                    </div>
+                </div>
+                <div class="for_prod">
+                    <div class="oferta">
+                        <p class="desconto">-28%</p>
+                        <div class="div_img">
+                            <img src="Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg" alt="">
+                        </div>
+                        <p class="peso">128g</p>
+                    </div>
+                
+                    <div class="divDescOferta">
+                        <p class="nome">BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA</p>
+                        <p class="preco">2,99</p>
+                        <div class="for_quant">
+                            <img src="" alt="" class="lixeira">
+                            <div class="div_quant"></div>
+                            <img src="" alt="" class="mais">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>
