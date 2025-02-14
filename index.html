@@ -5,10 +5,23 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Supermercado Online</title>
     <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 572px)">
+
     <!--Fonte Poppins 300 a 700, 400 tem italic-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!--Simbolos Google-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-rounded {
+        font-variation-settings:
+        'FILL' 1,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 24
+        }
+    </style>
 
 </head>
 <body>
@@ -16,13 +29,18 @@
         <div id="cabecalho">
             <div id="for_logo"></div>
             <div id="for_user"></div>
+            <div id="for_menu"></div>
         </div>
-
-        <form action="/search" method="post" id="for_search">
-            <input type="search" id="search" name="query" placeholder="     O que você quer comprar?">
-            <button type="submit">B</button>
-        </form>
     </header>
+    
+    <form action="/search" method="post" id="for_search">
+        <input type="search" id="search" name="query" placeholder="     O que você quer comprar?">
+        <div>
+            <span class="material-symbols-rounded">
+                search
+            </span>
+        </div>
+    </form>
 
     <main>
         <div id="anuncio">
@@ -40,7 +58,6 @@
         </div>
   
         <div id="for_sections">
-            <button>&gt;</button>
             <div>
                 <div class="divNameSection">
                     <p>Promoções</p>
@@ -118,19 +135,7 @@
         </div>
         
         <div id="promos">
-            <div id="nav">
-                <div id="nav2">
-                    <p>&lt;</p>
-                    <p>Mercearia</p>
-                    <p>&gt;</p>
-                </div>
-                <div id="div_vermais">
-                    <p>Ver mais</p>
-                </div>
-            </div>
-
-            <button id="avancar">&gt;</button>
-
+           
             <div class="parte">
                 <div class="for_prod">
                     <div class="oferta">
@@ -315,7 +320,26 @@
     </main>
 
     <footer>
+        <div class="selected1">
+            <span class="material-symbols-rounded">
+                home
+            </span>
+            <p>Inicio</p>
+        </div>
 
+        <div>
+            <span class="material-symbols-rounded">
+                contract_edit
+            </span>
+            <p>Colar lista</p>
+        </div>
+
+        <div>
+            <span class="material-symbols-rounded">
+                menu
+            </span>
+            <p>Mais</p>
+        </div>
     </footer>
 </body>
 </html>
