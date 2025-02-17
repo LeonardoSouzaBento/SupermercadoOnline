@@ -9,7 +9,7 @@ html{
     height: auto;
 }
 body{
-    background-color: #d6d1d1;
+    background-color: rgb(223, 223, 223);
 }
 
 ::-webkit-scrollbar{
@@ -20,13 +20,12 @@ body{
 footer{
     display: flex;
     justify-content: space-around;
-    background-color: #2644B0;
+    background-color: #D86B2B;
     height: 60px;
     width: 100%;
     position: sticky;
-    bottom: 0px;
-    z-index: 1;
-    color: white;
+    bottom: 0;
+    z-index: 4;
 }
     footer>div{
         display: flex;
@@ -37,88 +36,134 @@ footer{
     }
     footer>div>p{
         font-family: "Fira Sans", serif;
-        font-weight: 300;
+        font-weight: 400;
+        letter-spacing: normal;
     }
     .selected1{
-        background-color: #2B51DA;
+        background-color: #e68f5d;
         border-radius: 3px;
         padding: 0px 10px;
     }
+    
+menu{
+    position: fixed;
+    top: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.541);
+    z-index: 5;
+    display: none;
+}
+#for_opcoes{
+    height: 340px;
+    width: 70vw;
+    position: absolute;
+    bottom: 60px;
+    background-color: white;
+    position: absolute;
+    right: 0px;
+    display: flex;
+    flex-flow: column;
+    gap: 12px;
+    border-radius: 10px 0px 0px 10px;
+    padding-top: 10px;
+}
+    #for_opcoes>div{
+       display: flex;
+       align-items: center;
+       padding: 10px 20px;
+       gap: 7px;
+    }
+    #for_opcoes>div>span{
+        font-size: 1.35em;
+    }
+    #for_opcoes>div>p{
+        letter-spacing: 0.5px;
+    }
+
+
 
 header{
-    background-color: rgb(38, 68, 176);
+    background-color: #df6f2f;
     width: 100%;
-    padding: 12px 0px;
-    padding-bottom: 0px;
+    padding: 8px 0px;
+    padding-top: 17px;
     box-sizing: border-box;
     margin-bottom: -1px;
 }
     div#cabecalho{
-        width: 95%;
+        width: 90%;
         margin: auto;
         margin-top: 0px;
-        margin-bottom: 1px;
-        padding-bottom: 5px;
+        padding: 5px 0px;
         height: 60px;
         display: flex;
+        justify-content: space-between;
         flex-flow: row nowrap;
         gap: 10px;
         align-items: center;
     }
     div#for_logo{
         height: 100%;
-        width: 70%;
+        width: 240px;
         display: flex;
         align-items: center;
-        color: white;
-        justify-content: space-around;
+        justify-content: space-between;
+        gap: 15px;
     }
     div#for_logo>img{
-        height: 94%;
-        border-radius: 4px;
-        transform: perspective(400px) rotateY(15deg) rotateX(10deg);
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.264);
+        height: 100%;
+        border-radius: 50%;
+        padding: 2px;
+        background-color: rgba(0, 0, 0, 0.194);
+    }
+    div#for_logo>div{
+       width: 160px;
     }
     #for_logo>div>p{
-        width: 140px;
-        font-size: 0.75em;
+        font-size: 0.84em;
         letter-spacing: 0.5px;
-        font-style: italic;
         font-weight: 300;
-        text-align: center;
+        font-family: "Fira Sans", serif;
+        line-height: 20px;
+        text-align: justify;
     }
-    #for_user, #for_noti{
+    #for_logo>div>p>strong{
+        font-family: "Fira Sans", serif;
+        font-size: 0.95em;
+        letter-spacing: 1.2px;
+    }
+    div#userEnotif{
+        height: 100%;
+        width: 115px;
         display: flex;
-        background-color: #2b51da;
-        border-radius: 50%;
-    }
-    div#for_user{
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        width: 35px;
+    }
+    #img_user, #img_noti{
+        object-fit: cover;
+        border-radius: 50%;
+        filter: invert(100%) opacity(0.7);
+        background-color: rgba(0, 0, 0, 0.799);
+    }
+    #img_user{
+      height: 45px;
+      padding: 4px;
+    }
+    #img_noti{
         height: 35px;
         padding: 5px;
     }
-    div#for_noti{
-        height: 25px;
-        width: 25px;
-        padding: 10px;
-    }
-    div#for_user>img, div#for_noti>img{
-        height: 100%;
-        width: 100%;
-        border-radius: 50%;
-    }
-    
 
     form#for_search{
         display: flex;
         flex-flow: row nowrap;
         width: 100%;
         margin: auto;
-        height: 60px;
-        background-color: rgb(38, 68, 176);
-        padding: 10px 10px;
+        height: 65px;
+        background-color: #d86b2b;
+        padding: 16px 20px;
+        padding-bottom: 13px;
         position: sticky;
         top: 0;
         z-index: 3;
@@ -129,7 +174,7 @@ header{
         width: 90%;
         border-radius: 20px 0px 0px 20px;
         border: none;
-        font-weight: lighter;
+        font-weight: 300;
     }
     form#for_search>div{
         display: flex;
@@ -151,15 +196,14 @@ main{
     div#anuncio{
         width: 100%;
         margin: auto;
-        margin-bottom: 20px;
-        height: 200px;
+        margin-bottom: 35px;
         box-sizing: border-box;
     }
     div#anuncio>p{
         width: 100%;
         text-align: center;
         margin-bottom: 5px;
-        color: white;
+        font-family: "Fira Sans", serif;
     }
     div#imgs_anun{
         display: flex;
@@ -168,14 +212,32 @@ main{
         height: 165px;
         box-sizing: border-box;
         overflow-x: hidden;
+        margin-bottom: 17px;
     }
     div#imgs_anun>img{
         display: inline;
-        height: 100%;
+        height: 165px;
         min-width: 80%;
         border-radius: 5px;
         transform: translateX(-90%);
         background-color: rgb(190, 190, 190);
+    }
+    #pagination{
+        height: 12px;
+        width: 50%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #pagination>span{
+       height: 100%;
+       width: 12px;
+       background-color: rgb(159, 159, 159);
+       border-radius: 50%;
+    }
+    .atual{
+        padding: 2px !important;
     }
 
 /*Seções*/
@@ -310,9 +372,9 @@ main{
             position: absolute;
             top: 10px;
             left: 10px;
-            font-size: 0.8em;
+            font-size: 0.84em;
             border-radius: 9px;
-            background-color: red;
+            background-color: rgb(216, 10, 10);
             padding: 0px 7px;
             color: white;
             z-index: 1;
