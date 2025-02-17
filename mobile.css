@@ -17,6 +17,25 @@ body{
    width: 0px;
 }
 
+div#entrada{
+    height: 100vh;
+    width: 100vw;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 5;
+    display: none;
+}
+div#entrada>img{
+    height: 100px;
+    width: 100px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
+    border-radius: 10px;
+    
+}
+
 footer{
     display: flex;
     justify-content: space-around;
@@ -105,11 +124,12 @@ header{
     }
     div#for_logo{
         height: 100%;
-        width: 240px;
+        width: 250px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 15px;
+        color: rgb(255, 255, 255);
     }
     div#for_logo>img{
         height: 100%;
@@ -118,7 +138,7 @@ header{
         background-color: rgba(0, 0, 0, 0.194);
     }
     div#for_logo>div{
-       width: 160px;
+       width: 180px;
     }
     #for_logo>div>p{
         font-size: 0.84em;
@@ -127,6 +147,7 @@ header{
         font-family: "Fira Sans", serif;
         line-height: 20px;
         text-align: justify;
+        padding: 5px;
     }
     #for_logo>div>p>strong{
         font-family: "Fira Sans", serif;
@@ -175,6 +196,7 @@ header{
         border-radius: 20px 0px 0px 20px;
         border: none;
         font-weight: 300;
+        font-size: 0.85em;
     }
     form#for_search>div{
         display: flex;
@@ -246,9 +268,9 @@ main{
         margin: auto;
         display: flex;
         flex-flow: row nowrap;
-        margin-bottom: 15px;
+        margin-bottom: 13px;
         padding: 6px;
-        padding-left: 12px;
+        padding-left: 15px;
         padding-right: 0px;
         position: relative;
         gap: 10px;
@@ -265,6 +287,7 @@ main{
         align-items: center;
         gap: 5px;
         flex: auto;
+        padding-top: 5px;
     }
     .divNameSection{
         height: 45px;
@@ -281,13 +304,17 @@ main{
         width: 52px;
         background-color: white;
         border-radius: 30%;
+        filter: brightness(0.84) contrast(2);
     }
 
     .catselected{
         background-color: rgb(255, 255, 255);
-        border-radius: 7px;
+        border-radius: 5px;
         padding: 2px;
         box-shadow: 2px 2px 4px rgb(176, 176, 176);
+    }
+    .catselected img{
+        border-radius: 10% !important;
     }
     
 /*Todos os produtos*/
