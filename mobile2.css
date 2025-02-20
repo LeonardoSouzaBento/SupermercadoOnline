@@ -74,8 +74,8 @@ menu{
     display: none;
 }
 #for_opcoes{
-    height: 340px;
-    width: 70vw;
+    height: 345px;
+    width: 320px;
     position: absolute;
     bottom: 60px;
     background-color: white;
@@ -100,8 +100,6 @@ menu{
         letter-spacing: 0.5px;
     }
 
-
-
 header{
     background-color: #df6f2f;
     width: 100%;
@@ -111,7 +109,7 @@ header{
     margin-bottom: -1px;
 }
     div#cabecalho{
-        width: 95%;
+        width: 80%;
         margin: auto;
         margin-top: 0px;
         padding: 5px 0px;
@@ -124,11 +122,10 @@ header{
     }
     div#for_logo{
         height: 100%;
-        width: 240px;
+        width: 260px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
         color: rgb(255, 255, 255);
     }
     div#for_logo>img{
@@ -179,19 +176,21 @@ header{
         padding: 5px;
     }
 
-    form#for_search{
-        display: flex;
-        flex-flow: row nowrap;
+    #div_search{
         width: 100%;
-        margin: auto;
-        height: 65px;
         background-color: #d86b2b;
-        padding: 16px 20px;
-        padding-bottom: 13px;
         position: sticky;
         top: 0;
         z-index: 3;
-        box-sizing: border-box;
+    }
+    form#for_search{
+        display: flex;
+        flex-flow: row nowrap;
+        width: 80%;
+        margin: auto;
+        height: 40px;
+        padding: 13px 0px;
+        padding-bottom: 14px;
     }
     form#for_search>input{
         height: 100%;
@@ -215,7 +214,8 @@ header{
     }
 
 main{
-    margin-top: 15px;
+    margin-top: 18px;
+    padding-bottom: 15px;
 }
 /*Banner promocional*/
     div#anuncio{
@@ -223,28 +223,29 @@ main{
         margin: auto;
         margin-bottom: 35px;
         box-sizing: border-box;
+        overflow-x: hidden;
     }
     div#anuncio>p{
         width: 100%;
         text-align: center;
-        margin-bottom: 5px;
+        margin-bottom: 14px;
         font-family: "Fira Sans", serif;
     }
     div#imgs_anun{
+        margin: auto;
         display: flex;
         flex-flow: row nowrap;
-        gap: 10px;
-        height: 165px;
-        box-sizing: border-box;
+        gap: 15px;
+        height: 170px;
         overflow-x: hidden;
         margin-bottom: 17px;
     }
     div#imgs_anun>img{
         display: inline;
-        height: 165px;
+        height: 100%;
         min-width: 340px;
         border-radius: 5px;
-        transform: translateX(-70%);
+        transform: translateX(-62%);
         background-color: rgb(190, 190, 190);
     }
     #pagination{
@@ -254,6 +255,7 @@ main{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 5px 0px;
     }
     #pagination>span{
        height: 100%;
@@ -273,7 +275,7 @@ main{
         flex-flow: row nowrap;
         margin-bottom: 13px;
         padding: 6px;
-        padding-left: 15px;
+        padding-left: 25px;
         padding-right: 0px;
         position: relative;
         gap: 10px;
@@ -328,14 +330,14 @@ main{
         margin: auto;
         display: flex;
         flex-flow: column nowrap;
-        padding: 12px;
+        padding: 25px;
         padding-top: 0px;
         padding-right: 0px;
         box-sizing: border-box;
         justify-content: center;
         border-radius: 7px;
         position: relative;
-        gap: 7px;
+        gap: 22px;
         overflow-x: hidden;
         overflow-y: hidden;
     }
@@ -350,12 +352,13 @@ main{
 
     .for_prod{
       box-sizing: border-box;
-      min-width: 88%;
+      min-width: 380px;
+      height: 160px;
       display: flex;
       background-color: white;
       border-radius: 7px;
       border: 1px solid rgb(193, 193, 193);
-      padding-bottom: 6px;
+      padding-bottom: 10px;
       padding-top: 8px;
 
     }
@@ -409,13 +412,14 @@ main{
         flex-flow: column nowrap;
     }
         p.nome{
-            font-size: 0.7em;
+            font-size: 0.8em;
             width: 100%;
             padding-right: 12px;
-            letter-spacing: 1px;
+            letter-spacing: 1.1px;
             box-sizing: border-box;
-            font-weight: 550;
+            font-weight: 500;
             margin-bottom: 5px;
+            line-height: 18px;
         }
         p.preco{
             font-weight: bold;
