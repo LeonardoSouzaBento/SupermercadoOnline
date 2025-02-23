@@ -11,7 +11,9 @@ html{
 body{
     background-color: rgb(223, 223, 223);
 }
-
+div, p{
+    cursor: default;
+}
 ::-webkit-scrollbar{
    visibility: hidden;
    width: 0px;
@@ -123,11 +125,14 @@ header{
     }
     div#for_logo{
         height: 100%;
-        width: 375px;
+        width: 360px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        color: rgb(255, 255, 255);
+        background-color: #c5520f70;
+        border-radius: 7px;
+        padding: 5px;
+        color: white;
     }
     div#for_logo>img{
         height: 100%;
@@ -137,14 +142,12 @@ header{
     }
   
     #for_logo>div>p{
-        font-size: 1em;
+        font-size: 0.95em;
         letter-spacing: 0.5px;
         font-weight: 400;
         font-family: "Fira Sans", serif;
         line-height: 20px;
-        padding: 6px;
-        background-color: #cb6428;
-        border-radius: 7px;
+        padding: 7px 14px;
     }
     #for_logo>div>p>strong{
         font-family: "Fira Sans", serif;
@@ -205,7 +208,7 @@ header{
     form#for_search>input{
         height: 100%;
         width: calc(100% - 50px);
-        border-radius: 10px 0px 0px 10px;
+        border-radius: 20px 0px 0px 20px;
         border: none;
         font-weight: 300;
         font-size: 1em;
@@ -216,7 +219,7 @@ header{
         align-items: center;
         height: 100%;
         background-color: rgb(255, 255, 255);
-        border-radius: 0px 10px 10px 0px;
+        border-radius: 0px 20px 20px 0px;
         width: 50px;
     }
     form#for_search>div>span{
@@ -224,16 +227,18 @@ header{
     }
 
 main{
-    margin-top: 18px;
+    margin: auto;
+    margin-top: 20px;
     padding-bottom: 17px;
     max-width: 1375px;
 }
 /*Banner promocional*/
     div#anuncio{
-        width: 100%;
+        width: calc(100% - 50px);
+        height: 280px;
         margin: auto;
-        margin-bottom: 35px;
-        box-sizing: border-box;
+        margin-bottom: 50px;
+        position: relative;
         overflow-x: hidden;
     }
     div#anuncio>p{
@@ -244,20 +249,22 @@ main{
         font-size: 1.15em;
     }
     div#imgs_anun{
+        width: 100%;
         margin: auto;
         display: flex;
         flex-flow: row nowrap;
-        gap: 15px;
+        gap: 20px;
         height: 170px;
-        overflow-x: hidden;
-        margin-bottom: 17px;
+        position: absolute;
+        bottom: 70px;
+        left: 50%;
+        transform: translateX(-1250px);
     }
     div#imgs_anun>img{
         display: inline;
-        height: 100%;
+        height: 190px;
         min-width: 340px;
-        border-radius: 5px;
-        transform: translateX(-58%);
+        border-radius: 3px;
         background-color: rgb(190, 190, 190);
     }
     #pagination{
@@ -268,6 +275,10 @@ main{
         justify-content: space-between;
         align-items: center;
         padding: 5px 0px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
     #pagination>span{
        height: 100%;
@@ -337,12 +348,11 @@ main{
     
 /*Todos os produtos*/
     div#promos{
-        width: 100%;
+        width: calc(100% - 50px);
         height: auto;
         margin: auto;
         display: flex;
         flex-flow: column nowrap;
-        padding: 0px 25px;
         padding-right: 0px;
         justify-content: center;
         border-radius: 7px;
@@ -356,7 +366,7 @@ main{
         width: 100%;
         display: flex;
         border: none;
-        gap: 20px;
+        gap: 15px;
         overflow-x: hidden;
     }
 

@@ -219,10 +219,13 @@ main{
 }
 /*Banner promocional*/
     div#anuncio{
-        width: 100%;
+        width: 90%;
+        height: 230px;
         margin: auto;
         margin-bottom: 35px;
         box-sizing: border-box;
+        position: relative;
+        border: 1px solid red;
     }
     div#anuncio>p{
         width: 100%;
@@ -236,15 +239,17 @@ main{
         gap: 10px;
         height: 165px;
         box-sizing: border-box;
-        overflow-x: hidden;
-        margin-bottom: 17px;
+        position: absolute;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-1209px);
+        /* gap de 15= 1209+ 6*5 */
     }
     div#imgs_anun>img{
         display: inline;
         height: 165px;
-        min-width: 340px;
+        min-width: 337px;
         border-radius: 5px;
-        transform: translateX(-70%);
         background-color: rgb(190, 190, 190);
     }
     #pagination{
@@ -254,6 +259,10 @@ main{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: absolute;
+        bottom: 0;
+        right: 50%;
+        transform: translateX(50%);
     }
     #pagination>span{
        height: 100%;
