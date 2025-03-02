@@ -16,26 +16,6 @@ body{
    visibility: hidden;
    width: 0px;
 }
-
-div#entrada{
-    height: 100vh;
-    width: 100vw;
-    background-color: red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    z-index: 5;
-    display: none;
-}
-div#entrada>img{
-    height: 100px;
-    width: 100px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
-    border-radius: 10px;
-    
-}
-
 footer{
     display: flex;
     justify-content: space-around;
@@ -233,30 +213,23 @@ main{
 }
 /*Banner promocional*/
     div#anuncio{
-        width: 90%;
+        width: calc(100% - 20px);
         height: 245px;
         margin: auto;
         margin-bottom: 35px;
         box-sizing: border-box;
         position: relative;
     }
-    div#anuncio>p{
-        width: 100%;
-        text-align: center;
-        margin-bottom: 14px;
-        font-family: "Fira Sans", serif;
-        font-size: 1.15em;
-    }
+
     div#imgs_anun{
-        margin: auto;
         display: flex;
         flex-flow: row nowrap;
         gap: 15px;
         height: 170px;
         position: absolute;
-        bottom: 35px;
+        bottom: 42px;
         left: 50%;
-        transform: translateX(-1235px);
+        transform: translateX(-50%);
     }
     div#imgs_anun>img{
         display: inline;
@@ -292,7 +265,6 @@ main{
     div#for_sections{
         width: 100%;
         margin: auto;
-        padding: 0px 25px;
         padding-bottom: 7px;
         display: flex;
         flex-flow: row nowrap;
@@ -300,19 +272,6 @@ main{
         position: relative;
         gap: 8px;
         box-sizing: border-box;
-        overflow-x: hidden;
-        overflow-y: hidden;
-    }
-    #for_sections>div{
-        height: 100px;
-        min-width: 100px;
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: space-between;
-        align-items: center;
-        gap: 5px;
-        flex: auto;
-        padding-top: 5px;
     }
     .divNameSection{
         height: 45px;

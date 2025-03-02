@@ -16,26 +16,6 @@ body{
    visibility: hidden;
    width: 0px;
 }
-
-div#entrada{
-    height: 100vh;
-    width: 100vw;
-    background-color: red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    z-index: 5;
-    display: none;
-}
-div#entrada>img{
-    height: 100px;
-    width: 100px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
-    border-radius: 10px;
-    
-}
-
 footer{
     display: flex;
     justify-content: space-around;
@@ -192,7 +172,7 @@ header{
     }
     form#for_search>input{
         height: 100%;
-        width: 90%;
+        width: calc(100% - 50px);
         border-radius: 10px 0px 0px 10px;
         border: none;
         font-weight: 300;
@@ -282,25 +262,10 @@ main{
         display: flex;
         flex-flow: row nowrap;
         margin-bottom: 13px;
-        padding: 6px;
-        padding-left: 25px;
-        padding-right: 0px;
+        padding-bottom: 6px;
         position: relative;
         gap: 15px;
         box-sizing: border-box;
-        overflow-x: hidden;
-        overflow-y: hidden;
-    }
-    #for_sections>div{
-        height: 100px;
-        min-width: 100px;
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: space-between;
-        align-items: center;
-        gap: 5px;
-        flex: auto;
-        padding-top: 5px;
     }
     .divNameSection{
         height: 45px;

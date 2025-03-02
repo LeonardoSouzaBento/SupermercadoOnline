@@ -1,0 +1,141 @@
+body{
+    overscroll-behavior-x: none;
+}
+
+div#div_entrada{
+    height: 100vh;
+    width: 100vw;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    z-index: 5;
+    gap: 10px;
+    display: none;
+}
+#div_entrada> div{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    gap: 15px;
+}
+#div_entrada>div>img{
+    height: 100px;
+    width: 100px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
+    border-radius: 10px;
+}
+#div_entrada>div>p{
+    width: 200px;
+    text-align: center;
+    line-height: 22px;
+    color: white;
+}
+
+#ajuda{
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.554) !important;
+    z-index: 6;
+    display: none;
+}
+#ajuda>div{
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    background-color: white;
+    z-index: 15;
+}
+#ajuda>div>p{
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 7px;
+    font-family: "Fira Sans", serif;
+    letter-spacing: 1px;
+    line-height: 25px;
+}
+
+div#anuncio{
+    position: relative;
+    overflow-x: hidden;
+}
+div#anuncio>p{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 14px;
+    font-family: "Fira Sans", serif;
+    font-size: 1.15em;
+}
+#part_sections{
+   overflow-x: hidden;
+   margin-left: 26px;
+   box-sizing: border-box;
+}
+@media only screen and (max-width: 576px){
+    #part_sections{
+        margin-left: 14px;
+     }
+}
+
+#part_sections>span{
+    position: absolute;
+    top: 20%;
+    right: 20px;
+    z-index: 2;
+    border-radius: 50%;
+    padding: 15px;
+    box-sizing: border-box;
+    box-shadow: 3px 0px 6px rgba(139, 151, 227, 0.743);
+    font-size: 1.65em;
+    border: 1px solid rgb(130, 142, 232);
+    color: rgb(45, 56, 124);
+    background-color: rgba(196, 199, 241, 0.799);
+    rotate: 15deg;
+    animation: 
+        aparecer 500ms linear 0s, 
+        rolarDedo 1.1s linear 500ms, 
+        desaparecer 500ms linear 1.6s;
+    display: none;
+}
+#for_sections{
+    position: relative;
+    user-select: none; /* Impede seleção de texto */
+    -webkit-user-select: none; /* Para compatibilidade com Safari */
+    -ms-user-select: none; /* Para IE */
+    cursor: grab;
+}
+#for_sections:active {
+    cursor: grabbing; /* Mão fechada */
+}
+
+#for_sections>div{
+    height: 100px;
+    min-width: 100px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    flex: auto;
+    padding-top: 5px;
+}
+#sombra{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 50px;
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.208), rgba(255, 255, 255, 0));
+    box-shadow: 1px 0px 0px rgb(175, 175, 175);
+}
