@@ -219,7 +219,6 @@ main{
         height: 280px;
         margin: auto;
         margin-bottom: 50px;
-        position: relative;
         overflow-x: hidden;
     }
     div#imgs_anun{
@@ -229,10 +228,6 @@ main{
         flex-flow: row nowrap;
         gap: 20px;
         height: 170px;
-        position: absolute;
-        bottom: 70px;
-        left: 50%;
-        transform: translateX(-1250px);
     }
     div#imgs_anun>img{
         display: inline;
@@ -306,14 +301,15 @@ main{
         filter: brightness(0.84) contrast(2);
     }
     
+    #for_promos{
+        width: calc(100% - 50px);
+        margin: auto;
+    }
 /*Todos os produtos*/
     div#promos{
-        width: calc(100% - 50px);
-        height: auto;
-        margin: auto;
+        width: 100%;
         display: flex;
         flex-flow: column nowrap;
-        padding-right: 0px;
         justify-content: center;
         border-radius: 7px;
         position: relative;

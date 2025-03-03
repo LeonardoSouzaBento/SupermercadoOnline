@@ -1,3 +1,6 @@
+::-webkit-scrollbar{
+    height: 0;
+}
 body{
     overscroll-behavior-x: none;
 }
@@ -138,4 +141,15 @@ div#anuncio>p{
     width: 50px;
     background-image: linear-gradient(to left, rgba(0, 0, 0, 0.208), rgba(255, 255, 255, 0));
     box-shadow: 1px 0px 0px rgb(175, 175, 175);
+}
+#promos{
+    padding-bottom: 10px;
+}
+@media only screen and (min-width: 577px) and (max-width: 1200px){
+    #for_promos{
+        width: 100%;
+        box-sizing: border-box;
+        padding-bottom: 25px;
+        padding-left: 25px;
+    }
 }
