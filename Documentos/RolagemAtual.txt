@@ -39,25 +39,31 @@ let fim_promos = larg_for_promos - larg_part;
 
 let limites = [{div:imgs_anun, arraste: meio, limite: fim_anun},
   {div: secoes, arraste:0 ,limite: fim_sections},{div: promos, arraste:0 ,limite: fim_promos}]; 
-  
-let limite= fim_sections;
-let arraste = 0;
+
 let toc_ini = 0;
+let arraste = 0;
 let toc_ini2 = 0;
 let time_touch = 0;
 let velocidade = 0;
 let animacaoRolagem = null;
 let arrastando = false;
+let limite= null;
 
 // Rolagem com dedo e mouse
 // Início do arraste
 const iniciarArraste = (e) => {
+  let elemento = e.currentTarget;
+  let get_obj = limites.find(el => el.div === elemento);
+  if (get_obj) {limite = get_obj.limite; arraste = get_obj.arraste}
+  else {limite = null;};
+
   e.preventDefault();
   const toques = e.touches ? e.touches[0].clientX : e.clientX;
   toc_ini = toques - arraste;
   toc_ini2 = toques;
   time_touch = Date.now();
   arrastando = true;
+  velocidade = 0;
   if (animacaoRolagem) {
     cancelAnimationFrame(animacaoRolagem);
     animacaoRolagem = null;
@@ -65,7 +71,6 @@ const iniciarArraste = (e) => {
 };
 // Movimento do arraste
 const aoMover = (e) => {
-
   let elemento = e.currentTarget;
   e.preventDefault();
   if (!arrastando) return;
@@ -114,26 +119,25 @@ const finalizarArraste = (e) => {
       animacaoRolagem = requestAnimationFrame(desacelerar);
 
     } else {
+      let get_obj = limites.find(el => el.div === elemento);
+      if (get_obj) {
+          get_obj.arraste = arraste;
+      }
       animacaoRolagem = null; // Finaliza a animação
     }
   };
   desacelerar();
 };
 
-const aoMover2 =()=>{
-  arraste = meio;
-  limite = fim_anun;
-  aoMover();
-}
+limites.forEach(object => {object
+  object.div.addEventListener('mousedown', iniciarArraste);
+  object.div.addEventListener('mousemove', aoMover);
+  object.div.addEventListener('mouseup', finalizarArraste);
 
-secoes.addEventListener('mousedown', iniciarArraste);
-secoes.addEventListener('mousemove', aoMover);
-secoes.addEventListener('mouseup', finalizarArraste);
-
-secoes.addEventListener('touchstart', iniciarArraste);
-secoes.addEventListener('touchmove', aoMover);
-secoes.addEventListener('touchend', finalizarArraste);
-
+  object.div.addEventListener('touchstart', iniciarArraste);
+  object.div.addEventListener('touchmove', aoMover);
+  object.div.addEventListener('touchend', finalizarArraste);
+});
 
 let verificou = false;
 let isTouchPad = null;

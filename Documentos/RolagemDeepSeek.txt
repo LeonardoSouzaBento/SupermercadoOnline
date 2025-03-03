@@ -1,0 +1,136 @@
+let limites = [
+  { div: imgs_anun, arraste: meio, limite: fim_anun },
+  { div: secoes, arraste: 0, limite: fim_sections },
+  { div: promos, arraste: 0, limite: fim_promos }
+];
+
+// Função para interromper a animação de desaceleração
+const pararAnimacao = (animacaoRolagem) => {
+  if (animacaoRolagem) {
+    cancelAnimationFrame(animacaoRolagem);
+  }
+};
+
+// Início do arraste
+const iniciarArraste = (e, arraste, limite, animacaoRolagem) => {
+  e.preventDefault();
+  const toques = e.touches ? e.touches[0].clientX : e.clientX;
+
+  // Interrompe a animação de desaceleração
+  pararAnimacao(animacaoRolagem);
+
+  // Reinicia as variáveis para o novo arraste
+  const toc_ini = toques - arraste;
+  const time_touch = Date.now();
+  const estado = { arrastando: true, toc_ini, time_touch, velocidade: 0 };
+
+  return estado;
+};
+
+// Movimento do arraste
+const aoMover = (e, estado, arraste, limite) => {
+  e.preventDefault();
+  if (!estado.arrastando) return;
+  if (window.innerWidth >= 1375) return;
+
+  const toques = e.touches ? e.touches[0].clientX : e.clientX;
+  const actual_time = Date.now();
+
+  // Calcula a velocidade do movimento
+  const elapsed_time = actual_time - estado.time_touch;
+  if (elapsed_time > 0) {
+    estado.velocidade = (toques - estado.toc_ini) / elapsed_time; // px/ms
+  }
+
+  estado.toc_ini = toques;
+  estado.time_touch = actual_time;
+  arraste = toques - estado.toc_ini;
+
+  // Aplicar limites corretamente
+  if (arraste < limite) arraste = limite;
+  if (arraste > 0) arraste = 0;
+
+  e.currentTarget.style.transform = `translateX(${arraste}px)`;
+
+  return { arraste, estado };
+};
+
+// Finalizar arraste e iniciar desaceleração
+const finalizarArraste = (e, estado, arraste, limite, animacaoRolagem) => {
+  if (!estado.arrastando) return;
+  estado.arrastando = false;
+
+  const desacelerar = () => {
+    if (Math.abs(estado.velocidade) > 0.01) { // Valor mínimo para parar
+      estado.velocidade *= 0.95; // Reduz gradualmente a velocidade
+      arraste += estado.velocidade * 16; // Multiplica pela estimativa de 16ms/frame
+
+      // Aplicar limites corretamente
+      if (arraste < limite) {
+        arraste = limite;
+        estado.velocidade = 0;
+      }
+      if (arraste > 0) {
+        arraste = 0;
+        estado.velocidade = 0;
+      }
+
+      e.currentTarget.style.transform = `translateX(${arraste}px)`;
+      animacaoRolagem = requestAnimationFrame(desacelerar);
+    } else {
+      animacaoRolagem = null; // Finaliza a animação
+    }
+  };
+  desacelerar();
+
+  return { arraste, animacaoRolagem };
+};
+
+// Adiciona os listeners para cada elemento
+limites.forEach(object => {
+  let arraste = object.arraste;
+  let limite = object.limite;
+  let animacaoRolagem = null;
+  let estado = {
+    arrastando: false,
+    toc_ini: 0,
+    time_touch: 0,
+    velocidade: 0
+  };
+
+  object.div.addEventListener('mousedown', (e) => {
+    const novoEstado = iniciarArraste(e, arraste, limite, animacaoRolagem);
+    estado = { ...estado, ...novoEstado };
+  });
+
+  object.div.addEventListener('mousemove', (e) => {
+    const resultado = aoMover(e, estado, arraste, limite);
+    arraste = resultado.arraste;
+    estado = resultado.estado;
+  });
+
+  object.div.addEventListener('mouseup', (e) => {
+    const resultado = finalizarArraste(e, estado, arraste, limite, animacaoRolagem);
+    arraste = resultado.arraste;
+    animacaoRolagem = resultado.animacaoRolagem;
+    object.arraste = arraste; // Atualiza o valor de arraste no objeto
+  });
+
+  object.div.addEventListener('touchstart', (e) => {
+    const novoEstado = iniciarArraste(e, arraste, limite, animacaoRolagem);
+    estado = { ...estado, ...novoEstado };
+  });
+
+  object.div.addEventListener('touchmove', (e) => {
+    const resultado = aoMover(e, estado, arraste, limite);
+    arraste = resultado.arraste;
+    estado = resultado.estado;
+  });
+
+  object.div.addEventListener('touchend', (e) => {
+    const resultado = finalizarArraste(e, estado, arraste, limite, animacaoRolagem);
+    arraste = resultado.arraste;
+    animacaoRolagem = resultado.animacaoRolagem;
+    object.arraste = arraste; // Atualiza o valor de arraste no objeto
+  });
+});

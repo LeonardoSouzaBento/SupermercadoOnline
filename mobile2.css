@@ -196,7 +196,6 @@ header{
 
 main{
     margin-top: 18px;
-    padding-bottom: 15px;
 }
 /*Banner promocional*/
     div#anuncio{
@@ -304,7 +303,6 @@ main{
         justify-content: center;
         border-radius: 7px;
         position: relative;
-        gap: 22px;
         overflow-x: hidden;
         overflow-y: hidden;
     }
@@ -315,6 +313,7 @@ main{
         display: flex;
         border: none;
         gap: 10px;
+        margin-bottom: 22px;
     }
 
     .for_prod{

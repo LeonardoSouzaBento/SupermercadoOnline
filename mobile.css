@@ -354,16 +354,15 @@ main{
 
     .for_prod{
       box-sizing: border-box;
-      min-width: 280px;
-      width: 88%;
-      max-width: 360px;
+      width: 88vw;
+      max-width: 350px;
       display: flex;
       background-color: white;
       border-radius: 7px;
       border: 1px solid rgb(193, 193, 193);
       padding-bottom: 6px;
       padding-top: 8px;
-
+      flex: none;
     }
     .oferta{
         width: 50%;

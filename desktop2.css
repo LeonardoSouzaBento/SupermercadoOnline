@@ -268,7 +268,7 @@ main{
         flex-flow: row nowrap;
         margin-bottom: 10px;
         position: relative;
-        gap: 8px;
+        gap: 7px;
         box-sizing: border-box;
     }
     .divNameSection{
