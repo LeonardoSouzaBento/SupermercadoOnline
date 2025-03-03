@@ -65,9 +65,7 @@ const iniciarArraste = (e) => {
 };
 // Movimento do arraste
 const aoMover = (e) => {
-
   let elemento = e.currentTarget;
-  e.preventDefault();
   if (!arrastando) return;
   if (window.innerWidth >= 1375) return;
 
