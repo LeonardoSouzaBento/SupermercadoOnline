@@ -294,7 +294,6 @@ main{
     
 /*Todos os produtos*/
     div#promos{
-        width: 100%;
         height: auto;
         margin: auto;
         display: flex;
@@ -302,9 +301,6 @@ main{
         box-sizing: border-box;
         justify-content: center;
         border-radius: 7px;
-        position: relative;
-        overflow-x: hidden;
-        overflow-y: hidden;
     }
 /**/
     .parte{

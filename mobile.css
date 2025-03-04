@@ -329,10 +329,10 @@ main{
         box-sizing: border-box;
         padding-bottom: 12px;
         padding-left: 12px;
+        overflow-x: hidden;
     }
 /*Todos os produtos*/
     div#promos{
-        width: 100%;
         margin: auto;
         display: flex;
         flex-flow: column nowrap;
@@ -340,8 +340,6 @@ main{
         border-radius: 7px;
         position: relative;
         gap: 7px;
-        overflow-x: hidden;
-        overflow-y: hidden;
     }
 /**/
     .parte{

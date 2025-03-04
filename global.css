@@ -74,6 +74,10 @@ div#anuncio{
     position: relative;
     overflow-x: hidden;
 }
+#imgs_anun{
+    width: 100%;
+    padding: 5px;
+}
 div#anuncio>p{
     width: 100%;
     text-align: center;
