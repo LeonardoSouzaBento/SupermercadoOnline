@@ -70,6 +70,14 @@ div#div_entrada{
     line-height: 25px;
 }
 
+#div_search{
+    width: 100%;
+    background-color: #d86b2b;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+
 div#anuncio{
     position: relative;
     overflow-x: hidden;
