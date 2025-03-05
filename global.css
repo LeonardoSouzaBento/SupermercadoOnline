@@ -1,10 +1,13 @@
+*{
+    user-select: none;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Poppins",Arial,sans-serif;
+    font-weight: 400;
+}
 ::-webkit-scrollbar{
     height: 0;
 }
-body{
-    overscroll-behavior-x: none;
-}
-
 div#div_entrada{
     height: 100vh;
     width: 100vw;
@@ -125,6 +128,7 @@ div#anuncio>p{
     display: none;
 }
 #for_sections{
+    width: auto;
     position: relative;
     user-select: none; /* Impede seleção de texto */
     -webkit-user-select: none; /* Para compatibilidade com Safari */
@@ -139,9 +143,8 @@ div#anuncio>p{
     min-width: 100px;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-between;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     flex: auto;
     padding-top: 5px;
 }
@@ -151,11 +154,11 @@ div#anuncio>p{
 #promos{
     padding-bottom: 5px;
 }
-@media only screen and (min-width: 577px) and (max-width: 1200px){
+@media only screen and (min-width: 577px){
     #for_promos{
         width: 100%;
         box-sizing: border-box;
-        padding-left: 25px;
+        margin-left: 25px;
         overflow-x: hidden;
     }
 }

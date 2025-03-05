@@ -1,5 +1,46 @@
 window.onload = function(){
-  
+
+//seleção das categorias
+const cats = Array.from(document.querySelectorAll('#for_sections > div'));
+let time_touch = 0;
+let arrastando = false; // impedir seleção se for click de rolagem
+
+document.querySelector("#for_sections").addEventListener("mousedown", () => {
+  arrastando = false;
+});
+document.querySelector("#for_sections").addEventListener("mousemove", () => {
+  arrastando = true;
+});
+
+cats.forEach(el => {
+  const startPress = (e) => {
+    if (e.type === "mousedown" && e.button !== 0) return; // Só botão esquerdo
+    time_touch = Date.now();
+    arrastando = false;
+  };
+
+  const detectMove = () => {
+    arrastando = true;
+  };
+
+  const endPress = (e) => {
+    if (arrastando) return;
+    if (Date.now() - time_touch < 100) {
+      cats.forEach(div => div.classList.remove("catselected"));
+      e.currentTarget.classList.add("catselected");
+    }
+  };
+
+  el.addEventListener("mousedown", startPress);
+  el.addEventListener("mousemove", detectMove);
+  el.addEventListener("mouseup", endPress);
+
+  el.addEventListener("touchstart", startPress);
+  el.addEventListener("touchmove", detectMove);
+  el.addEventListener("touchend", endPress);
+});
+
+
 //Troca de icones
 let icones = [...document.querySelectorAll("#for_sections div img")];
 let srcs= [...(icones.map(el => el.src))]
@@ -32,11 +73,12 @@ let larg_for_promos = promos.offsetWidth;
 let gap_parte = parseFloat(getComputedStyle(document.getElementById('parteUm')).getPropertyValue('gap'));
 let quant_part = [...document.querySelectorAll('#parteUm > div')].length;
 let larg_prod = document.querySelector('.for_prod').offsetWidth;
-let larg_part = quant_part * larg_prod + gap_parte*(quant_part-1); 
-let fim_promos = larg_for_promos - larg_part-25;
+let larg_part = quant_part * larg_prod + gap_parte*(quant_part-1);
+let margin_for_promos = parseFloat(getComputedStyle(document.getElementById('for_promos')).getPropertyValue('margin-left'));
+let fim_promos = larg_for_promos - larg_part - (margin_for_promos*2);
+if (window.innerWidth >= 1373){fim_promos += (margin_for_promos*2);}
 
 //conjunto de limites
-
 let limi = [ 
   { div: imgs_anun, arraste: meio, limite: fim_anun, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacaoRolagem: null, arrastando: false },
   { div: secoes, arraste: 0, limite: fim_sections, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacaoRolagem: null, arrastando: false },
@@ -53,11 +95,12 @@ limi.forEach((el, index) => {
   el.div.addEventListener('mouseup', (e) => finalizarArraste(e, index));
 });
 
+
 // Início do arraste
 const iniciarArraste = (e, i) => {
   e.preventDefault();
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
-
+  
   limi[i].toc_ini = posicaoX - limi[i].arraste;
   limi[i].toc_ini2 = posicaoX;
   limi[i].time_touch = Date.now();
@@ -71,7 +114,7 @@ const iniciarArraste = (e, i) => {
 // Movimento do arraste
 const aoMover = (e, i) => {
   if (!limi[i].arrastando) return;
-  if (window.innerWidth >= 1375) return;
+  //if (window.innerWidth >= 1375) return;
 
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
   const tempoAtual = Date.now();

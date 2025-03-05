@@ -1,10 +1,3 @@
-*{
-    padding: 0px;
-    margin: 0px;
-    font-family: "Poppins",Arial,sans-serif;
-    font-weight: 400;
-}
-
 html{
     height: auto;
 }
@@ -258,7 +251,6 @@ main{
 
 /*Seções*/
     div#for_sections{
-        width: 100%;
         margin: auto;
         padding-bottom: 7px;
         display: flex;
@@ -269,7 +261,6 @@ main{
         box-sizing: border-box;
     }
     .divNameSection{
-        height: 45px;
         display: flex;
         align-items: center;
     }
