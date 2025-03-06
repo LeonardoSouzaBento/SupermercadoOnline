@@ -1,5 +1,4 @@
 window.onload = function(){
-
 //seleção das categorias
 const cats = Array.from(document.querySelectorAll('#for_sections > div'));
 let time_touch = 0;
@@ -40,7 +39,6 @@ cats.forEach(el => {
   el.addEventListener("touchend", endPress);
 });
 
-
 //Troca de icones
 let icones = [...document.querySelectorAll("#for_sections div img")];
 let srcs= [...(icones.map(el => el.src))]
@@ -63,9 +61,10 @@ let secoes = document.getElementById('for_sections');
 let part_sections = document.getElementById('part_sections');
 const style_sections = getComputedStyle(secoes);
 let gap = parseFloat(style_sections.gap);
-let width_sections = 1200 + (gap * 12);
+let width_sections = 1200 + (gap * 11)+5;
 let larg_partSections = part_sections.offsetWidth;
 let fim_sections = -(width_sections - larg_partSections);
+if (window.innerWidth >= 1373) fim_sections=0;
 
 //limites de rolagem para produtos
 const promos= document.getElementById('promos')
@@ -96,11 +95,14 @@ limi.forEach((el, index) => {
 });
 
 
+let initialY = null;
+
 // Início do arraste
 const iniciarArraste = (e, i) => {
   e.preventDefault();
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
-  
+  initialY = e.touches[0].clientY;
+
   limi[i].toc_ini = posicaoX - limi[i].arraste;
   limi[i].toc_ini2 = posicaoX;
   limi[i].time_touch = Date.now();
@@ -114,10 +116,14 @@ const iniciarArraste = (e, i) => {
 // Movimento do arraste
 const aoMover = (e, i) => {
   if (!limi[i].arrastando) return;
-  //if (window.innerWidth >= 1375) return;
 
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
   const tempoAtual = Date.now();
+
+  const currentY = e.touches[0].clientY;
+  const diffY = currentY - initialY;
+  window.scrollBy(0, -diffY);
+  initialY = currentY;
 
   // Calcula a velocidade do movimento
   const tempoDecorrido = tempoAtual - limi[i].time_touch;
@@ -139,6 +145,7 @@ const finalizarArraste = (e, i) => {
   if (!limi[i].arrastando) return;
   limi[i].arrastando = false;
 
+  initialY = null;
   const desacelerar = () => {
     if (Math.abs(limi[i].velocidade) > 0.01) { // Valor mínimo para parar
       limi[i].velocidade *= 0.95; // Reduz gradualmente a velocidade
