@@ -316,10 +316,9 @@ main{
     }
     
     #for_promos{
-        width: 100%;
-        box-sizing: border-box;
+        width: calc(100% - 12px);
         padding-bottom: 12px;
-        padding-left: 12px;
+        margin-left: 12px;
         overflow-x: hidden;
     }
 /*Todos os produtos*/

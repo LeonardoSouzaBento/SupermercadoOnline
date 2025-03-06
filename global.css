@@ -5,8 +5,13 @@
     font-family: "Poppins",Arial,sans-serif;
     font-weight: 400;
 }
+html{
+    overflow-x: hidden;
+}
 ::-webkit-scrollbar{
     height: 0;
+    width: 0;
+    visibility: hidden;
 }
 div#div_entrada{
     height: 100vh;
@@ -128,7 +133,6 @@ div#anuncio>p{
     display: none;
 }
 #for_sections{
-    width: auto;
     position: relative;
     user-select: none; /* Impede seleção de texto */
     -webkit-user-select: none; /* Para compatibilidade com Safari */
@@ -156,8 +160,7 @@ div#anuncio>p{
 }
 @media only screen and (min-width: 577px){
     #for_promos{
-        width: 100%;
-        box-sizing: border-box;
+        width: calc(100% - 25px);
         margin-left: 25px;
         overflow-x: hidden;
     }

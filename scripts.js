@@ -74,8 +74,8 @@ let quant_part = [...document.querySelectorAll('#parteUm > div')].length;
 let larg_prod = document.querySelector('.for_prod').offsetWidth;
 let larg_part = quant_part * larg_prod + gap_parte*(quant_part-1);
 let margin_for_promos = parseFloat(getComputedStyle(document.getElementById('for_promos')).getPropertyValue('margin-left'));
-let fim_promos = larg_for_promos - larg_part - (margin_for_promos*2);
-if (window.innerWidth >= 1373){fim_promos += (margin_for_promos*2);}
+let fim_promos = larg_for_promos - larg_part - (margin_for_promos);
+if (window.innerWidth >= 1373){fim_promos+=26;}
 
 //conjunto de limites
 let limi = [ 
@@ -95,14 +95,31 @@ limi.forEach((el, index) => {
 });
 
 
+let lastScrollY = window.scrollY;
+console.log(lastScrollY)
+function smoothScroll(deltaY) {
+    let targetScroll = lastScrollY - deltaY * 0.5; // Reduz a intensidade
+    let step = () => {
+        lastScrollY += (targetScroll - lastScrollY) * 0.15; // Interpolação suave
+        window.scrollTo(0, lastScrollY);
+        if (Math.abs(targetScroll - lastScrollY) > 1) {
+            requestAnimationFrame(step);
+        }
+    };
+    requestAnimationFrame(step);
+}
 let initialY = null;
+let initialX = null;
+let diffX=null;
+let diffY=null;
 
 // Início do arraste
 const iniciarArraste = (e, i) => {
-  e.preventDefault();
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
-  initialY = e.touches[0].clientY;
-
+  //chamada a rolagem do site
+  if (e.touches) {initialY = e.touches[0].clientY;}
+  if (e.touches) {initialX = e.touches[0].clientX;}
+  //
   limi[i].toc_ini = posicaoX - limi[i].arraste;
   limi[i].toc_ini2 = posicaoX;
   limi[i].time_touch = Date.now();
@@ -120,46 +137,59 @@ const aoMover = (e, i) => {
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
   const tempoAtual = Date.now();
 
-  const currentY = e.touches[0].clientY;
-  const diffY = currentY - initialY;
-  window.scrollBy(0, -diffY);
-  initialY = currentY;
+  let currentY = null;
+  let currentX = null;
 
-  // Calcula a velocidade do movimento
-  const tempoDecorrido = tempoAtual - limi[i].time_touch;
-  if (tempoDecorrido > 0) {
-    limi[i].velocidade = (posicaoX - limi[i].toc_ini2) / tempoDecorrido; // px/ms
+  if (e.touches) {
+    currentY = e.touches[0].clientY; 
+    currentX = e.touches[0].clientX;
+    diffX = Math.abs(currentX - initialX);
+    diffY = Math.abs(currentY - initialY);
+
+    if (diffY > diffX) {
+        window.scrollBy(0, -(currentY - initialY)* 0.3);
+    }
+    else{
+      // Calculo de velocidade
+      const tempoDecorrido = tempoAtual - limi[i].time_touch;
+      if (tempoDecorrido > 0) {
+        limi[i].velocidade = (posicaoX - limi[i].toc_ini2) / tempoDecorrido; // px/ms
+      }
+
+      limi[i].toc_ini2 = posicaoX;
+      limi[i].time_touch = tempoAtual;
+      limi[i].arraste = posicaoX - limi[i].toc_ini;
+      // Aplicar limites corretamente
+      aplicarLimites(i);
+      limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
+    }
+      initialX = currentX;
   }
-
-  limi[i].toc_ini2 = posicaoX;
-  limi[i].time_touch = tempoAtual;
-  limi[i].arraste = posicaoX - limi[i].toc_ini;
-
-  // Aplicar limites corretamente
-  aplicarLimites(i);
-  limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
 };
 
 // Finalizar arraste e iniciar desaceleração
 const finalizarArraste = (e, i) => {
-  if (!limi[i].arrastando) return;
-  limi[i].arrastando = false;
+  initialY = null; initialX = null
+  if (diffY > diffX) {return}
+  else{
+    if (!limi[i].arrastando) return;
+    limi[i].arrastando = false;
 
-  initialY = null;
-  const desacelerar = () => {
-    if (Math.abs(limi[i].velocidade) > 0.01) { // Valor mínimo para parar
-      limi[i].velocidade *= 0.95; // Reduz gradualmente a velocidade
-      limi[i].arraste += limi[i].velocidade * 16; // Multiplica pela estimativa de 16ms/frame
+    const desacelerar = () => {
+      if (Math.abs(limi[i].velocidade) > 0.01) { // Valor mínimo para parar
+        limi[i].velocidade *= 0.95; // Reduz gradualmente a velocidade
+        limi[i].arraste += limi[i].velocidade * 16; // Multiplica pela estimativa de 16ms/frame
 
-      // Aplicar limites corretamente
-      aplicarLimites(i);
-      limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
-      limi[i].animacaoRolagem = requestAnimationFrame(desacelerar);
-    } else {
-      limi[i].animacaoRolagem = null; // Finaliza a animação
-    }
-  };
-  desacelerar();
+        // Aplicar limites corretamente
+        aplicarLimites(i);
+        limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
+        limi[i].animacaoRolagem = requestAnimationFrame(desacelerar);
+      } else {
+        limi[i].animacaoRolagem = null; // Finaliza a animação
+      }
+    };
+    desacelerar();
+  }
 };
 
 // Função auxiliar para aplicar limites
