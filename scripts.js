@@ -94,20 +94,6 @@ limi.forEach((el, index) => {
   el.div.addEventListener('mouseup', (e) => finalizarArraste(e, index));
 });
 
-
-let lastScrollY = window.scrollY;
-console.log(lastScrollY)
-function smoothScroll(deltaY) {
-    let targetScroll = lastScrollY - deltaY * 0.5; // Reduz a intensidade
-    let step = () => {
-        lastScrollY += (targetScroll - lastScrollY) * 0.15; // Interpolação suave
-        window.scrollTo(0, lastScrollY);
-        if (Math.abs(targetScroll - lastScrollY) > 1) {
-            requestAnimationFrame(step);
-        }
-    };
-    requestAnimationFrame(step);
-}
 let initialY = null;
 let initialX = null;
 let diffX=null;
@@ -147,7 +133,7 @@ const aoMover = (e, i) => {
     diffY = Math.abs(currentY - initialY);
 
     if (diffY > diffX) {
-        window.scrollBy(0, -(currentY - initialY)* 0.3);
+        window.scrollBy(0, -(currentY - initialY)* 0.08);
     }
     else{
       // Calculo de velocidade
