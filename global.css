@@ -14,6 +14,32 @@ html{
     width: 0;
     visibility: hidden;
 }
+header{
+    background-color: #C6090C;
+    width: 100%;
+    padding: 8px 0px;
+    padding-top: 17px;
+    box-sizing: border-box;
+    margin-bottom: -1px;
+}
+
+footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: #ffffff;
+    height: 60px;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+    z-index: 4;
+    box-shadow: 0px -1px 3px #777777;
+}
+.selected1{
+    background-color: #C6090C;
+    color: white;
+    border-radius: 3px;
+    padding: 0px 10px;
+}
 div#div_entrada{
     height: 100vh;
     width: 100vw;
@@ -81,12 +107,11 @@ div#div_entrada{
 
 #div_search{
     width: 100%;
-    background-color: #d86b2b;
+    background-color: #C6090C;
     position: sticky;
     top: 0;
     z-index: 3;
 }
-
 div#anuncio{
     position: relative;
     overflow-x: hidden;

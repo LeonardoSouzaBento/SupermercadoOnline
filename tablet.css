@@ -9,16 +9,6 @@ body{
    visibility: hidden;
    width: 0px;
 }
-footer{
-    display: flex;
-    justify-content: space-around;
-    background-color: #D86B2B;
-    height: 60px;
-    width: 100%;
-    position: sticky;
-    bottom: 0;
-    z-index: 4;
-}
     footer>div{
         display: flex;
         height: 70%;
@@ -31,12 +21,6 @@ footer{
         font-weight: 400;
         letter-spacing: normal;
     }
-    .selected1{
-        background-color: #e68f5d;
-        border-radius: 3px;
-        padding: 0px 10px;
-    }
-    
 menu{
     position: fixed;
     top: 0px;
@@ -73,14 +57,6 @@ menu{
         letter-spacing: 0.5px;
     }
 
-header{
-    background-color: #df6f2f;
-    width: 100%;
-    padding: 8px 0px;
-    padding-top: 17px;
-    box-sizing: border-box;
-    margin-bottom: -1px;
-}
     div#cabecalho{
         width: 85%;
         margin: auto;

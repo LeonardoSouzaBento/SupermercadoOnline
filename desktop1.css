@@ -10,14 +10,6 @@ body{
    width: 0px;
 }
 footer{
-    display: flex;
-    justify-content: space-around;
-    background-color: #D86B2B;
-    height: 60px;
-    width: 100%;
-    position: sticky;
-    bottom: 0;
-    z-index: 4;
     display: none;
 }
     footer>div{
@@ -31,11 +23,6 @@ footer{
         font-family: "Fira Sans", serif;
         font-weight: 400;
         letter-spacing: normal;
-    }
-    .selected1{
-        background-color: #e68f5d;
-        border-radius: 3px;
-        padding: 0px 10px;
     }
     
 menu{
@@ -74,14 +61,6 @@ menu{
         letter-spacing: 0.5px;
     }
 
-header{
-    background-color: #df6f2f;
-    width: 100%;
-    padding: 8px 0px;
-    padding-top: 17px;
-    box-sizing: border-box;
-    margin-bottom: -1px;
-}
     div#cabecalho{
         width: 85%;
         margin: auto;
@@ -160,15 +139,7 @@ header{
         height: 31px;
         padding: 11px;
     }
-
-    #div_search{
-        width: 100%;
-        background-color: #d86b2b;
-        background-image: linear-gradient(to top, #cb6428, #DF6F2F);
-        position: sticky;
-        top: 0;
-        z-index: 3;
-    }
+    
     form#for_search{
         display: flex;
         flex-flow: row nowrap;
