@@ -98,6 +98,9 @@ let initialY = null;
 let initialX = null;
 let diffX=null;
 let diffY=null;
+let firstAngle = null;
+let firstDiffX = null;
+let firstDiffY = null;
 
 // Início do arraste
 const iniciarArraste = (e, i) => {
@@ -127,15 +130,20 @@ const aoMover = (e, i) => {
   let currentX = null;
 
   if (e.touches) {
+    //chamar rolagem do site
     currentY = e.touches[0].clientY; 
     currentX = e.touches[0].clientX;
     diffX = Math.abs(currentX - initialX);
     diffY = Math.abs(currentY - initialY);
-    console.log(diffY)
-
-    if (diffY > diffX && limi[i].animacaoRolagem==null) {
+    if (firstDiffX === null && firstDiffY === null) {
+      firstDiffX = diffX;
+      firstDiffY = diffY;
+      firstAngle = Math.atan(firstDiffY / firstDiffX) * (180 / Math.PI);
+    }
+    if (firstAngle>45) {
         window.scrollBy(0, -(currentY - initialY)* 0.08);
     }
+
     else{
       // Calculo de velocidade
       const tempoDecorrido = tempoAtual - limi[i].time_touch;
@@ -156,7 +164,7 @@ const aoMover = (e, i) => {
 
 // Finalizar arraste e iniciar desaceleração
 const finalizarArraste = (e, i) => {
-  initialY = null; initialX = null
+  initialY = null; initialX = null; firstAngle = null; firstDiffX = null; firstDiffY = null;
 
   if (!limi[i].arrastando) return;
   limi[i].arrastando = false;
