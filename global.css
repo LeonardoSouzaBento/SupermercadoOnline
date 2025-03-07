@@ -4,6 +4,7 @@
     margin: 0px;
     font-family: "Poppins",Arial,sans-serif;
     font-weight: 400;
+    pointer-events: auto;
 }
 html{
     overflow-x: hidden;

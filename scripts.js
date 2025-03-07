@@ -131,8 +131,9 @@ const aoMover = (e, i) => {
     currentX = e.touches[0].clientX;
     diffX = Math.abs(currentX - initialX);
     diffY = Math.abs(currentY - initialY);
+    console.log(diffY)
 
-    if (diffY > diffX) {
+    if (diffY > diffX && limi[i].animacaoRolagem==null) {
         window.scrollBy(0, -(currentY - initialY)* 0.08);
     }
     else{
@@ -156,26 +157,25 @@ const aoMover = (e, i) => {
 // Finalizar arraste e iniciar desaceleração
 const finalizarArraste = (e, i) => {
   initialY = null; initialX = null
-  if (diffY > diffX) {return}
-  else{
-    if (!limi[i].arrastando) return;
-    limi[i].arrastando = false;
 
-    const desacelerar = () => {
-      if (Math.abs(limi[i].velocidade) > 0.01) { // Valor mínimo para parar
-        limi[i].velocidade *= 0.95; // Reduz gradualmente a velocidade
-        limi[i].arraste += limi[i].velocidade * 16; // Multiplica pela estimativa de 16ms/frame
+  if (!limi[i].arrastando) return;
+  limi[i].arrastando = false;
 
-        // Aplicar limites corretamente
-        aplicarLimites(i);
-        limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
-        limi[i].animacaoRolagem = requestAnimationFrame(desacelerar);
-      } else {
-        limi[i].animacaoRolagem = null; // Finaliza a animação
-      }
-    };
-    desacelerar();
-  }
+  const desacelerar = () => {
+    if (Math.abs(limi[i].velocidade) > 0.01) { // Valor mínimo para parar
+      limi[i].velocidade *= 0.95; // Reduz gradualmente a velocidade
+      limi[i].arraste += limi[i].velocidade * 16; // Multiplica pela estimativa de 16ms/frame
+
+      // Aplicar limites corretamente
+      aplicarLimites(i);
+      limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
+      limi[i].animacaoRolagem = requestAnimationFrame(desacelerar);
+    } else {
+      limi[i].animacaoRolagem = null; // Finaliza a animação
+    }
+  };
+  desacelerar();
+  
 };
 
 // Função auxiliar para aplicar limites
