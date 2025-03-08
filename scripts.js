@@ -39,6 +39,26 @@ cats.forEach(el => {
   el.addEventListener("touchend", endPress);
 });
 
+
+// Seleção do footer
+const div_footer= [...document.querySelectorAll('footer>div')];
+div_footer.forEach(e=>{
+  e.addEventListener("mousedown", startPress);
+  e.addEventListener("mouseup", endPress);
+  e.addEventListener("touchstart", startPress);
+  e.addEventListener("touchend", endPress);
+
+  function startPress(e) {
+    time_touch = Date.now();
+  }
+  function endPress(e) {
+    if (Date.now() - time_touch < 100) {
+      div_footer.forEach(div => div.classList.remove("selected1"));
+      e.currentTarget.classList.add("selected1");
+    }
+  }
+})
+
 //Troca de icones
 let icones = [...document.querySelectorAll("#for_sections div img")];
 let srcs= [...(icones.map(el => el.src))]

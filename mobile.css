@@ -47,25 +47,11 @@ menu{
 
     div#for_logo{
         height: 100%;
-        width: 240px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 5px;
+        gap: 10px;
         color: rgb(255, 255, 255);
-    }
-    #for_logo>div>p{
-        font-size: 0.7em;
-        letter-spacing: 0.5px;
-        font-weight: 300;
-        font-family: "Fira Sans", serif;
-        line-height: 20px;
-        padding: 5px;
-    }
-    #for_logo>div>p>strong{
-        font-family: "Fira Sans", serif;
-        font-size: 0.95em;
-        letter-spacing: 1.2px;
     }
 main{
     margin-top: 15px;
@@ -82,6 +68,7 @@ main{
         width: 100%;
         text-align: center;
         font-family: "Fira Sans", serif;
+        font-size: 1em;
     }
     div#imgs_anun{
         display: flex;

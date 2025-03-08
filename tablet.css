@@ -50,7 +50,7 @@ menu{
         width: 370px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        gap: 15px;
         color: rgb(255, 255, 255);
     }
     #for_logo>div>p{
@@ -82,7 +82,7 @@ main{
     div#anuncio>p{
         width: 100%;
         text-align: center;
-        margin-bottom: 14px;
+        margin-bottom: 5px;
         font-family: "Fira Sans", serif;
         font-size: 1.15em;
     }
