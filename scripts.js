@@ -104,6 +104,7 @@ let firstDiffY = null;
 
 // Início do arraste
 const iniciarArraste = (e, i) => {
+  e.preventDefault();
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
   //chamada a rolagem do site
   if (e.touches) {initialY = e.touches[0].clientY;}
@@ -121,8 +122,8 @@ const iniciarArraste = (e, i) => {
 
 // Movimento do arraste
 const aoMover = (e, i) => {
+  e.preventDefault();
   if (!limi[i].arrastando) return;
-
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
   const tempoAtual = Date.now();
 
@@ -143,23 +144,22 @@ const aoMover = (e, i) => {
     if (firstAngle>45) {
         window.scrollBy(0, -(currentY - initialY)* 0.08);
     }
-
-    else{
-      // Calculo de velocidade
-      const tempoDecorrido = tempoAtual - limi[i].time_touch;
-      if (tempoDecorrido > 0) {
-        limi[i].velocidade = (posicaoX - limi[i].toc_ini2) / tempoDecorrido; // px/ms
-      }
-
-      limi[i].toc_ini2 = posicaoX;
-      limi[i].time_touch = tempoAtual;
-      limi[i].arraste = posicaoX - limi[i].toc_ini;
-      // Aplicar limites corretamente
-      aplicarLimites(i);
-      limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
-    }
-      initialX = currentX;
   }
+  // Calculo de velocidade
+  const tempoDecorrido = tempoAtual - limi[i].time_touch;
+  if (tempoDecorrido > 0) {
+    limi[i].velocidade = (posicaoX - limi[i].toc_ini2) / tempoDecorrido; // px/ms
+  }
+
+  limi[i].toc_ini2 = posicaoX;
+  limi[i].time_touch = tempoAtual;
+  limi[i].arraste = posicaoX - limi[i].toc_ini;
+  // Aplicar limites corretamente
+  aplicarLimites(i);
+  limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
+
+  initialX = currentX;
+  
 };
 
 // Finalizar arraste e iniciar desaceleração

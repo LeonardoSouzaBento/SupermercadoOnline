@@ -9,18 +9,6 @@ body{
    visibility: hidden;
    width: 0px;
 }
-    footer>div{
-        display: flex;
-        height: 70%;
-        align-items: center;
-        gap: 5px;
-        margin-top: 8px;
-    }
-    footer>div>p{
-        font-family: "Fira Sans", serif;
-        font-weight: 400;
-        letter-spacing: normal;
-    }
 menu{
     position: fixed;
     top: 0px;
@@ -56,18 +44,7 @@ menu{
     #for_opcoes>div>p{
         letter-spacing: 0.5px;
     }
-    div#cabecalho{
-        width: 80%;
-        margin: auto;
-        margin-top: 0px;
-        padding: 5px 0px;
-        height: 60px;
-        display: flex;
-        justify-content: space-between;
-        flex-flow: row nowrap;
-        gap: 10px;
-        align-items: center;
-    }
+
     div#for_logo{
         height: 100%;
         width: 260px;
@@ -75,12 +52,6 @@ menu{
         align-items: center;
         justify-content: space-between;
         color: rgb(255, 255, 255);
-    }
-    div#for_logo>img{
-        height: 100%;
-        border-radius: 50%;
-        padding: 2px;
-        background-color: rgba(0, 0, 0, 0.194);
     }
     div#for_logo>div{
        width: 170px;
@@ -98,60 +69,6 @@ menu{
         font-family: "Fira Sans", serif;
         font-size: 0.95em;
         letter-spacing: 1.2px;
-    }
-    div#userEnotif{
-        height: 100%;
-        width: 115px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    div#userEnotif>div{
-        display: none;
-    }
-    #img_user, #img_noti{
-        object-fit: cover;
-        border-radius: 50%;
-        filter: invert(100%) opacity(0.7);
-        background-color: rgba(0, 0, 0, 0.799);
-    }
-    #img_user{
-      height: 45px;
-      padding: 4px;
-    }
-    #img_noti{
-        height: 35px;
-        padding: 5px;
-    }
-
-    form#for_search{
-        display: flex;
-        flex-flow: row nowrap;
-        width: 80%;
-        margin: auto;
-        height: 40px;
-        padding: 13px 0px;
-        padding-bottom: 14px;
-    }
-    form#for_search>input{
-        height: 100%;
-        width: 90%;
-        border-radius: 20px 0px 0px 20px;
-        border: none;
-        font-weight: 300;
-        font-size: 0.85em;
-    }
-    form#for_search>div{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        background-color: rgb(255, 255, 255);
-        border-radius: 0px 20px 20px 0px;
-        width: 12%;
-    }
-    form#for_search>div>span{
-      color: rgb(111, 111, 111);
     }
 
 main{
@@ -231,13 +148,6 @@ main{
      font-size: 0.85em;
      letter-spacing: 0.5px;
     }
-    #for_sections>div>img{
-        height: 52px;
-        width: 52px;
-        background-color: white;
-        border-radius: 30%;
-        filter: brightness(0.84) contrast(2);
-    }
 
     .catselected{
         background-color: rgb(255, 255, 255);
@@ -294,17 +204,6 @@ main{
         margin-bottom: 10px;
         position: relative;
     }
-        .desconto{
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 0.84em;
-            border-radius: 9px;
-            background-color: rgb(216, 10, 10);
-            padding: 0px 7px;
-            color: white;
-            z-index: 1;
-        }
         .div_img{
             width: 100%;
             height: 100%;
@@ -387,14 +286,3 @@ main{
         z-index: 1;
         display: none;
     }
-    .mais{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #2649CA;
-        height: 100%;
-        border-radius: 50%;
-        color: white;
-        width: 40px;
-    }
-
