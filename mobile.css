@@ -299,3 +299,7 @@ main{
         z-index: 1;
         display: none;
     }
+
+    footer>div{
+        width: 30%;
+    }

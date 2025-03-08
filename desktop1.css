@@ -80,13 +80,20 @@ menu{
         border-radius: 7px;
         padding: 5px 10px;
         color: white;
+        border: 2px solid #ffffff00;
+    }
+    div#userEnotif>div:hover{
+        border: 2px solid #ffffff;
     }
     div#userEnotif>div>p{
       font-family: "Fira Sans", serif;
       letter-spacing: 0.6px;
     }
+    #img_user, #img_noti{
+        border: 2px solid #ffffff00;
+    }
     #img_user:hover, #img_noti:hover{
-        border: 1px solid #ffffff;
+        border: 2px solid #ffffff;
     }
 main{
     margin-top: 18px;
@@ -101,7 +108,6 @@ main{
         margin-bottom: 35px;
         box-sizing: border-box;
     }
-
     div#imgs_anun{
         display: flex;
         flex-flow: row nowrap;

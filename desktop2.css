@@ -81,17 +81,20 @@ menu{
         border-radius: 6px;
         padding: 7px 10px;
         color: white;
+        transition: all 100ms ease;
     }
     div#userEnotif>div:hover{
-        border: 1px solid #ffffff;
+        transform: scale(1.05);
     }
     div#userEnotif>div>p{
       font-family: "Fira Sans", serif;
       letter-spacing: 0.6px;
     }
-
+    #img_user, #img_noti{
+        transition: all 100ms ease;
+    }
     #img_user:hover, #img_noti:hover{
-        border: 1px solid #ffffff;
+        transform: scale(1.07);
     }
 
 main{

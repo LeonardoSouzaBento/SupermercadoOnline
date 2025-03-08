@@ -2,8 +2,6 @@
     user-select: none;
     padding: 0px;
     margin: 0px;
-    font-family: "Poppins",Arial,sans-serif;
-    font-weight: 400;
     pointer-events: auto;
 }
 html{
@@ -112,7 +110,7 @@ div#div_entrada{
     gap: 10px;
     display: none;
 }
-#div_entrada> div{
+#div_entrada>div{
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -211,16 +209,18 @@ div#anuncio{
     position: relative;
     overflow-x: hidden;
 }
-#imgs_anun{
-    width: 100%;
-    padding: 5px;
-}
 div#anuncio>p{
     width: 100%;
     text-align: center;
     margin-bottom: 5px;
     font-size: 1.1em;
-    letter-spacing: 1px;
+    letter-spacing: 1.7px;
+    font-family: "Fira Sans", serif;
+    font-weight: 500;
+}
+#imgs_anun{
+    width: 100%;
+    padding: 5px;
 }
 #part_sections{
    overflow-x: hidden;
@@ -272,14 +272,19 @@ div#anuncio>p{
     gap: 10px;
     flex: auto;
     padding-top: 5px;
+    border-radius: 4px;
 }
 #for_sections>div>img{
         height: 52px;
         width: 52px;
         background-color: white;
-        border-radius: 30%;
+        border-radius: 42%;
         filter: brightness(0.84) contrast(2) brightness(2) saturate(0.8);
     }
+.divNameSection>p{
+    font-family: "Poppins",Arial,sans-serif;
+}
+
 #for_promos{
     overflow-x: hidden;
 }
@@ -293,16 +298,26 @@ div#anuncio>p{
         overflow-x: hidden;
     }
 }
+.nome{
+    font-family: "Poppins",Arial,sans-serif;
+}
+.preco{
+    font-family: "Fira Sans",Arial,sans-serif;
+}
 .desconto{
     position: absolute;
     top: 3px;
     left: 10px;
     font-size: 0.84em;
     border-radius: 9px;
-    background-color: #EB262B;
+    background-color: #de4f53;
     padding: 0px 7px;
     color: white;
     z-index: 1;
+    font-family: "Poppins",Arial,sans-serif;
+}
+.peso{
+    font-family: "Poppins",Arial,sans-serif;
 }
 .mais{
     display: flex;
@@ -314,7 +329,6 @@ div#anuncio>p{
     color: white;
     width: 40px;
 }
-
 
 footer{
     display: flex;
@@ -344,8 +358,8 @@ footer>div>p{
     letter-spacing: normal;
 }
 .selected1{
-    background-color: #eb262b;
+    background-color: #d5454a;
     color: white;
-    border-radius: 5px;
+    border-radius: 3px;
     padding: 0px 10px;
 }
