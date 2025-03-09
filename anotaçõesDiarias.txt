@@ -1,0 +1,8 @@
+arraste = -350;
+toque inicial = 20
+toque final = 10
+
+arraste = toque inicial - toque final
+
+arraste = toque inicial - arraste
+

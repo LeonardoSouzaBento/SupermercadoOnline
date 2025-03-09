@@ -69,7 +69,7 @@ let larg_anuncio = document.getElementById('anuncio').offsetWidth;
 let gap_imgs_anuncio = parseFloat(getComputedStyle(document.getElementById('imgs_anun')).getPropertyValue('gap'));
 let quant_anun = [...document.querySelectorAll('#imgs_anun>img')].length;
 let larg_img = document.querySelector('#imgs_anun>img').offsetWidth;
-let larg_imgs_anun = gap_imgs_anuncio *(quant_anun-1) + larg_img * quant_anun;
+let larg_imgs_anun = gap_imgs_anuncio *(quant_anun-1) + larg_img * quant_anun +2;
 let meio = larg_anuncio/2 - larg_imgs_anun/2;
 let fim_anun = larg_anuncio - larg_imgs_anun;
 
@@ -131,7 +131,6 @@ const iniciarArraste = (e, i) => {
   if (e.touches) {initialX = e.touches[0].clientX;}
   //
   limi[i].toc_ini = posicaoX - limi[i].arraste;
-  limi[i].toc_ini2 = posicaoX;
   limi[i].time_touch = Date.now();
   limi[i].arrastando = true;
   if (limi[i].animacaoRolagem) {
@@ -149,7 +148,6 @@ const aoMover = (e, i) => {
 
   let currentY = null;
   let currentX = null;
-
   if (e.touches) {
     //chamar rolagem do site
     currentY = e.touches[0].clientY; 
@@ -170,11 +168,10 @@ const aoMover = (e, i) => {
   if (tempoDecorrido > 0) {
     limi[i].velocidade = (posicaoX - limi[i].toc_ini2) / tempoDecorrido; // px/ms
   }
-
-  limi[i].toc_ini2 = posicaoX;
   limi[i].time_touch = tempoAtual;
+  limi[i].toc_ini2 = posicaoX;
+
   limi[i].arraste = posicaoX - limi[i].toc_ini;
-  // Aplicar limites corretamente
   aplicarLimites(i);
   limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
 
@@ -203,7 +200,6 @@ const finalizarArraste = (e, i) => {
     }
   };
   desacelerar();
-  
 };
 
 // Função auxiliar para aplicar limites
@@ -218,13 +214,16 @@ const aplicarLimites = (i) => {
   }
 };
 
-/*
+//Rolagem touchPad
 let verificou = false;
 let isTouchPad = null;
-let posicaoAtual = arraste;
 
 const aoRolar = (e) => {
-
+  let target = e.currentTarget;
+  let i = limi.findIndex(item => item.div === e.currentTarget);
+  if (i === -1) return;
+  let posicaoAtual = limi[i].arraste;
+  
   if (!verificou) { 
     verificou = true; 
     if (Math.abs(e.deltaX) < 80) {isTouchPad = true;} //se for touchPad 
@@ -232,28 +231,30 @@ const aoRolar = (e) => {
   }
   if (!isTouchPad) {return;}
 
-  arraste -= e.deltaX * 0.7; // rolagem do scroll diminuida pela metade
-  if (arraste < limite) arraste = limite;
-  if (arraste > 0) arraste = 0;
+  limi[i].arraste -= e.deltaX; // rolagem do scroll diminuida
+  if (limi[i].arraste < limi[i].limite) limi[i].arraste = limi[i].limite;
+  if (limi[i].arraste > 0) limi[i].arraste = 0;
 
-  if (!animacaoRolagem) {
-    animacaoRolagem= true;
+  if (!limi[i].animacaoRolagem) {
+    limi[i].animacaoRolagem= true;
     requestAnimationFrame(animar);
+  }
+
+  function animar(e) {
+    let deltaX = limi[i].arraste - posicaoAtual;
+    if (Math.abs(deltaX) > 0.1) {
+      posicaoAtual += deltaX * 0.3;
+      target.style.transform = `translateX(${posicaoAtual}px)`;
+      requestAnimationFrame(animar);
+    } else {
+      limi[i].arraste = posicaoAtual;
+      target.style.transform = `translateX(${posicaoAtual}px)`;
+      limi[i].animacaoRolagem = false;
+    }
   }
 };
-
-function animar() {
-  let deltaX = arraste - posicaoAtual;
-  if (Math.abs(deltaX) > 0.1) {
-    posicaoAtual += deltaX * 0.1; // Ajuste o fator de suavização aqui
-    secoes.style.transform = `translateX(${posicaoAtual}px)`;
-    requestAnimationFrame(animar);
-  } else {
-    arraste = posicaoAtual;
-    secoes.style.transform = `translateX(${posicaoAtual}px)`;
-    animacaoRolagem = false; // Para a animação quando o alvo é atingido
-  }
-}
+imgs_anun.addEventListener('wheel', aoRolar);
 secoes.addEventListener('wheel', aoRolar);
-*/
+promos.addEventListener('wheel', aoRolar);
+
 };

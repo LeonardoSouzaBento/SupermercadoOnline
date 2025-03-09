@@ -7,18 +7,29 @@
 html{
     overflow-x: hidden;
 }
+body{
+    background-color: rgb(228, 228, 228);
+}
 ::-webkit-scrollbar{
     height: 0;
     width: 0;
     visibility: hidden;
 }
 header{
-    background-color: #C7381A;
+    background-color: #d3482c;
     width: 100%;
     padding: 8px 0px;
     padding-top: 17px;
     box-sizing: border-box;
     margin-bottom: -1px;
+}
+@media only screen and (min-width: 993px){
+    header{
+       background-image: linear-gradient(to right,#e34343,#C7381A);
+    }
+    #div_search{
+        background-image: linear-gradient(to right,#e34343,#C7381A);
+    }
 }
 div#cabecalho{
     width: 90%;
@@ -34,9 +45,7 @@ div#cabecalho{
 }
 div#for_logo>img{
     height: 100%;
-    border-radius: 50%;
-    padding: 2px;
-    background-color: #EB262B;
+    border-radius: 40%;
 }
 @media only screen and (max-width: 360px){
     #for_logo>div>p{
@@ -51,6 +60,9 @@ div#for_logo>img{
         font-family: "Fira Sans", serif;
         line-height: 15px;
         padding: 5px;
+    }
+    #for_logo>div>p>strong{
+        letter-spacing: 1px;
     }
     #img_user{
         height: 42px;
@@ -67,8 +79,11 @@ div#for_logo>img{
         letter-spacing: 0.5px;
         font-weight: 300;
         font-family: "Fira Sans", serif;
-        line-height: 15px;
+        line-height: 17px;
         padding: 5px;
+    }
+    #for_logo>div>p>strong{
+        letter-spacing: 1.3px;
     }
 }
 
@@ -86,7 +101,8 @@ div#userEnotif>div{
 #img_user, #img_noti{
     object-fit: cover;
     border-radius: 50%;
-    background-color: #EB262B;
+    background-color: #d25252;
+    box-shadow: 0px 0px 4px rgb(159, 62, 62);
 }
 
 @media only screen and (min-width: 521px){
@@ -98,6 +114,11 @@ div#userEnotif>div{
         height: 31px;
         padding: 11px;
     }     
+}
+
+main{
+    margin: auto;
+    margin-top: 23px;
 }
 
 div#div_entrada{
@@ -167,11 +188,17 @@ div#div_entrada{
 
 #div_search{
     width: 100%;
-    background-color: #C7381A;
+    background-color: #d3482c;
     position: sticky;
     top: 0;
     z-index: 3;
 }
+@media only screen and (min-width: 577px){
+    #search{
+        font-size: 0.95em !important;
+    }
+}
+
 form#for_search{
     display: flex;
     flex-flow: row nowrap;
@@ -208,19 +235,40 @@ form#for_search>div>span{
 div#anuncio{
     position: relative;
     overflow-x: hidden;
+    margin: auto;
+    margin-bottom: 40px;
 }
 div#anuncio>p{
     width: 100%;
     text-align: center;
-    margin-bottom: 5px;
-    font-size: 1.1em;
-    letter-spacing: 1.7px;
-    font-family: "Fira Sans", serif;
+    margin-bottom: 15px;
+    font-size: 1.15em;
+    letter-spacing: 1.75px;
+    font-family: "Roboto Condensed", sans-serif;
     font-weight: 500;
+    color: #892c2f;
 }
-#imgs_anun{
-    width: 100%;
-    padding: 5px;
+div#imgs_anun{
+    margin: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 12px;
+    height: 170px;
+    margin-bottom: 25px;
+}
+div#imgs_anun>img{
+    height: 100%;
+    display: inline;
+    background-color: rgb(190, 190, 190);
+}
+#pagination{
+    height: 12px;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0px;
 }
 #part_sections{
    overflow-x: hidden;
@@ -258,11 +306,18 @@ div#anuncio>p{
     user-select: none; /* Impede seleção de texto */
     -webkit-user-select: none; /* Para compatibilidade com Safari */
     -ms-user-select: none; /* Para IE */
+    margin: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    position: relative;
+    gap: 10px;
+    box-sizing: border-box;
 }
 #for_sections:active {
     cursor: grabbing; /* Mão fechada */
 }
-
 #for_sections>div{
     height: 100px;
     min-width: 100px;
@@ -272,14 +327,25 @@ div#anuncio>p{
     gap: 10px;
     flex: auto;
     padding-top: 5px;
-    border-radius: 4px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+.catselected{
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 2px;
+    box-shadow: 2px 2px 4px rgb(176, 176, 176);
+}
+.catselected img{
+    border-radius: 4px !important; 
 }
 #for_sections>div>img{
-        height: 52px;
-        width: 52px;
+        height: 50px;
+        width: 50px;
         background-color: white;
         border-radius: 42%;
         filter: brightness(0.84) contrast(2) brightness(2) saturate(0.8);
+        transition: border-radius 0.32s ease;
     }
 .divNameSection>p{
     font-family: "Poppins",Arial,sans-serif;
@@ -288,9 +354,43 @@ div#anuncio>p{
 #for_promos{
     overflow-x: hidden;
 }
-#promos{
-    padding-bottom: 5px;
+div#promos{
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    border-radius: 7px;
+    position: relative;
+    gap: 12px;
+    margin-bottom: 20px;
 }
+.parte{
+    min-width: 100%;
+    display: flex;
+    border: none;
+    gap: 12px;
+}
+.for_prod{
+    height: 150px;
+    min-width: 360px;
+    max-width: 360px;
+    display: flex;
+    background-color: white;
+    border-radius: 7px;
+    border: 1px solid rgb(193, 193, 193);
+    padding-top: 7px;
+    flex: none;
+}
+
+@media only screen and (max-width: 576px){
+    .for_prod{
+        min-width: 350px;
+        max-width: 350px;
+    }
+}
+
 @media only screen and (min-width: 577px){
     #for_promos{
         width: calc(100% - 25px);
@@ -358,7 +458,7 @@ footer>div>p{
     letter-spacing: normal;
 }
 .selected1{
-    background-color: #d5454a;
+    background-color: #a93d40;
     color: white;
     border-radius: 3px;
     padding: 0px 10px;
