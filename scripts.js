@@ -121,14 +121,17 @@ let diffY=null;
 let firstAngle = null;
 let firstDiffX = null;
 let firstDiffY = null;
+let arrastando2= false;
 
 // Início do arraste
 const iniciarArraste = (e, i) => {
   e.preventDefault();
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
   //chamada a rolagem do site
-  if (e.touches) {initialY = e.touches[0].clientY;}
-  if (e.touches) {initialX = e.touches[0].clientX;}
+  if (e.touches) {
+    initialY = e.touches[0].clientY;
+    initialX = e.touches[0].clientX;
+  }
   //
   limi[i].toc_ini = posicaoX - limi[i].arraste;
   limi[i].time_touch = Date.now();
@@ -146,60 +149,66 @@ const aoMover = (e, i) => {
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
   const tempoAtual = Date.now();
 
-  let currentY = null;
-  let currentX = null;
+  let currentY = e.touches[0].clientY; 
+  let currentX = e.touches[0].clientX;
   if (e.touches) {
-    //chamar rolagem do site
-    currentY = e.touches[0].clientY; 
-    currentX = e.touches[0].clientX;
     diffX = Math.abs(currentX - initialX);
     diffY = Math.abs(currentY - initialY);
     if (firstDiffX === null && firstDiffY === null) {
-      firstDiffX = diffX;
-      firstDiffY = diffY;
-      firstAngle = Math.atan(firstDiffY / firstDiffX) * (180 / Math.PI);
-    }
-    if (firstAngle>45) {
-        window.scrollBy(0, -(currentY - initialY)* 0.08);
-    }
-  }
-  // Calculo de velocidade
-  const tempoDecorrido = tempoAtual - limi[i].time_touch;
-  if (tempoDecorrido > 0) {
-    limi[i].velocidade = (posicaoX - limi[i].toc_ini2) / tempoDecorrido; // px/ms
-  }
-  limi[i].time_touch = tempoAtual;
-  limi[i].toc_ini2 = posicaoX;
+    firstDiffX = diffX;
+    firstDiffY = diffY;
+    firstAngle = Math.atan(firstDiffY / firstDiffX) * (180 / Math.PI);
+  }}
 
-  limi[i].arraste = posicaoX - limi[i].toc_ini;
-  aplicarLimites(i);
-  limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
+  if (firstAngle>45) {
+    arrastando2=true;
+    const deltaY = currentY - initialY;
+    window.scrollBy(0, -(deltaY));
+  }
+  else{
+    // Calculo de velocidade
+    const tempoDecorrido = tempoAtual - limi[i].time_touch;
+    if (tempoDecorrido > 0) {
+      limi[i].velocidade = (posicaoX - limi[i].toc_ini2) / tempoDecorrido; // px/ms
+    }
+    limi[i].time_touch = tempoAtual;
+    limi[i].toc_ini2 = posicaoX;
 
+    limi[i].arraste = posicaoX - limi[i].toc_ini;
+    aplicarLimites(i);
+    limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
+  }
   initialX = currentX;
-  
-};
+}
 
 // Finalizar arraste e iniciar desaceleração
 const finalizarArraste = (e, i) => {
-  initialY = null; initialX = null; firstAngle = null; firstDiffX = null; firstDiffY = null;
 
-  if (!limi[i].arrastando) return;
-  limi[i].arrastando = false;
+  if(arrastando2){initialY = null; initialX = null; 
+    firstAngle = null; firstDiffX = null; 
+    firstDiffY = null;
+    arrastando2=false;
+  }
 
-  const desacelerar = () => {
-    if (Math.abs(limi[i].velocidade) > 0.01) { // Valor mínimo para parar
-      limi[i].velocidade *= 0.95; // Reduz gradualmente a velocidade
-      limi[i].arraste += limi[i].velocidade * 16; // Multiplica pela estimativa de 16ms/frame
+  if(!arrastando2){
+    if (!limi[i].arrastando) return;
+    limi[i].arrastando = false;
 
-      // Aplicar limites corretamente
-      aplicarLimites(i);
-      limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
-      limi[i].animacaoRolagem = requestAnimationFrame(desacelerar);
-    } else {
-      limi[i].animacaoRolagem = null; // Finaliza a animação
-    }
-  };
-  desacelerar();
+    const desacelerar = () => {
+      if (Math.abs(limi[i].velocidade) > 0.01) { // Valor mínimo para parar
+        limi[i].velocidade *= 0.95; // Reduz gradualmente a velocidade
+        limi[i].arraste += limi[i].velocidade * 16; // Multiplica pela estimativa de 16ms/frame
+
+        // Aplicar limites corretamente
+        aplicarLimites(i);
+        limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
+        limi[i].animacaoRolagem = requestAnimationFrame(desacelerar);
+      } else {
+        limi[i].animacaoRolagem = null; // Finaliza a animação
+      }
+    };
+    desacelerar();
+  }
 };
 
 // Função auxiliar para aplicar limites
@@ -256,5 +265,4 @@ const aoRolar = (e) => {
 imgs_anun.addEventListener('wheel', aoRolar);
 secoes.addEventListener('wheel', aoRolar);
 promos.addEventListener('wheel', aoRolar);
-
 };

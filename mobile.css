@@ -5,6 +5,9 @@ html{
    visibility: hidden;
    width: 0px;
 }
+body{
+    overflow-y: hidden;
+}
 menu{
     position: fixed;
     top: 0px;

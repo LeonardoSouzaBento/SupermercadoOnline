@@ -4,10 +4,9 @@
     margin: 0px;
     pointer-events: auto;
 }
-html{
-    overflow-x: hidden;
-}
 body{
+    overflow-x: hidden;
+    height: 100%;
     background-color: rgb(228, 228, 228);
 }
 ::-webkit-scrollbar{
@@ -17,10 +16,11 @@ body{
 }
 header{
     background-color: #d3482c;
-    width: 100%;
+    max-width: 1390px;
     padding: 8px 0px;
     padding-top: 17px;
     box-sizing: border-box;
+    margin: auto;
     margin-bottom: -1px;
 }
 @media only screen and (min-width: 993px){
@@ -29,6 +29,8 @@ header{
     }
     #div_search{
         background-image: linear-gradient(to right,#e34343,#C7381A);
+        max-width: 1390px;
+        margin: auto;
     }
 }
 div#cabecalho{
@@ -102,7 +104,8 @@ div#userEnotif>div{
     object-fit: cover;
     border-radius: 50%;
     background-color: #d25252;
-    box-shadow: 0px 0px 4px rgb(159, 62, 62);
+    background-color: #a93d40;
+    /*box-shadow: 0px 0px 4px rgb(159, 62, 62);*/
 }
 
 @media only screen and (min-width: 521px){
@@ -118,7 +121,8 @@ div#userEnotif>div{
 
 main{
     margin: auto;
-    margin-top: 23px;
+    padding-top: 23px;
+    background-color: rgb(228, 228, 228);
 }
 
 div#div_entrada{
