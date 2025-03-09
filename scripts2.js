@@ -192,7 +192,6 @@ const finalizarArraste = (e, i) => {
       if (Math.abs(limi[i].velocidade) > 0.01) { // Valor mínimo para parar
         limi[i].velocidade *= 0.95; // Reduz gradualmente a velocidade
         limi[i].arraste += limi[i].velocidade * 16; // Multiplica pela estimativa de 16ms/frame
-
         // Aplicar limites corretamente
         aplicarLimites(i);
         limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
@@ -259,65 +258,70 @@ const aoRolar = (e) => {
 imgs_anun.addEventListener('wheel', aoRolar);
 secoes.addEventListener('wheel', aoRolar);
 promos.addEventListener('wheel', aoRolar);
+// FIM
 
-let startY;
-let startTime;
-let isScrolling = false;
-let momentum;
 
+let startY, startTime, isScrolling = false, speed = 0, deltaY = 0;
+const minSpeed = 0.4; // Velocidade mínima para garantir animação
+const maxSpeed = 2.0;
+
+// Iniciar toque
 document.addEventListener('touchstart', (e) => {
   startY = e.touches[0].clientY;
   startTime = Date.now();
-  isScrolling = false; // Reseta o estado de rolagem
-  cancelMomentum(); // Cancela qualquer animação de desaceleração em andamento
-});
+  isScrolling = false;
+  speed = 0;
+  deltaY = 0;
+}, { passive: true });
 
+// Mover
 document.addEventListener('touchmove', (e) => {
-  e.preventDefault()
+  e.preventDefault();
   const currentY = e.touches[0].clientY;
   const currentTime = Date.now();
   const deltaTime = currentTime - startTime;
-  const deltaY = (currentY - startY); //diminuir deltaY
 
-  const maxSpeed = 0.3; // Velocidade máxima permitida
-  const speed = Math.min(Math.abs(deltaY) / deltaTime, maxSpeed);
-  const adjustedDeltaY = deltaY * (0.7 + speed);
+  deltaY = currentY - startY;
 
-  window.scrollBy(0, -adjustedDeltaY);
+  if (deltaTime > 0) {
+    speed = deltaY / deltaTime;
+    speed = Math.sign(speed) * Math.min(Math.abs(speed), maxSpeed);
+    console.log(speed)
+  }
+
+  window.scrollBy(0, -deltaY);
 
   startY = currentY;
   startTime = currentTime;
-
-  momentum = adjustedDeltaY;
   isScrolling = true;
+
 }, { passive: false });
 
+// Finalizar
 document.addEventListener('touchend', () => {
   if (isScrolling) {
+    if (Math.abs(speed) < minSpeed) {
+      speed = minSpeed * Math.sign(speed); // Garante movimento mínimo
+    }
     startMomentumScroll();
   }
 });
-function startMomentumScroll() {
-  const decelerationRate = 0.95;
-  const minMomentum = 1;
 
+function startMomentumScroll() {
+  const decay = 0.95; // Redução gradual da velocidade
   const step = () => {
-    if (Math.abs(momentum) > minMomentum) {
-      window.scrollBy(0, -momentum);
-      momentum *= decelerationRate;
+    if (Math.abs(speed) > 0.1) { // Evita paradas bruscas
+      speed *= decay;
+      window.scrollBy(0, -speed * 16);
       requestAnimationFrame(step);
     } else {
       isScrolling = false;
     }
   };
   requestAnimationFrame(step);
-
 }
 
-function cancelMomentum() {
-  momentum = 0;
-  isScrolling = false;
-}
+
 
 /*
 let startY;
