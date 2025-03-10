@@ -261,6 +261,7 @@ div#imgs_anun{
     gap: 12px;
     height: 170px;
     margin-bottom: 25px;
+    touch-action: none;
 }
 div#imgs_anun>img{
     height: 100%;
@@ -322,6 +323,7 @@ div#imgs_anun>img{
     position: relative;
     gap: 10px;
     box-sizing: border-box;
+    touch-action: none;
 }
 #for_sections:active {
     cursor: grabbing; /* Mão fechada */
@@ -381,6 +383,7 @@ div#promos{
     display: flex;
     border: none;
     gap: 12px;
+    touch-action: none;
 }
 .for_prod{
     height: 150px;

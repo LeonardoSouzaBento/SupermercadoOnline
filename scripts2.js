@@ -39,7 +39,6 @@ cats.forEach(el => {
   el.addEventListener("touchend", endPress);
 });
 
-
 // Seleção do footer
 const div_footer= [...document.querySelectorAll('footer>div')];
 div_footer.forEach(e=>{
@@ -125,15 +124,25 @@ let firstDiffX = null;
 let firstDiffY = null;
 let dragY= null;
 
+let tempoDecorrido = 0;
+let startTime = 0; let speed = 0; let deltaY = null;
+const minSpeed = 0.7;
+const maxSpeed = 2.0;
+
 // Início do arraste
 const iniciarArraste = (e, i) => {
   e.preventDefault();
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
  
+  //pagina
   initialY =  e.touches ? e.touches[0].clientY : e.clientY;
   initialX =  e.touches ? e.touches[0].clientX : e.clientX;
+  speed = 0;
+  deltaY = 0;
+  startTime = Date.now();
 
-  limi[i].toc_ini = posicaoX - limi[i].arraste;
+  //divs
+  limi[i].toc_ini = posicaoX - limi[i].arraste; //divs
   limi[i].time_touch = Date.now();
   limi[i].arrastando = false;
   if (limi[i].animacaoRolagem) {
@@ -146,6 +155,8 @@ const iniciarArraste = (e, i) => {
 const aoMover = (e, i) => {
   e.preventDefault();
   const tempoAtual = Date.now();
+  tempoDecorrido = Math.max(1, tempoAtual - limi[i].time_touch);
+
   const posicaoX = e.touches ? (e.touches[0] ? e.touches[0].clientX : null) : e.clientX;
   const currentY = e.touches ? (e.touches[0] ? e.touches[0].clientY : null) : e.clientY;
 
@@ -161,11 +172,12 @@ const aoMover = (e, i) => {
     firstDiffX = diffX;
     firstDiffY = diffY;
     firstAngle = Math.atan2(diffY, diffX) * (180 / Math.PI);
+    if (firstAngle === null) firstAngle = 0;
   }
+  //divs
   if (firstAngle < 45) {
     limi[i].arrastando = true;
     dragY= false;
-    const tempoDecorrido = tempoAtual - limi[i].time_touch;
     if (tempoDecorrido > 0) {
       limi[i].velocidade = (posicaoX - limi[i].toc_ini2) / tempoDecorrido; // px/ms
     }
@@ -177,19 +189,28 @@ const aoMover = (e, i) => {
 
     initialX = posicaoX;
   }
+  //pagina
+  if(firstAngle > 60){
+    deltaY = currentY - initialY;
+    if (tempoDecorrido > 0) {
+      speed = deltaY / tempoDecorrido;
+      speed = Math.sign(speed) * Math.max(minSpeed, Math.min(Math.abs(speed), maxSpeed));
+    }
+
+    window.scrollBy(0, -deltaY);
+    initialY = currentY;
+    startTime = tempoAtual;
+    dragY = true;
+  }
+  else{dragY=null};
 };
 
 // Finalizar arraste e iniciar desaceleração
 const finalizarArraste = (e, i) => {
+
   if(!dragY){
     if (!limi[i].arrastando) return;
     limi[i].arrastando = false;
-
-    initialY = null; initialX = null; 
-    firstAngle = null; firstDiffX = null; 
-    firstDiffY = null;
-    dragY=null;
-  
     const desacelerar = () => {
       if (Math.abs(limi[i].velocidade) > 0.01) { // Valor mínimo para parar
         limi[i].velocidade *= 0.95; // Reduz gradualmente a velocidade
@@ -204,9 +225,38 @@ const finalizarArraste = (e, i) => {
     };
     desacelerar();
   }
+  
+  if (dragY) {
+    if (Math.abs(speed) < minSpeed) {
+      speed = minSpeed * Math.sign(speed); // Garante movimento mínimo
+    }
+
+    if (!Number.isFinite(speed)) speed = minSpeed * Math.sign(deltaY);
+    
+    startMomentumScroll();
+  }
+
+  initialY = null; initialX = null; 
+  firstAngle = null; firstDiffX = null; 
+  firstDiffY = null;
+  dragY=null;
 };
 
-// Função auxiliar para aplicar limites
+function startMomentumScroll() {
+  const decay = 0.95;
+  const step = () => {
+    if (Math.abs(speed) > 0.1) {
+      speed *= decay;
+      window.scrollBy(0, -speed * 16);
+      requestAnimationFrame(step);
+    } else {
+      isScrolling = false;
+    }
+  };
+  requestAnimationFrame(step);
+}
+
+// Função para aplicar limites
 const aplicarLimites = (i) => {
   if (limi[i].arraste < limi[i].limite) {
     limi[i].arraste = limi[i].limite;
@@ -260,79 +310,5 @@ const aoRolar = (e) => {
 imgs_anun.addEventListener('wheel', aoRolar);
 secoes.addEventListener('wheel', aoRolar);
 promos.addEventListener('wheel', aoRolar);
-
-// Rolagem da pagina
-/*
-let startY, startX, startTime, isScrolling = false, speed = 0, deltaY = 0, deltaY2=0, deltaX=0, angle=0;
-const minSpeed = 0.7; // Velocidade mínima para garantir animação
-const maxSpeed = 2.0;
-
-// Iniciar toque
-document.addEventListener('touchstart', (e) => {
-  startY = e.touches[0].clientY;
-  startX = e.touches[0].clientX;
-  startTime = Date.now();
-  isScrolling = false;
-  speed = 0;
-  deltaY = 0;
-}, { passive: true });
-
-// Mover
-document.addEventListener('touchmove', (e) => {
-  e.preventDefault();
-  const currentY = e.touches[0].clientY;
-  const currentX = e.touches[0].clientX;
-  const currentTime = Date.now();
-  const deltaTime = currentTime - startTime;
-  deltaY = currentY - startY;
-
-  let all_deltaY= Math.abs(currentY - startY);
-  let all_deltaX= Math.abs(currentX - startX);
-
-  const limiar = 1;
-  if (all_deltaX < limiar && all_deltaY < limiar) return;
-
-  if(deltaY2==0 && deltaX==0){
-    deltaY2= all_deltaY;
-    deltaX= all_deltaX;
-    angle = Math.atan2(deltaY2, deltaX) * (180 / Math.PI);
-  }
-  if(angle > 60){
-    if (deltaTime > 0) {
-      speed = deltaY / deltaTime;
-      speed = Math.sign(speed) * Math.max(minSpeed, Math.min(Math.abs(speed), maxSpeed));
-    }
-    window.scrollBy(0, -deltaY);
-    startY = currentY;
-    startTime = currentTime;
-    isScrolling = true;
-  }
-}, { passive: false });
-
-// Finalizar
-document.addEventListener('touchend', () => {
-  if (isScrolling) {
-    if (Math.abs(speed) < minSpeed) {
-      speed = minSpeed * Math.sign(speed); // Garante movimento mínimo
-    }
-    startMomentumScroll();
-  }
-  deltaY2=0; deltaX=0; angle=0;
-});
-
-function startMomentumScroll() {
-  const decay = 0.95; // Redução gradual da velocidade
-  const step = () => {
-    if (Math.abs(speed) > 0.1) { // Evita paradas bruscas
-      speed *= decay;
-      window.scrollBy(0, -speed * 16);
-      requestAnimationFrame(step);
-    } else {
-      isScrolling = false;
-    }
-  };
-  requestAnimationFrame(step);
-}
-*/
 };
 
