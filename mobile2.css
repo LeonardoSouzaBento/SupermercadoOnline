@@ -5,9 +5,6 @@ html{
    visibility: hidden;
    width: 0px;
 }
-body{
-    overflow-y: hidden;
-}
 menu{
     position: fixed;
     top: 0px;
@@ -72,6 +69,9 @@ menu{
         box-sizing: border-box;
         overflow-x: hidden;
     }
+    div#anuncio>p{
+        font-size: 1.24em;
+    }
     div#imgs_anun{
         gap: 15px;
     }
@@ -101,6 +101,7 @@ menu{
 /*Todos os produtos*/
 #for_promos{
     overflow-x: hidden;
+    touch-action: none;
 }
 /**/
     .oferta{

@@ -6,9 +6,6 @@ html{
    visibility: hidden;
    width: 0px;
 }
-body{
-    overflow-y: hidden;
-}
 menu{
     position: fixed;
     top: 0px;
@@ -72,6 +69,9 @@ menu{
         width: calc(100% - 20px);
         box-sizing: border-box;
         overflow-x: hidden;
+    }
+    div#anuncio>p{
+        font-size: 1.25em;
     }
     div#imgs_anun{
         gap: 17px;

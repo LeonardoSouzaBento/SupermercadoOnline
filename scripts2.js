@@ -105,14 +105,16 @@ let limi = [
 ];
 
 // Adiciona event listeners com o índice
+
 limi.forEach((el, index) => {
-  el.div.addEventListener('touchstart', (e) => iniciarArraste(e, index));
-  el.div.addEventListener('mousedown', (e) => iniciarArraste(e, index));
+  el.div.addEventListener('touchstart', (e) => iniciarArraste(e, index),{ passive: false });
+  el.div.addEventListener('mousedown', (e) => iniciarArraste(e, index),{ passive: false });
   el.div.addEventListener('touchmove', (e) => aoMover(e, index),{ passive: false });
   el.div.addEventListener('mousemove', (e) => aoMover(e, index),{ passive: false });
   el.div.addEventListener('touchend', (e) => finalizarArraste(e, index));
   el.div.addEventListener('mouseup', (e) => finalizarArraste(e, index));
 });
+
 
 let initialY = null;
 let initialX = null;
@@ -258,16 +260,17 @@ const aoRolar = (e) => {
 imgs_anun.addEventListener('wheel', aoRolar);
 secoes.addEventListener('wheel', aoRolar);
 promos.addEventListener('wheel', aoRolar);
-// FIM
 
-
-let startY, startTime, isScrolling = false, speed = 0, deltaY = 0;
-const minSpeed = 0.4; // Velocidade mínima para garantir animação
+// Rolagem da pagina
+/*
+let startY, startX, startTime, isScrolling = false, speed = 0, deltaY = 0, deltaY2=0, deltaX=0, angle=0;
+const minSpeed = 0.7; // Velocidade mínima para garantir animação
 const maxSpeed = 2.0;
 
 // Iniciar toque
 document.addEventListener('touchstart', (e) => {
   startY = e.touches[0].clientY;
+  startX = e.touches[0].clientX;
   startTime = Date.now();
   isScrolling = false;
   speed = 0;
@@ -278,23 +281,32 @@ document.addEventListener('touchstart', (e) => {
 document.addEventListener('touchmove', (e) => {
   e.preventDefault();
   const currentY = e.touches[0].clientY;
+  const currentX = e.touches[0].clientX;
   const currentTime = Date.now();
   const deltaTime = currentTime - startTime;
-
   deltaY = currentY - startY;
 
-  if (deltaTime > 0) {
-    speed = deltaY / deltaTime;
-    speed = Math.sign(speed) * Math.min(Math.abs(speed), maxSpeed);
-    console.log(speed)
+  let all_deltaY= Math.abs(currentY - startY);
+  let all_deltaX= Math.abs(currentX - startX);
+
+  const limiar = 1;
+  if (all_deltaX < limiar && all_deltaY < limiar) return;
+
+  if(deltaY2==0 && deltaX==0){
+    deltaY2= all_deltaY;
+    deltaX= all_deltaX;
+    angle = Math.atan2(deltaY2, deltaX) * (180 / Math.PI);
   }
-
-  window.scrollBy(0, -deltaY);
-
-  startY = currentY;
-  startTime = currentTime;
-  isScrolling = true;
-
+  if(angle > 60){
+    if (deltaTime > 0) {
+      speed = deltaY / deltaTime;
+      speed = Math.sign(speed) * Math.max(minSpeed, Math.min(Math.abs(speed), maxSpeed));
+    }
+    window.scrollBy(0, -deltaY);
+    startY = currentY;
+    startTime = currentTime;
+    isScrolling = true;
+  }
 }, { passive: false });
 
 // Finalizar
@@ -305,6 +317,7 @@ document.addEventListener('touchend', () => {
     }
     startMomentumScroll();
   }
+  deltaY2=0; deltaX=0; angle=0;
 });
 
 function startMomentumScroll() {
@@ -320,34 +333,6 @@ function startMomentumScroll() {
   };
   requestAnimationFrame(step);
 }
-
-
-
-/*
-let startY;
-let startTime;
-let isScrolling = false;
-let momentum;
-
-document.addEventListener('touchstart', (e) => {
-  startY = e.touches[0].clientY;
-  startTime = Date.now();
-});
-
-document.addEventListener('touchmove', (e) => {
-  const currentY = e.touches[0].clientY;
-  const currentTime = Date.now();
-  const deltaTime = currentTime - startTime;
-  const deltaY = currentY - startY;
-
-  const speed = Math.abs(deltaY) / deltaTime; // Velocidade = distância / tempo
-  const adjustedDeltaY = deltaY * (1 + speed);
-
-  window.scrollBy(0, -adjustedDeltaY);
-
-  startY = currentY;
-  startTime = currentTime;
-});*/
-
+*/
 };
 

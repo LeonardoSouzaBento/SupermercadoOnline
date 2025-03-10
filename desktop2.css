@@ -58,6 +58,9 @@ menu{
         color: white;
         gap: 15px;
     }
+    div#for_logo>img{
+        box-shadow:0px 2px 5px #ca4b50 ;
+    }
     #for_logo>div>p{
         font-size: 0.95em;
         letter-spacing: 0.5px;
@@ -103,6 +106,9 @@ main{
         width: calc(100% - 50px);
         margin-bottom: 50px;
         overflow-x: hidden;
+    }
+    div#anuncio>p{
+        font-size: 1.3em;
     }
     div#imgs_anun{
         height: 190px;
