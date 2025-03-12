@@ -1,0 +1,82 @@
+1. Problemas com JavaScript
+Conflitos de scripts: Um script mal escrito ou conflito entre bibliotecas JavaScript pode interromper a funcionalidade da página.
+
+Solução: Verifique o console do navegador (F12 > Console) para ver se há erros de JavaScript. Corrija ou remova scripts problemáticos.
+
+Loops infinitos ou processamento pesado: Códigos que consomem muitos recursos podem travar a página.
+
+Solução: Otimize o código ou use setTimeout ou requestAnimationFrame para dividir tarefas pesadas.
+
+2. Uso excessivo de memória
+Vazamentos de memória: Se o JavaScript não liberar memória corretamente, o navegador pode travar.
+
+Solução: Use ferramentas como o Chrome DevTools (aba "Memory") para identificar vazamentos de memória.
+
+Manipulação excessiva do DOM: Adicionar/remover muitos elementos do DOM pode sobrecarregar o navegador.
+
+Solução: Reduza as operações no DOM ou use técnicas como "virtual DOM" (React, por exemplo).
+
+3. Problemas com CSS
+Animações ou transições pesadas: Animações CSS mal otimizadas podem causar travamentos.
+
+Solução: Use will-change ou otimize as animações com transform e opacity.
+
+Regras CSS complexas: Seletores muito específicos ou regras CSS pesadas podem afetar o desempenho.
+
+Solução: Simplifique o CSS e evite seletores muito complexos.
+
+4. Carregamento de recursos
+Imagens ou vídeos muito grandes: Recursos não otimizados podem sobrecarregar a página.
+
+Solução: Comprima imagens e use formatos modernos (WebP, AVIF). Para vídeos, use carregamento lazy.
+
+Requisições excessivas: Muitas requisições HTTP podem travar a página.
+
+Solução: Combine arquivos CSS/JS, use sprites para ícones e minimize as requisições.
+
+5. Event listeners mal gerenciados
+Listeners acumulados: Adicionar muitos event listeners sem removê-los pode causar problemas.
+
+Solução: Use removeEventListener quando necessário ou delegue eventos com event delegation.
+
+6. Problemas com plugins ou bibliotecas
+Plugins de terceiros: Bibliotecas ou plugins externos podem causar conflitos.
+
+Solução: Desative plugins um por um para identificar o problema.
+
+Versões desatualizadas: Bibliotecas desatualizadas podem ter bugs conhecidos.
+
+Solução: Atualize para a versão mais recente.
+
+7. Problemas no navegador
+Extensions do navegador: Extensões podem interferir no funcionamento do site.
+
+Solução: Teste o site em modo anônimo ou desative extensões.
+
+Cache corrompido: Um cache corrompido pode causar comportamentos inesperados.
+
+Solução: Limpe o cache do navegador.
+
+8. Problemas de rede
+Latência ou timeout: Se o site depende de APIs externas, problemas de rede podem travar a página.
+
+Solução: Adicione tratamento de erros e timeouts para requisições assíncronas.
+
+9. Problemas específicos de dispositivos
+Limitações de hardware: Dispositivos com pouca memória ou processamento podem travar em páginas pesadas.
+
+Solução: Teste em diferentes dispositivos e otimize para performance.
+
+10. Erros no servidor
+Timeout ou falhas no backend: Se o site depende de um backend, problemas no servidor podem afetar a experiência do usuário.
+
+Solução: Verifique os logs do servidor e otimize as requisições.
+
+Passos para diagnóstico:
+Abra o console do navegador (F12) e verifique erros.
+
+Use ferramentas como Lighthouse ou PageSpeed Insights para analisar performance.
+
+Teste em diferentes navegadores e dispositivos.
+
+Desative scripts e plugins para identificar a causa.

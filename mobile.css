@@ -5,38 +5,14 @@ html{
    visibility: hidden;
    width: 0px;
 }
-menu{
-    position: fixed;
-    top: 0px;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 0, 0, 0.541);
-    z-index: 5;
-    display: none;
-}
+/* body{
+ overflow-y: hidden;
+} */
 #for_opcoes{
-    height: 340px;
-    width: 70vw;
-    position: absolute;
-    bottom: 60px;
-    background-color: white;
     position: absolute;
     right: 0px;
-    display: flex;
-    flex-flow: column;
-    gap: 12px;
-    border-radius: 10px 0px 0px 10px;
-    padding-top: 10px;
-}
-    #for_opcoes>div{
-       display: flex;
-       align-items: center;
-       padding: 10px 20px;
-       gap: 7px;
-    }
-    #for_opcoes>div>span{
-        font-size: 1.35em;
-    }
+    bottom: 60px;
+ }
     #for_opcoes>div>p{
         letter-spacing: 0.5px;
     }
@@ -71,6 +47,7 @@ menu{
     }
 
 /*Seções*/
+/*
     @keyframes aparecer {
         from {
             opacity: 0;
@@ -84,26 +61,27 @@ menu{
         0% {
             opacity: 1;
             rotate: 15deg;
-            right: 20px;
+            transform: translateX(20px);
         }
         100%{
             opacity: 1;
             rotate: -7deg;
-            right: 45px;
+            transform: translateX(100px);
         }
     }
     @keyframes desaparecer {
         from {
             rotate: -7deg;
-            right: 45px;
+            transform: translateX(100px);
             opacity: 1;
         }
         to {
             rotate: -7deg;
-            right: 45px;
+            transform: translateX(100px);
             opacity: 0;
         }
     }
+*/
     .divNameSection{
         display: flex;
         align-items: center;
