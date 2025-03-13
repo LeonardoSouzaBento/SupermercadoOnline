@@ -1,5 +1,6 @@
 window.onload = function(){
-//seleção das categorias
+
+//seleção dos icones de categorias
 const cats = Array.from(document.querySelectorAll('#for_sections > div'));
 let time_touch = 0;
 let arrastando = false; // impedir seleção se for click de rolagem
@@ -98,25 +99,6 @@ menu.addEventListener("click", ()=>{
 
 
 //Troca de icones
-
-let imgs_icones = [...document.querySelectorAll("#for_sections div img")];
-imgs_icones.splice(0,1); imgs_icones.splice(-1,1);
-let srcs_parte1= [...(imgs_icones.map(el => el.getAttribute("src")))] //el.src pega o caminho completo
-srcs_parte1 = srcs_parte1.map((el) => el.split('/')[0] + '/'); //dividir, pegar a primeira parte, acrescentar /
-
-const srcs_parte2 = [
-  ["cafe.png", "feijao.png", "macarrão.png"], // Mercearia
-  ["balas.png", "biscoitos.png", "choco2.png", "rosca.png"], // Doces
-  ["abaca.png", "ace.png", "banana.png", "batata.png", "broco.png", "cenou.png", "limao.png", "maca.png", "milho.png", "pimen.png", "tomate.png", "uvas.png"], // Hortifruti
-  ["bolin.png", "bolo.png", "broa.png", "croisant.png", "pao.png"], // Padaria
-  ["asac.png", "baconc.png", "bifec.png", "coxac.png", "enpanadoc.png", "espetoc.png", "frangoc.png", "linguic.png"], // Açougue
-  ["agua.png", "coca.png", "ener.png", "leite.png", "ovos.png", "pizza.png", "queijo.png"], // Frios
-  ["botijão.png", "cadeado.png", "colheres.png", "fechad.png", "fog.png", "frigideira.png", "jar.png", "lampada.png", "pan.png", "rala.png", "rolo.png", "tab.png", "talheres.png"], // Casa e cozinha
-  ["borrifador2.png", "esco.png", "luva.png", "rodo.png", "vas2.png", "vass2.png"], // Limpeza
-  ["barbeador.png", "creme.png", "cremes.png", "espelho.png", "esponja.png", "maquiagem.png", "papel.png", "pasta_dentes.png", "pente.png"], // Higiene
-  ["compasso.png", "esqua.png", "livros.png", "pincel.png"] // Papelaria
-];
-
 let quant_secoes=0;
 function calcQuantIcons() {
   let width_screnn = window.innerWidth;
@@ -129,50 +111,61 @@ function calcQuantIcons() {
   quant_secoes = quant_sections;
 }
 calcQuantIcons();
-let j=0;
-function trocarImagens(i = 0) {
-  if (i == quant_secoes - 1) {
-    j = j + 1;
-  }
-  if (i < quant_secoes) {
-    if (srcs_parte2[i][j] != null) {
-      imgs_icones[i].src = `${srcs_parte1[i]}${srcs_parte2[i][j]}`;
-    } else {
-      j = 0;
-    }
-    if (srcs_parte2[i][j] == null) {
-      console.log("sim");
-    }
+if(window.innerWidth >= 1375) quant_secoes = quant_secoes - 2;
 
+let imgs_icones = [...document.querySelectorAll("#for_sections div img")];
+imgs_icones.splice(0,1); imgs_icones.splice(-1,1);
+let srcs_parte1= [...(imgs_icones.map(el => el.getAttribute("src")))] //el.src pega o caminho completo
+srcs_parte1 = srcs_parte1.map((el) => el.split('/')[0] + '/'); //dividir, pegar a primeira parte, acrescentar /
+
+const srcs_parte2 = [
+  ["feijao.png", "macarrão.png", "cafe.png"], // Mercearia
+  ["balas.png", "biscoitos.png", "choco2.png", "rosca.png"], // Doces
+  ["abaca.png", "ace.png", "banana.png", "batata.png", "broco.png", "cenou.png", "limao.png", "maca.png", "milho.png", "pimen.png", "tomate.png", "uvas.png"], // Hortifruti
+  ["bolin.png", "bolo.png", "broa.png", "croisant.png", "pao.png"], // Padaria
+  ["asac.png", "baconc.png", "bifec.png", "coxac.png", "enpanadoc.png", "espetoc.png", "frangoc.png", "linguic.png"], // Açougue
+  ["agua.png", "coca.png", "ener.png", "leite.png", "ovos.png", "pizza.png", "queijo.png"], // Frios
+  ["cadeado.png", "colheres.png", "fechad.png", "fog.png", "frigideira.png", "jar.png", "lampada.png", "pan.png", "rala.png", "rolo.png", "tab.png", "talheres.png"], // Casa e cozinha
+  ["borrifador2.png", "esco.png", "luva.png", "rodo.png", "vas2.png", "vass2.png"], // Limpeza
+  ["barbeador.png", "creme.png", "cremes.png", "espelho.png", "esponja.png", "maquiagem.png", "papel.png", "pasta_dentes.png", "pente.png"], // Higiene
+  ["compasso.png", "esqua.png", "livros.png", "pincel.png"] // Papelaria
+];
+
+jotas=[
+  { j: 0, max: 3 },    // Mercearia
+  { j: 0, max: 4 },    // Doces
+  { j: 0, max: 12 },   // Hortifruti
+  { j: 0, max: 5 },    // Padaria
+  { j: 0, max: 8 },    // Açougue
+  { j: 0, max: 7 },    // Frios
+  { j: 0, max: 12 },   // Casa e cozinha
+  { j: 0, max: 6 },    // Limpeza
+  { j: 0, max: 9 },    // Higiene
+  { j: 0, max: 4 }     // Papelaria
+]
+
+
+function trocarImagens(i = 0) {
+
+  if (i < quant_secoes) {
+    if (srcs_parte2[i][jotas[i].j] != null) {
+      imgs_icones[i].src = `${srcs_parte1[i]}${srcs_parte2[i][jotas[i].j]}`;
+      jotas[i].j = (jotas[i].j + 1) % jotas[i].max;
+    }
+    else {
+        jotas[i].j = 0;
+    }
     setTimeout(() => {
-      trocarImagens(i + 1); // Passando o valor de j
+      trocarImagens(i + 1);
     }, 100);
   } else {
     setTimeout(() => {
-      trocarImagens(); // Reiniciando a função com i e j como 0
+      trocarImagens();
     }, 100);
   }
 }
 
 // trocarImagens();
-
-
-// function trocarImagens() {
-//   let j=0;
-//   for (let i = 0; i < quant_secoes; i++) {
-//     if (srcs_parte2[i][j]!=null){
-//       imgs_icones[i].src = `${srcs_parte1[i]}${srcs_parte2[i][j]}`;
-//       if(i < quant_secoes-1) j++;
-//       }
-//       else{j=0;}
-//       i = i % quant_secoes;
-//       setTimeout(() => {
-//         trocarImagens();
-//       }, 3000);
-//   }
-// }
-// trocarImagens();
-
 
 /*
 const anuncio = document.getElementById('anuncio');
@@ -250,6 +243,7 @@ function startMomentumScroll1() {
 
 
 //limites de rolagem para anuncios
+const imgs_anun = document.getElementById('imgs_anun');
 let larg_anuncio = document.getElementById('anuncio').offsetWidth;
 let gap_imgs_anuncio = parseFloat(getComputedStyle(document.getElementById('imgs_anun')).getPropertyValue('gap'));
 let quant_anun = [...document.querySelectorAll('#imgs_anun>img')].length;

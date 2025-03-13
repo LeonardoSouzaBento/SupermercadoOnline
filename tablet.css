@@ -45,7 +45,6 @@ html{
     div#anuncio{
         width: calc(100% - 20px);
         box-sizing: border-box;
-        overflow-x: hidden;
     }
     div#anuncio>p{
         font-size: 1.25em;

@@ -79,7 +79,6 @@ main{
     div#anuncio{
         width: calc(100% - 50px);
         margin-bottom: 50px;
-        overflow-x: hidden;
     }
     div#anuncio>p{
         font-size: 1.3em;
