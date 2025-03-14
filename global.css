@@ -3,12 +3,12 @@
     user-select: none;
     padding: 0px;
     margin: 0px;
+    touch-action: none;
 }
 body{
     overflow-x: hidden;
     height: 100%;
     background-color: rgb(228, 228, 228);
-    touch-action: none;
 }
 ::-webkit-scrollbar{
     height: 0;
@@ -444,6 +444,11 @@ div#imgs_anun>img{
 .divNameSection>p{
     font-family: "Poppins",Arial,sans-serif;
 }
+/* #for_sections>div>img{
+    transform: rotateY(180deg);
+} */
+
+
 
 #for_promos{
     overflow-x: hidden;

@@ -220,7 +220,6 @@ function trocarImagens(i = 0) {
 
 // trocarImagens();
 
-/*
 const anuncio = document.getElementById('anuncio');
 
 let startY; let startX; let startTime1 =0; let isScrolling1 = false; let speed1 = 0; let deltaY1 = 0; let deltaY2=0; let deltaX=0; let angle=0;
@@ -330,7 +329,7 @@ let fim_promos = larg_for_promos - larg_part - (margin_for_promos);
 if (window.innerWidth >= 1373){fim_promos+=26;}
 
 //conjunto de limites
-let limi = [ 
+let limi = [
   { div: imgs_anun, arraste: meio, limite: fim_anun, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacaoRolagem: null, arrastando: false },
   { div: secoes, arraste: 0, limite: fim_sections, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacaoRolagem: null, arrastando: false },
   { div: promos, arraste: 0, limite: fim_promos, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacaoRolagem: null, arrastando: false }
@@ -356,7 +355,6 @@ let firstAngle = null;
 let firstDiffX = null;
 let firstDiffY = null;
 let dragY= null;
-
 let tempoDecorrido = 0;
 let startTime = 0; let speed = 0; let deltaY = null;
 const minSpeed = 0.7;
@@ -364,9 +362,9 @@ const maxSpeed = 2.0;
 
 // Início do arraste
 const iniciarArraste = (e, i) => {
+  
   e.preventDefault();
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
-  
   //pagina
   initialY =  e.touches ? e.touches[0].clientY : e.clientY;
   initialX =  e.touches ? e.touches[0].clientX : e.clientX;
@@ -377,7 +375,7 @@ const iniciarArraste = (e, i) => {
   //divs
   limi[i].toc_ini = posicaoX - limi[i].arraste; //divs
   limi[i].time_touch = Date.now();
-  limi[i].arrastando = false;
+  limi[i].arrastando = true;
   if (limi[i].animacaoRolagem) {
     cancelAnimationFrame(limi[i].animacaoRolagem);
     limi[i].animacaoRolagem = null;
@@ -386,7 +384,7 @@ const iniciarArraste = (e, i) => {
 
 // Movimento do arraste
 const aoMover = (e, i) => {
-  e.preventDefault();
+  if(!limi[i].arrastando) return;
   const tempoAtual = Date.now();
   tempoDecorrido = Math.max(1, tempoAtual - limi[i].time_touch);
 
@@ -409,7 +407,6 @@ const aoMover = (e, i) => {
   }
   //divs
   if (firstAngle < 45) {
-    limi[i].arrastando = true;
     dragY= false;
     if (tempoDecorrido > 0) {
       limi[i].velocidade = (posicaoX - limi[i].toc_ini2) / tempoDecorrido; // px/ms
@@ -423,13 +420,12 @@ const aoMover = (e, i) => {
     initialX = posicaoX;
   }
   //pagina
-  if(firstAngle > 60){
+  if(firstAngle > 60 && window.innerWidth < 993){
     deltaY = currentY - initialY;
     if (tempoDecorrido > 0) {
       speed = deltaY / tempoDecorrido;
       speed = Math.sign(speed) * Math.max(minSpeed, Math.min(Math.abs(speed), maxSpeed));
     }
-
     window.scrollBy(0, -deltaY);
     initialY = currentY;
     startTime = tempoAtual;
@@ -440,7 +436,6 @@ const aoMover = (e, i) => {
 
 // Finalizar arraste e iniciar desaceleração
 const finalizarArraste = (e, i) => {
-
   if(!dragY){
     if (!limi[i].arrastando) return;
     limi[i].arrastando = false;
@@ -543,7 +538,7 @@ const aoRolar = (e) => {
 imgs_anun.addEventListener('wheel', aoRolar);
 secoes.addEventListener('wheel', aoRolar);
 promos.addEventListener('wheel', aoRolar);
-*/
+
 };
 
     
