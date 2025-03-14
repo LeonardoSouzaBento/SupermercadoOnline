@@ -33,11 +33,17 @@
         'GRAD' 0,
         'opsz' 24
         }
-       
+        .voltar {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+        }
         .material-symbols-outlined {
             font-variation-settings:
             'FILL' 0,
-            'wght' 400,
+            'wght' 500,
             'GRAD' 0,
             'opsz' 24
         }
@@ -98,6 +104,16 @@
             </div>
         </div>
     </menu>
+
+    <div id="pastlist">
+
+        <button id="voltar">
+            <span class="material-symbols-rounded voltar">
+                arrow_left_alt
+            </span>
+            <p>Voltar</p>
+        </button>
+    </div>
 
     <header>
         <div id="cabecalho">
@@ -605,14 +621,14 @@
     </main>
 
     <footer>
-        <div class="selected1">
+        <div class="selected1" id="botaoInicio">
             <span class="material-symbols-rounded">
                 home
             </span>
             <p>Inicio</p>
         </div>
 
-        <div>
+        <div id="colarLista">
             <span class="material-symbols-rounded">
                 contract_edit
             </span>
@@ -628,6 +644,5 @@
     </footer>
 
    <script src="scripts.js"></script>
-   <!--<script src="scriptCSS.js"></script>-->
 </body>
 </html>

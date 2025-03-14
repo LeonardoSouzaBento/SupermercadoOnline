@@ -41,7 +41,8 @@ cats.forEach(el => {
 });
 
 // Seleção do footer
-let i = 0;
+let i = 0; //memorizar a div seelcionada antes de mais opcoes, usada em voltar past list
+let ispastListOn = false;
 
 const div_footer= [...document.querySelectorAll('footer>div')];
 div_footer.forEach(e=>{
@@ -54,23 +55,69 @@ div_footer.forEach(e=>{
     time_touch = Date.now();
   }
   function endPress(e) {
+    let isInicioOn = null;
+
     if (Date.now() - time_touch < 100) {
       div_footer.forEach(div => div.classList.remove("selected1"));
       e.currentTarget.classList.add("selected1");
-
       let index = div_footer.findIndex(div => div === e.currentTarget);
-      if (index == 1) {i = 1 } if( index==0) (i = 0);
+      if( index==0)i = 0; if (index == 1) i=1;
+
+      if(e.currentTarget.id == "colarLista"){ispastListOn = true};
+      if(e.currentTarget.id == "botaoInicio"){isInicioOn = true};
+
+      if(ispastListOn && isInicioOn){
+        setTimeout(() => {
+          pastlistDiv.style.transform= "translateY(100%)";
+        }, 20);
+        setTimeout(() => {
+          pastlistDiv.style.display= "none";
+        }, 500);
+        ispastListOn = false;
+      }
     }
   }
 })
 
-//Botão mais opções
+//Botão mais opções e colar lista
 const div_mais = document.querySelector('footer div:nth-child(3)');
 const mais_opcoes = document.querySelector('#userEnotif div:nth-child(2)');
 const menu = document.querySelector('body > menu');
 const for_opcoes= document.getElementById('for_opcoes')
+const pastlist = document.querySelector('footer div:nth-child(2)');
+const pastlistDiv = document.getElementById('pastlist');
+const buttonVoltar = document.getElementById('voltar');
+
+function viewPastList() {
+  pastlistDiv.style.display = "block";
+  document.body.style.overflowY = "hidden";
+  setTimeout(() => {
+    pastlistDiv.style.transform = "translateY(0%)";
+  }, 20);
+  setTimeout(() => {
+    pastlistDiv.style.backgroundColor = "white";
+  }, 720);
+}
+function voltarPastList(){
+  let index = 0;
+  document.body.style.overflowY = "auto";
+  div_footer.forEach(div => div.classList.remove("selected1"));
+  div_footer[index].classList.add("selected1");
+  setTimeout(() => {
+    pastlistDiv.style.transform= "translateY(100%)";
+  }, 20);
+  setTimeout(() => {
+    pastlistDiv.style.display= "none";
+  }, 500);
+}
+
+pastlist.addEventListener("click", viewPastList);
+buttonVoltar.addEventListener("click", voltarPastList);
+
+//pastlist.addEventListener("click", voltarPastList);
 
 function mostrarMais() {
+  document.body.style.overflowY = "hidden";
   menu.style.display= "block";
   setTimeout(() => {
     menu.style.opacity= "100%";
@@ -80,10 +127,8 @@ function mostrarMais() {
   }, 750);
 }
 
-div_mais.addEventListener("click", mostrarMais);
-mais_opcoes.addEventListener("click", mostrarMais);
-
-menu.addEventListener("click", ()=>{
+function voltar(){ //i global usado aqui
+  document.body.style.overflowY = "auto";
   div_footer.forEach(div => div.classList.remove("selected1"));
   div_footer[i].classList.add("selected1");
   setTimeout(() => {
@@ -95,8 +140,16 @@ menu.addEventListener("click", ()=>{
   setTimeout(() => {
     menu.style.display= "none";
   }, 1200);
-})
+}
 
+
+div_mais.addEventListener("click", mostrarMais);
+mais_opcoes.addEventListener("click", mostrarMais);
+div_mais.addEventListener("touchstart", mostrarMais);
+mais_opcoes.addEventListener("touchstart", mostrarMais);
+
+menu.addEventListener("click", voltar);
+menu.addEventListener("touchstart", voltar);
 
 //Troca de icones
 let quant_secoes=0;
