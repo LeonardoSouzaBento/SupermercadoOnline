@@ -41,31 +41,53 @@ cats.forEach(el => {
 });
 
 // Seleção do footer
+const inicio = document.getElementById('botaoInicio');
+const maisFooter = document.getElementById('maisFooter');
+const colarLista = document.getElementById('colarLista');
+
+const mais_opcoes = document.querySelector('#userEnotif div:nth-child(2)');
+const menu = document.querySelector('body > menu');
+const for_opcoes= document.getElementById('for_opcoes')
+const pastlistDiv = document.getElementById('pastlist');
+const buttonVoltar = document.getElementById('voltar');
+
 let i = 0; //memorizar a div seelcionada antes de mais opcoes, usada em voltar past list
 let ispastListOn = false;
 
-const div_footer= [...document.querySelectorAll('footer>div')];
-div_footer.forEach(e=>{
-  e.addEventListener("mousedown", startPress);
-  e.addEventListener("mouseup", endPress);
-  e.addEventListener("touchstart", startPress);
-  e.addEventListener("touchend", endPress);
-
-  function startPress(e) {
-    time_touch = Date.now();
+function startPress(e) {
+  time_touch = Date.now();
+  if(e.touches){
+    e.currentTarget.removeEventListener("mousedown", startPress); 
+    e.currentTarget.removeEventListener("mouseup", endPress);
   }
-  function endPress(e) {
-    let isInicioOn = null;
+  else{
+    e.currentTarget.removeEventListener("touchstart", startPress); 
+    e.currentTarget.removeEventListener("touchend", endPress);
+  }
+}
 
-    if (Date.now() - time_touch < 100) {
-      div_footer.forEach(div => div.classList.remove("selected1"));
-      e.currentTarget.classList.add("selected1");
-      let index = div_footer.findIndex(div => div === e.currentTarget);
-      if( index==0)i = 0; if (index == 1) i=1;
+function endPress(e) {
+  //Seleção
+  let isInicioOn = null;
+  if (Date.now() - time_touch < 100) {
+    div_footer.forEach(div => div.classList.remove("selected1"));
+    e.currentTarget.classList.add("selected1");
+  //fim
+    let index = div_footer.findIndex(div => div === e.currentTarget);
+    if( index==0)i = 0; if (index == 1) i=1;
 
-      if(e.currentTarget.id == "colarLista"){ispastListOn = true};
-      if(e.currentTarget.id == "botaoInicio"){isInicioOn = true};
-
+    //botão colar lista
+    if(e.currentTarget.id == "colarLista"){
+      ispastListOn = true
+      pastlistDiv.style.display = "block";
+      document.body.style.overflowY = "hidden";
+      setTimeout(() => {
+        pastlistDiv.style.backgroundColor = "white";
+      }, 20);
+    };
+    //inicio
+    if(e.currentTarget.id == "botaoInicio"){isInicioOn = true};
+      // se inicio for clicado depois de pastlist
       if(ispastListOn && isInicioOn){
         setTimeout(() => {
           pastlistDiv.style.transform= "translateY(100%)";
@@ -74,48 +96,45 @@ div_footer.forEach(e=>{
           pastlistDiv.style.display= "none";
         }, 500);
         ispastListOn = false;
-      }
     }
-  }
+    else{
+      document.body.style.overflowY = "hidden";
+      menu.style.display= "block";
+      setTimeout(() => {
+        menu.style.opacity= "100%";
+      }, 150);
+      setTimeout(() => {
+        for_opcoes.style.transform= "translateX(0%)";
+      }, 750);
+    }
+  } //apenas tempo de toque curto
+}
+
+const div_footer= [...document.querySelectorAll('footer>div')];
+div_footer.forEach(e=>{
+  e.addEventListener("mousedown", (e)=> startPress(e));
+  e.addEventListener("mouseup", (e)=> endPress(e));
+  e.addEventListener("touchstart", (e)=> startPress(e));
+  e.addEventListener("touchend", (e)=> endPress(e));
 })
 
-//Botão mais opções e colar lista
-const div_mais = document.querySelector('footer div:nth-child(3)');
-const mais_opcoes = document.querySelector('#userEnotif div:nth-child(2)');
-const menu = document.querySelector('body > menu');
-const for_opcoes= document.getElementById('for_opcoes')
-const pastlist = document.querySelector('footer div:nth-child(2)');
-const pastlistDiv = document.getElementById('pastlist');
-const buttonVoltar = document.getElementById('voltar');
 
-function viewPastList() {
-  pastlistDiv.style.display = "block";
-  document.body.style.overflowY = "hidden";
-  setTimeout(() => {
-    pastlistDiv.style.transform = "translateY(0%)";
-  }, 20);
-  setTimeout(() => {
-    pastlistDiv.style.backgroundColor = "white";
-  }, 720);
-}
-function voltarPastList(){
+function voltarColarLista(){
   let index = 0;
   document.body.style.overflowY = "auto";
   div_footer.forEach(div => div.classList.remove("selected1"));
   div_footer[index].classList.add("selected1");
   setTimeout(() => {
-    pastlistDiv.style.transform= "translateY(100%)";
+    pastlistDiv.style.backgroundColor= "rgba(255, 255, 255, 0.252)";
   }, 20);
   setTimeout(() => {
     pastlistDiv.style.display= "none";
-  }, 500);
+  }, 820);
 }
+buttonVoltar.addEventListener("click", voltarColarLista);
 
-pastlist.addEventListener("click", viewPastList);
-buttonVoltar.addEventListener("click", voltarPastList);
 
-//pastlist.addEventListener("click", voltarPastList);
-
+//Mais opções no desktop
 function mostrarMais() {
   document.body.style.overflowY = "hidden";
   menu.style.display= "block";
@@ -126,7 +145,6 @@ function mostrarMais() {
     for_opcoes.style.transform= "translateX(0%)";
   }, 750);
 }
-
 function voltar(){ //i global usado aqui
   document.body.style.overflowY = "auto";
   div_footer.forEach(div => div.classList.remove("selected1"));
@@ -141,15 +159,9 @@ function voltar(){ //i global usado aqui
     menu.style.display= "none";
   }, 1200);
 }
-
-
-div_mais.addEventListener("click", mostrarMais);
 mais_opcoes.addEventListener("click", mostrarMais);
-div_mais.addEventListener("touchstart", mostrarMais);
-mais_opcoes.addEventListener("touchstart", mostrarMais);
-
 menu.addEventListener("click", voltar);
-menu.addEventListener("touchstart", voltar);
+
 
 //Troca de icones
 let quant_secoes=0;
