@@ -3,6 +3,10 @@
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+::-webkit-scrollbar{
+    visibility: hidden;
+    width: 0px;
+}
 body{
     background-color: rgb(244, 244, 244);
 }
@@ -14,6 +18,7 @@ body{
     border-radius: 6px;
     background-color: white;
     margin-top: 12px;
+    margin-bottom: 15px;
 }
 #secao_entrega>p{
     text-align: center;
@@ -82,6 +87,86 @@ body{
 #div_frete> p:nth-child(3){
     font-size: 0.9em;
     letter-spacing: 0.8px;
+}
+
+body>p{
+    width: calc(100% - 30px);
+    margin: auto;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    padding: 7px 0px;
+    border-radius: 5px;
+    border: 1px solid rgb(187, 187, 187);
+    box-shadow: 1px 1px 3px rgb(211, 211, 211);
+    margin-bottom: 10px;
+}
+#secaocarrinho{
+    width: calc(100% - 30px);
+    margin: auto;
+    background-color: white;
+    margin-bottom: 15px;
+}
+
+#secaofinalizar{
+    width: calc(100% - 30px);
+    margin: auto;
+    background-color: white;
+    border: 1px solid rgb(205, 205, 205);
+    box-shadow: 1px 1px 3px rgb(211, 211, 211);
+    border-radius: 6px;
+    padding: 10px 0px;
+}
+
+#div_aviso{
+    width: calc(100% - 16px);
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid rgb(233, 174, 65);
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: rgb(255, 237, 183);
+    box-shadow: 1px 1px 3px rgb(211, 211, 211);
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+#div_cupom{
+    width: calc(100% - 16px);
+    margin: auto;
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 5px;
+    padding: 6px 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+}
+#div_cupom>input{
+    border-radius: 4px;
+    border: 1px solid black;
+    height: 20px;
+    padding: 4px 10px;
+    font-size: 0.9em;
+    width: 40%;
+}
+#div_valor{
+    width: calc(100% - 16px);
+    margin: auto;
+    padding: 10px 6px;
+    display: flex;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+}
+#div_valor>div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+#div_valor :nth-child(3){
+  width: 100%;
 }
 
 
