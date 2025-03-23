@@ -32,9 +32,6 @@ html{
     div#anuncio>p{
         font-size: 1.18em;
     }
-    div#imgs_anun{
-        padding: 0px 10px;
-    }
     div#imgs_anun>img{
         min-width: 290px;
         scroll-snap-align: center;

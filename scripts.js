@@ -324,46 +324,62 @@ function startMomentumScroll1() {
 
 //limites de rolagem para anuncios
 const imgs_anun = document.getElementById('imgs_anun');
-let larg_anuncio = document.getElementById('anuncio').offsetWidth;
-let gap_imgs_anuncio = parseFloat(getComputedStyle(document.getElementById('imgs_anun')).getPropertyValue('gap'));
-let quant_anun = [...document.querySelectorAll('#imgs_anun>img')].length;
-let larg_img = document.querySelector('#imgs_anun>img').offsetWidth;
-let larg_imgs_anun = gap_imgs_anuncio *(quant_anun-1) + larg_img * quant_anun +2;
-let meio = larg_anuncio/2 - larg_imgs_anun/2;
-let fim_anun = larg_anuncio - larg_imgs_anun;
-
+let meio = 0;
+let fim_anun = 0;
+let mandatory = 0;
+  function obterLimites() {
+    let larg_anuncio = document.getElementById('anuncio').offsetWidth;
+    let gap_imgs_anuncio = parseFloat(getComputedStyle(document.getElementById('imgs_anun')).getPropertyValue('gap'));
+    let quant_anun = [...document.querySelectorAll('#imgs_anun>img')].length;
+    let larg_img = document.querySelector('#imgs_anun>img').offsetWidth;
+    let larg_imgs_anun = gap_imgs_anuncio *(quant_anun-1) + larg_img * quant_anun;
+    meio = larg_anuncio/2 - larg_imgs_anun/2;
+    fim_anun = larg_anuncio - larg_imgs_anun;
+    mandatory = larg_img + gap_imgs_anuncio; //controle de rolagem
+  }
+  obterLimites();
 imgs_anun.style.transform = `translateX(${meio}px)`;
 
-//limites de rolagem para seções
 
+//limites de rolagem para seções
 const secoes = document.getElementById('for_sections');
-const part_sections = document.getElementById('part_sections');
-const style_sections = getComputedStyle(secoes);
-let gap = parseFloat(style_sections.gap);
-let width_sections = 1200 + (gap * 11)+5;
-let larg_partSections = part_sections.offsetWidth;
-let fim_sections = -(width_sections - larg_partSections);
-if (window.innerWidth >= 1373) fim_sections=0;
+let fim_sections = 0;
+  function obterLimites2(){
+    const part_sections = document.getElementById('part_sections');
+    const style_sections = getComputedStyle(secoes);
+    let gap = parseFloat(style_sections.gap);
+    let width_sections = 1200 + (gap * 11)+5;
+    let larg_partSections = part_sections.offsetWidth;
+    fim_sections = -(width_sections - larg_partSections);
+    if (window.innerWidth >= 1373) fim_sections=0;
+  }
+  obterLimites2();
+  
 
 //limites de rolagem para produtos
 const promos= document.getElementById('promos')
-let larg_for_promos = promos.offsetWidth;
-let gap_parte = parseFloat(getComputedStyle(document.getElementById('parteUm')).getPropertyValue('gap'));
-let quant_part = [...document.querySelectorAll('#parteUm > div')].length;
-let larg_prod = document.querySelector('.for_prod').offsetWidth;
-let larg_part = quant_part * larg_prod + gap_parte*(quant_part-1);
-let margin_for_promos = parseFloat(getComputedStyle(document.getElementById('for_promos')).getPropertyValue('margin-left'));
-let fim_promos = larg_for_promos - larg_part - (margin_for_promos);
-if (window.innerWidth >= 1373){fim_promos+=26;}
+let fim_promos = 0;
+  function obterLimites3(){
+    let larg_for_promos = promos.offsetWidth;
+    let gap_parte = parseFloat(getComputedStyle(document.getElementById('parteUm')).getPropertyValue('gap'));
+    let quant_part = [...document.querySelectorAll('#parteUm > div')].length;
+    let larg_prod = document.querySelector('.for_prod').offsetWidth;
+    let larg_part = quant_part * larg_prod + gap_parte*(quant_part-1);
+    let margin_for_promos = parseFloat(getComputedStyle(document.getElementById('for_promos')).getPropertyValue('margin-left'));
+    fim_promos = larg_for_promos - larg_part - (margin_for_promos);
+    if (window.innerWidth >= 1373){fim_promos+=26;}
+  }
+  obterLimites3();
 
-//conjunto de limites
+//variaveis para anuncio
+let limi1 = { 
+  div: imgs_anun, arraste: meio, limite: fim_anun, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacaoRolagem: null, arrastando: false
+};
+//variaveis para secoes e produtos
 let limi = [
-  { div: imgs_anun, arraste: meio, limite: fim_anun, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacaoRolagem: null, arrastando: false },
   { div: secoes, arraste: 0, limite: fim_sections, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacaoRolagem: null, arrastando: false },
   { div: promos, arraste: 0, limite: fim_promos, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacaoRolagem: null, arrastando: false }
 ];
-
-// Adiciona event listeners com o índice
 
 limi.forEach((el, index) => {
   el.div.addEventListener('touchstart', (e) => iniciarArraste(e, index),{ passive: false });
@@ -373,7 +389,6 @@ limi.forEach((el, index) => {
   el.div.addEventListener('touchend', (e) => finalizarArraste(e, index));
   el.div.addEventListener('mouseup', (e) => finalizarArraste(e, index));
 });
-
 
 let initialY = null;
 let initialX = null;
@@ -387,6 +402,146 @@ let tempoDecorrido = 0;
 let startTime = 0; let speed = 0; let deltaY = null;
 const minSpeed = 0.7;
 const maxSpeed = 2.0;
+
+// Início do arraste em anuncios
+const iniciarArraste1 = (e, i) => {
+  e.preventDefault();
+  const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
+  //pagina
+  initialY =  e.touches ? e.touches[0].clientY : e.clientY;
+  initialX =  e.touches ? e.touches[0].clientX : e.clientX;
+  speed = 0;
+  deltaY = 0;
+  startTime = Date.now();
+
+  //divs
+  limi1.toc_ini = posicaoX - limi1.arraste; //divs
+  limi1.time_touch = Date.now();
+  limi1.arrastando = true;
+  if (limi1.animacaoRolagem) {
+    cancelAnimationFrame(limi1.animacaoRolagem);
+    limi1.animacaoRolagem = null;
+  }
+};
+// Movimento do arraste em anuncios
+const aoMover1 = (e, i) => {
+  if(!limi1.arrastando) return;
+  const tempoAtual = Date.now();
+  tempoDecorrido = Math.max(1, tempoAtual - limi1.time_touch);
+
+  const posicaoX = e.touches ? (e.touches[0] ? e.touches[0].clientX : null) : e.clientX;
+  const currentY = e.touches ? (e.touches[0] ? e.touches[0].clientY : null) : e.clientY;
+
+  if (posicaoX === null || currentY === null) return;
+  diffX = Math.abs(posicaoX - initialX);
+  diffY = Math.abs(currentY - initialY);
+
+  // Limiar para ignorar movimentos muito pequenos
+  const limiar = 1;
+  if (diffX < limiar && diffY < limiar) return;
+
+  if (firstDiffX === null && firstDiffY === null) {
+    firstDiffX = diffX;
+    firstDiffY = diffY;
+    firstAngle = Math.atan2(diffY, diffX) * (180 / Math.PI);
+    if (firstAngle === null) firstAngle = 0;
+  }
+  //divs
+  if (firstAngle < 45) {
+    dragY= false;
+    if (tempoDecorrido > 0) {
+      limi1.velocidade = (posicaoX - limi1.toc_ini2) / tempoDecorrido; // px/ms
+    }
+    limi1.time_touch = tempoAtual;
+    limi1.toc_ini2 = posicaoX;
+    limi1.arraste = posicaoX - limi1.toc_ini;
+    aplicarLimites1();
+    limi1.div.style.transform = `translateX(${limi1.arraste}px)`;
+
+    initialX = posicaoX;
+  }
+  //pagina
+  if(firstAngle > 60 && window.innerWidth < 993){
+    deltaY = currentY - initialY;
+    if (tempoDecorrido > 0) {
+      speed = deltaY / tempoDecorrido;
+      speed = Math.sign(speed) * Math.max(minSpeed, Math.min(Math.abs(speed), maxSpeed));
+    }
+    window.scrollBy(0, -deltaY);
+    initialY = currentY;
+    startTime = tempoAtual;
+    dragY = true;
+  }
+  else{dragY=null};
+};
+// Finalizar arraste e iniciar desaceleração em anuncios
+const finalizarArraste1 = (e, i) => {
+  if(!dragY){
+    if (!limi1.arrastando) return;
+    limi1.arrastando = false;
+    const desacelerar = () => {
+      if (Math.abs(limi1.velocidade) > 0.01) { // Valor mínimo para parar
+        limi1.velocidade *= 0.95; // Reduz gradualmente a velocidade
+        limi1.arraste += limi1.velocidade * 16; // Multiplica pela estimativa de 16ms/frame
+        // Aplicar limites corretamente
+        aplicarLimites1(i);
+        limi1.div.style.transform = `translateX(${limi1.arraste}px)`;
+        limi1.animacaoRolagem = requestAnimationFrame(desacelerar);
+      } else {
+        limi1.animacaoRolagem = null;
+      }
+    };
+    desacelerar();
+  }
+  
+  if (dragY) {
+    if (Math.abs(speed) < minSpeed) {
+      speed = minSpeed * Math.sign(speed); // Garante movimento mínimo
+    }
+
+    if (!Number.isFinite(speed)) speed = minSpeed * Math.sign(deltaY);
+    
+    startMomentumScroll();
+  }
+
+  initialY = null; initialX = null; 
+  firstAngle = null; firstDiffX = null; 
+  firstDiffY = null;
+  dragY=null;
+};
+
+function startMomentumScroll() {
+  const decay = 0.95;
+  const step = () => {
+    if (Math.abs(speed) > 0.1) {
+      speed *= decay;
+      window.scrollBy(0, -speed * 16);
+      requestAnimationFrame(step);
+    }
+    //removi o else daqui
+  };
+  requestAnimationFrame(step);
+}
+// Função para aplicar limites
+const aplicarLimites1 = (i) => {
+  if (limi1.arraste < limi1.limite) {
+    limi1.arraste = limi1.limite;
+    limi1.velocidade = 0;
+  }
+  if (limi1.arraste > 0) {
+    limi1.arraste = 0;
+    limi1.velocidade = 0;
+  }
+};
+// Adiciona event listeners 
+limi1.div.addEventListener('touchstart',  iniciarArraste1,{ passive: false });
+limi1.div.addEventListener('mousedown', iniciarArraste1,{ passive: false });
+limi1.div.addEventListener('touchmove', aoMover1,{ passive: false });
+limi1.div.addEventListener('mousemove', aoMover1,{ passive: false });
+limi1.div.addEventListener('touchend', finalizarArraste1);
+limi1.div.addEventListener('mouseup', finalizarArraste1);
+
+
 
 // Início do arraste
 const iniciarArraste = (e, i) => {
@@ -409,7 +564,6 @@ const iniciarArraste = (e, i) => {
     limi[i].animacaoRolagem = null;
   }
 };
-
 // Movimento do arraste
 const aoMover = (e, i) => {
   if(!limi[i].arrastando) return;
@@ -461,7 +615,6 @@ const aoMover = (e, i) => {
   }
   else{dragY=null};
 };
-
 // Finalizar arraste e iniciar desaceleração
 const finalizarArraste = (e, i) => {
   if(!dragY){
@@ -505,13 +658,11 @@ function startMomentumScroll() {
       speed *= decay;
       window.scrollBy(0, -speed * 16);
       requestAnimationFrame(step);
-    } else {
-      isScrolling = false;
     }
+    //removi o else daqui
   };
   requestAnimationFrame(step);
 }
-
 // Função para aplicar limites
 const aplicarLimites = (i) => {
   if (limi[i].arraste < limi[i].limite) {
@@ -524,7 +675,8 @@ const aplicarLimites = (i) => {
   }
 };
 
-//Rolagem touchPad
+
+//Rolagem com touchPad
 let verificou = false;
 let isTouchPad = null;
 
