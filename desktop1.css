@@ -85,16 +85,6 @@ footer{
     div#imgs_anun>img{
         min-width: 340px;
     }
-    #pagination>span{
-       height: 100%;
-       width: 12px;
-       background-color: rgb(159, 159, 159);
-       border-radius: 50%;
-    }
-    .atual{
-        padding: 2px !important;
-    }
-
 /*Seções*/
     .divNameSection{
         display: flex;

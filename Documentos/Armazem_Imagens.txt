@@ -1,1 +1,8 @@
 Cloudflare Images, Imgur, Cloudinary, Amazon S3, ou Firebase Storage
+
+Aparência de um sistema para linkar as imagens:
+Uma parte para exibir as principais informações dos produtos
+Ao lado um painel em display de coluna para visualizar as imagens obtidas
+
+Processo de execução:
+Pesquisar no google > baixar as imagens (5 opções diferentes)> apresentar no site > enviar a aws com id e nome do produto > obter link > receber link.

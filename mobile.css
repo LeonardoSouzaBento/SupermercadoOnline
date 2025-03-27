@@ -36,16 +36,7 @@ html{
         min-width: 290px;
         scroll-snap-align: center;
     }
-    #pagination>span{
-       height: 100%;
-       width: 12px;
-       background-color: rgb(159, 159, 159);
-       border-radius: 50%;
-    }
-    .atual{
-        padding: 2px !important;
-    }
-
+    
 /*Seções*/
 /*
     @keyframes aparecer {
