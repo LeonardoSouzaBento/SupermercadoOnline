@@ -178,7 +178,6 @@ function voltar(){ //i global usado aqui
 mais_opcoes.addEventListener("click", mostrarMais);
 menu.addEventListener("click", voltar);
 
-
 //Troca de icones (não aplicada ainda)
 let quant_secoes=0;
 function calcQuantIcons() {
@@ -338,10 +337,9 @@ let anun_visible = 0;
     fim_anun = larg_anuncio - larg_imgs_anun;
 
     anun_visible = larg_anuncio / (larg_img + gap);
-    anun_visible>2 ? anun_visible=3 : anun_visible=1;
+    anun_visible>2.6? anun_visible=3 : anun_visible=1;
   }
   obterLimites();
-  console.log(anun_visible);
 imgs_anun.style.transform = `translateX(${meio}px)`;
 
 //para paginação
@@ -368,7 +366,7 @@ desenharSpans();
 const spans_anun = [...document.querySelectorAll('#pagination>span')];
 let span_meio = Math.ceil((spans_anun.length)/2);
 spans_anun[span_meio].classList.add("atual");
-if(anun_visible=3){
+if(anun_visible==3){
   spans_anun[span_meio-1].classList.add("atual");
   spans_anun[span_meio+1].classList.add("atual");
 }
@@ -536,19 +534,24 @@ const aoMover1 = (e) => {
 // Finalizar arraste e iniciar desaceleração em anuncios
 const finalizarArraste1 = (e) => {
   if(!dragY){
-  atualizarPaginacao();
    if (!limi1.arrastando) return;
     limi1.arrastando = false;
     const desacelerar = () => {
-      if (Math.abs(limi1.velocidade) > 0.01) { // Valor mínimo para parar
-        limi1.velocidade *= 0.95; // Reduz gradualmente a velocidade
-        limi1.arraste += limi1.velocidade * 16; // Multiplica pela estimativa de 16ms/frame
+      if (Math.abs(limi1.velocidade) > 0.01) {
+        limi1.velocidade *= 0.95;
+        limi1.arraste += limi1.velocidade * 16;
         // Aplicar limites
         aplicarLimites1();
         imgs_anun.style.transform = `translateX(${limi1.arraste}px)`;
+
+        if (Math.abs(limi1.velocidade) < 0.6) {
+          atualizarPaginacao();
+        }
+
         limi1.animacaoRolagem = requestAnimationFrame(desacelerar);
       } else {
         limi1.animacaoRolagem = null;
+        atualizarPaginacao();
       }
     };
     desacelerar();
