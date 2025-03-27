@@ -14,9 +14,8 @@ document.querySelector("#for_sections").addEventListener("mousemove", () => {
 
 cats.forEach(el => {
   const startPress = (e) => {
-    if (e.type === "mousedown" && e.button !== 0) return; // Só botão esquerdo
+    if (e.type == "mousedown" && e.button !== 0) return;
     time_touch = Date.now();
-    arrastando = false;
   };
 
   const detectMove = () => {
@@ -24,11 +23,15 @@ cats.forEach(el => {
   };
 
   const endPress = (e) => {
-    if (arrastando) return;
+    if (arrastando) {
+      arrastando = false;
+      return;
+  }
     if (Date.now() - time_touch < 100) {
       cats.forEach(div => div.classList.remove("catselected"));
       e.currentTarget.classList.add("catselected");
     }
+
   };
 
   el.addEventListener("mousedown", startPress);
