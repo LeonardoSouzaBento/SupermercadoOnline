@@ -61,16 +61,33 @@ let ispastListOn = false;
 function startPress(e) {
   time_touch = Date.now();
   if(e.touches){
-    e.currentTarget.removeEventListener("mousedown", startPress); 
-    e.currentTarget.removeEventListener("mouseup", endPress);
+    div_footer.forEach((e)=>{
+      e.removeEventListener("mousedown", startPress); 
+      e.removeEventListener("mouseup", endPress);
+    })
   }
   else{
-    e.currentTarget.removeEventListener("touchstart", startPress); 
-    e.currentTarget.removeEventListener("touchend", endPress);
+    div_footer.forEach((e)=>{
+      e.removeEventListener("touchstart", startPress); 
+      e.removeEventListener("touchend", endPress);
+    })
   }
 }
 
 function endPress(e) {
+  if(e.touches){
+    div_footer.forEach((e)=>{
+      e.removeEventListener("mousedown", startPress); 
+      e.removeEventListener("mouseup", endPress);
+    })
+  }
+  else{
+    div_footer.forEach((e)=>{
+      e.removeEventListener("touchstart", startPress); 
+      e.removeEventListener("touchend", endPress);
+    })
+  }
+
   //Seleção
   let isInicioOn = null;
   if (Date.now() - time_touch < 100) {
@@ -108,34 +125,29 @@ function endPress(e) {
       e.currentTarget.classList.add("selected1");
 
       document.body.style.overflowY = "hidden";
+      menu.removeEventListener("click", voltar);
       menu.style.display= "block";
       setTimeout(() => {
         menu.style.opacity= "100%";
       }, 20);
       setTimeout(() => {
         for_opcoes.style.transform= "translateX(0%)";
-      }, 420);
+      }, 320);
+      setTimeout(() => {
+        menu.addEventListener("click", voltar);
+      }, 330);
     }
-  }   //apenas tempo de toque curto
+  } //apenas tempo de toque curto
 }
 
-inicio.addEventListener("mousedown",  startPress);
-inicio.addEventListener("mouseup", endPress);
-inicio.addEventListener("touchstart",  startPress);
-inicio.addEventListener("touchend", endPress);
-
-colarLista.addEventListener("mousedown", startPress);
-colarLista.addEventListener("mouseup", endPress);
-colarLista.addEventListener("touchstart", startPress);
-colarLista.addEventListener("touchend", endPress);
-
-maisFooter.addEventListener("mousedown", startPress);
-maisFooter.addEventListener("mouseup", endPress);
-maisFooter.addEventListener("touchstart", startPress);
-maisFooter.addEventListener("touchend", endPress);
+div_footer.forEach((e)=>{
+  e.addEventListener("mousedown",  startPress);
+  e.addEventListener("mouseup", endPress);
+  e.addEventListener("touchstart",  startPress);
+  e.addEventListener("touchend", endPress);
+})
 
 //botao voltar em colar lista
-
 function voltarColarLista(){
   div_footer.forEach(div => div.classList.remove("selected1"));
   div_footer[0].classList.add("selected1");
