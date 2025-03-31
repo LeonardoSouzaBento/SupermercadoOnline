@@ -1,9 +1,7 @@
 Render, Aws amplify, Microsoft Azzure, 
 
-
-
-
 2. Hospedagem em Nuvem (Cloud Hosting)
+Geralmente usada para o banco de dados
 
 Amazon Web Services (AWS)
 Use Amazon RDS para banco de dados SQL.

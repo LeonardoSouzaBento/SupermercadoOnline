@@ -346,11 +346,35 @@ div#imgs_anun{
     margin-bottom: 25px;
     touch-action: pan-x;
 }
-div#imgs_anun>img{
+.fundo_anun{
+    position: relative;
+    filter: blur(1.5);
+    height: 170px;
+    width: 340px;
+}
+
+div.fundo_anun::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px) brightness(0.7);
+    z-index: -1;
+}
+#anun1::before{
+    background-image: url(Imagens/cortes_carne_boi.jpg);
+}
+
+div#imgs_anun img{
     height: 100%;
     display: inline;
-    background-color: rgb(190, 190, 190);
+    object-fit: contain;
 }
+
 #pagination{
     height: 12px;
     width: 50%;
@@ -494,6 +518,7 @@ div#promos{
     border: 1px solid rgb(193, 193, 193);
     padding-top: 7px;
     flex: none;
+    position: relative;
 }
 
 @media only screen and (max-width: 576px){
@@ -540,6 +565,49 @@ div#promos{
     border-radius: 50%;
     color: white;
     width: 40px;
+}
+.mais_quant{
+    display: flex;
+    width: 315px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0px 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    display: none;
+    gap: 5px;
+}
+.for_quant>p{
+    width: 40px;
+    font-weight: 300;
+    font-size: 1.2em;
+}
+
+#selectQuan{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px 0px;
+    background-color: white;
+    box-sizing: border-box;
+    border-radius: 5px;
+    z-index: 3;
+}
+
+#primeira>p{
+    font-size: 1.2em;
+    border: 1px solid rgb(133, 133, 133);
+    box-shadow: 0px 0px 4px rgb(134, 134, 134);
+    padding: 7px 14px;
+    border-radius: 3px;
+    background-color: white;
 }
 
 footer{

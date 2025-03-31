@@ -334,6 +334,32 @@ function startMomentumScroll1() {
   requestAnimationFrame(step);
 };
 
+function adicionarBackgroundImagem() {
+  const divsFundoAnun = document.querySelectorAll('.fundo_anun');
+
+  let styleContent = '';
+
+  divsFundoAnun.forEach(div => {
+      const imgFilha = div.querySelector('img');
+      if (imgFilha) {
+          const urlImagem = imgFilha.src;
+          styleContent += `
+              #${div.id}::before {
+                  background-image: url('${urlImagem}');
+              }
+          `;
+      }
+  });
+
+  // Cria e injeta a folha de estilos no <head> apenas uma vez
+  if (styleContent) {
+      const styleSheet = document.createElement('style');
+      styleSheet.innerHTML = styleContent;
+      document.head.appendChild(styleSheet);
+  }
+}
+
+adicionarBackgroundImagem();
 
 //limites de rolagem para anuncios
 const imgs_anun = document.getElementById('imgs_anun');
@@ -344,8 +370,8 @@ let anun_visible = 0;
   function obterLimites() {
     let larg_anuncio = document.getElementById('anuncio').offsetWidth;
     let gap = parseFloat(getComputedStyle(document.getElementById('imgs_anun')).getPropertyValue('gap'));
-    let quant_anun = [...document.querySelectorAll('#imgs_anun>img')].length;
-    let larg_img = document.querySelector('#imgs_anun>img').offsetWidth;
+    let quant_anun = [...document.querySelectorAll('#imgs_anun img')].length;
+    let larg_img = document.querySelector('#imgs_anun img').offsetWidth;
     let larg_imgs_anun = gap *(quant_anun-1) + larg_img * quant_anun;
     if(quant_anun%2!=0) {meio = (larg_anuncio- larg_imgs_anun) /2; impar=true;}
     else{meio = (larg_anuncio - larg_imgs_anun) /2 - (larg_img/2 + gap/2);}
@@ -448,10 +474,10 @@ let startTime = null; let speed = 0; let deltaY = null;
 const minSpeed = 0.7;
 const maxSpeed = 2.0;
 
-const larg_img = document.querySelector('#imgs_anun>img').offsetWidth;
+const larg_img = document.querySelector('#imgs_anun img').offsetWidth;
 
 function atualizarPaginacao() {
-  const imagens = [...document.querySelectorAll("#imgs_anun>img")];
+  const imagens = [...document.querySelectorAll("#imgs_anun img")];
   const paginacao = document.querySelectorAll("#pagination span");
 
   const indicesVisiveis = [];
@@ -751,7 +777,6 @@ const aplicarLimites = (i) => {
   }
 };
 
-
 //Rolagem com touchPad
 let verificou = false;
 let isTouchPad = null;
@@ -796,6 +821,8 @@ secoes.addEventListener('wheel', aoRolar);
 promos.addEventListener('wheel', aoRolar);
 
 };
+
+
 
     
 

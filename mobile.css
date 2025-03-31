@@ -32,7 +32,7 @@ html{
     div#anuncio>p{
         font-size: 1.18em;
     }
-    div#imgs_anun>img{
+    div#imgs_anun>div>img{
         min-width: 290px;
         scroll-snap-align: center;
     }
@@ -163,27 +163,7 @@ html{
         width: 40px;
         font-size: 1.6em;
     }
-    .for_quant>p{
-        font-weight: 300;
-        font-size: 1.2em;
-        padding-right: 5px;
-    }
-    .mais_quant{
-        display: flex;
-        height: 290px;
-        flex-flow: column nowrap;
-        justify-content: center;
-        border: 1px dashed red;
-        padding: 0px 10px;
-        background-color: #e3e3e3;
-        position: absolute;
-        transform: translateX(50%);
-        right: 50%;
-        top: -125px;
-        z-index: 1;
-        display: none;
-    }
-
+    
     footer>div{
         width: 30%;
     }
