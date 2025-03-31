@@ -1,5 +1,11 @@
 window.onload = function(){
 
+const div_entrada = document.getElementById('div_entrada')
+div_entrada.style.opacity = '0%';
+setTimeout(() => {
+  div_entrada.style.display = 'none';
+}, 1200);
+
 //seleção dos icones de categorias
 const cats = Array.from(document.querySelectorAll('#for_sections > div'));
 let time_touch = 0;
