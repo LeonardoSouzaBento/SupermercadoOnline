@@ -386,11 +386,8 @@ div.fundo_anun::before{
     height: 100%;
     background-size: cover;
     background-position: center;
-    filter: blur(5px) brightness(0.7);
+    filter: blur(5px) brightness(0.72);
     z-index: -1;
-}
-#anun1::before{
-    background-image: url(Imagens/cortes_carne_boi.jpg);
 }
 
 div#imgs_anun img{

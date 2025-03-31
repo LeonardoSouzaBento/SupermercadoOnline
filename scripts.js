@@ -359,9 +359,16 @@ function adicionarBackgroundImagem() {
 
   // Cria e injeta a folha de estilos no <head> apenas uma vez
   if (styleContent) {
-      const styleSheet = document.createElement('style');
-      styleSheet.innerHTML = styleContent;
-      document.head.appendChild(styleSheet);
+    let firstStyleTag = document.head.querySelector('style');
+        
+    if (firstStyleTag) {
+        firstStyleTag.innerHTML += styleContent;
+    } else {
+        // Caso não exista um <style> no head, cria um
+        const styleSheet = document.createElement('style');
+        styleSheet.innerHTML = styleContent;
+        document.head.appendChild(styleSheet);
+    }
   }
 }
 
