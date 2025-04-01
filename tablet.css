@@ -67,6 +67,9 @@ html{
     }
 /*Todos os produtos*/
 /**/
+.for_prod{
+    max-width: 340px;
+}
     .oferta{
         width: 50%;
         height: 100%;

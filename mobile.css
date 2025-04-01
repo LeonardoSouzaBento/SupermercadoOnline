@@ -90,10 +90,6 @@ html{
     }
 /*Todos os produtos*/
 /**/
-    .for_prod{
-        min-width: 330px !important;
-        max-width: 330px !important;
-    }
     .oferta{
         width: 50%;
         height: 100%;

@@ -68,6 +68,9 @@ html{
 #for_promos{
     overflow-x: hidden;
 }
+.for_prod{
+    max-width: 335px;
+}
 /**/
     .oferta{
         width: 50%;

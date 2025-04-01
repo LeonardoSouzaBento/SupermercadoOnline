@@ -103,6 +103,9 @@ div#promos{
 .parte{
     gap: 15px;
 }
+.for_prod{
+    max-width: 345px;
+}
     .oferta{
         width: 50%;
         height: 100%;

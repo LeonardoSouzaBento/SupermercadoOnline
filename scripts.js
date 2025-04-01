@@ -456,7 +456,7 @@ let fim_promos = 0;
     let larg_part = quant_part * larg_prod + gap_parte*(quant_part-1);
     let margin_for_promos = parseFloat(getComputedStyle(document.getElementById('for_promos')).getPropertyValue('margin-left'));
     fim_promos = larg_for_promos - larg_part - (margin_for_promos);
-    if (window.innerWidth >= 1373){fim_promos+=26;}
+    if (window.innerWidth >= 1373){fim_promos+=23;}
   }
   obterLimites3();
 
