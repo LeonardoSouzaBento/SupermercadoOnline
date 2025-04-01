@@ -99,7 +99,7 @@ menu{
 }
 
 header{
-    background-color: #d3482c;
+    background-color: #d2482d;
     max-width: 1390px;
     padding: 8px 0px;
     padding-top: 17px;
@@ -132,7 +132,7 @@ div#cabecalho{
 div#for_logo>img{
     height: 100%;
     border-radius: 40%;
-    box-shadow:0px 3px 6px #a93d40;
+    box-shadow:0px 0px 6px #ab3636;
 }
 @media only screen and (max-width: 360px){
     #for_logo>div>p{
@@ -141,7 +141,7 @@ div#for_logo>img{
 }
 @media only screen and (min-width: 320px) and (max-width: 520px){
     #for_logo>div>p{
-        font-size: 0.75em;
+        font-size: 0.84em;
         letter-spacing: 0.5px;
         font-weight: 300;
         font-family: "Fira Sans", serif;
@@ -189,7 +189,7 @@ div#userEnotif>div{
     object-fit: cover;
     border-radius: 50%;
     background-color: #a93d40;
-    /*box-shadow: 0px 0px 4px rgb(159, 62, 62);*/
+    box-shadow: 0px 0px 4px rgb(110, 18, 18);
 }
 
 @media only screen and (min-width: 521px){
@@ -634,8 +634,9 @@ footer{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    align-items: center;
     background-color: #ffffff;
-    height: 60px;
+    height: 55px;
     width: 100%;
     position: sticky;
     bottom: 0;
@@ -643,26 +644,34 @@ footer{
     box-shadow: 0px -2px 6px #0000004c;
     box-sizing: border-box;
     padding: 0px 15px;
-    padding-top: 8px;
 }
 footer>div{
-    min-width: 32%;
     display: flex;
     flex-flow: row nowrap;
-    height: 90%;
+    height: 40px;
+    width: 28.5%;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 2px;
 }
+#colarLista{
+    width: 42%;
+    padding-left: 8px;
+}
+
+footer>div>span{
+ font-size: 1.2em !important;
+}
+
 footer>div>p{
     font-family: "Fira Sans", serif;
     font-weight: 400;
     letter-spacing: normal;
     width: max-content;
     text-align: center;
+    text-transform: uppercase;
+    font-size: 0.9em;
 }
 .selected1{
-    background-color: #a93d40;
-    color: white;
-    border-radius: 3px;
+    border-bottom: 5px solid #a83c3f;
 }

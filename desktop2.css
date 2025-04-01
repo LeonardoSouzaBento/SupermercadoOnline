@@ -32,9 +32,6 @@ footer{
         color: white;
         gap: 15px;
     }
-    div#for_logo>img{
-        box-shadow:0px 2px 5px #ca4b50 ;
-    }
     #for_logo>div>p{
         font-size: 0.95em;
         letter-spacing: 0.5px;
