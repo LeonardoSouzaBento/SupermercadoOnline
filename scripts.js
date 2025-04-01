@@ -1,10 +1,10 @@
 window.onload = function(){
 
 const div_entrada = document.getElementById('div_entrada')
-// div_entrada.style.opacity = '0%';
-// setTimeout(() => {
-//   div_entrada.style.display = 'none';
-// }, 1200);
+div_entrada.style.opacity = '0%';
+setTimeout(() => {
+  div_entrada.style.display = 'none';
+}, 1200);
 
 //Adicionar fundo desfocado aos anuncios
 function adicionarBackgroundImagem() {
