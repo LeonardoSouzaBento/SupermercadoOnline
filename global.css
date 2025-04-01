@@ -216,7 +216,7 @@ main{
     height: 100vh;
     width: 100vw;
     background-color: red;
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 5;
     gap: 10px;
@@ -229,7 +229,7 @@ main{
     position: absolute;
     top: 50%;
     right: 50%;
-    transform: translate(50%, -60%);
+    transform: translate(50%, -65%);
     gap: 15px;
 }
 .loading{
@@ -238,13 +238,12 @@ main{
  justify-content: center;
 }
 
-.loading>span{
+.loading>img{
     color: white;
-    font-size: 1.8em;
-    font-weight: 300;
+    height: 28.8px;
+    width: 28.8px;
     animation: girar 1.2s linear infinite;
 }
-
 
 @keyframes girar {
     0% { transform: rotate(0deg); }
@@ -494,7 +493,7 @@ div#imgs_anun img{
         background-color: white;
         border-radius: 42%;
         filter: brightness(0.84) contrast(2) brightness(2) saturate(0.8);
-        transition: border-radius 0.32s ease;
+        transition: all 0.32s ease;
     }
 .divNameSection>p{
     font-family: "Poppins",Arial,sans-serif;

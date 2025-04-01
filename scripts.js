@@ -1,10 +1,44 @@
 window.onload = function(){
 
 const div_entrada = document.getElementById('div_entrada')
-div_entrada.style.opacity = '0%';
-setTimeout(() => {
-  div_entrada.style.display = 'none';
-}, 1200);
+// div_entrada.style.opacity = '0%';
+// setTimeout(() => {
+//   div_entrada.style.display = 'none';
+// }, 1200);
+
+//Adicionar fundo desfocado aos anuncios
+function adicionarBackgroundImagem() {
+  const divsFundoAnun = document.querySelectorAll('.fundo_anun');
+
+  let styleContent = '';
+
+  divsFundoAnun.forEach(div => {
+      const imgFilha = div.querySelector('img');
+      if (imgFilha) {
+          const urlImagem = imgFilha.src;
+          styleContent += `
+              #${div.id}::before {
+                  background-image: url('${urlImagem}');
+              }
+          `;
+      }
+  });
+
+  // injeta na folha de estilos
+  if (styleContent) {
+    let firstStyleTag = document.head.querySelector('style');
+        
+    if (firstStyleTag) {
+        firstStyleTag.innerHTML += styleContent;
+    } else {
+        // Caso não exista um <style> no head, cria um
+        const styleSheet = document.createElement('style');
+        styleSheet.innerHTML = styleContent;
+        document.head.appendChild(styleSheet);
+    }
+  }
+}
+adicionarBackgroundImagem();
 
 //seleção dos icones de categorias
 const cats = Array.from(document.querySelectorAll('#for_sections > div'));
@@ -249,22 +283,28 @@ function trocarImagens(i = 0) {
 
   if (i < quant_secoes) {
     if (srcs_parte2[i][jotas[i].j] != null) {
-      imgs_icones[i].src = `${srcs_parte1[i]}${srcs_parte2[i][jotas[i].j]}`;
-      jotas[i].j = (jotas[i].j + 1) % jotas[i].max;
+
+      imgs_icones[i].style.transform = "rotateY(90deg)";
+      setTimeout(() => {
+          imgs_icones[i].src = `${srcs_parte1[i]}${srcs_parte2[i][jotas[i].j]}`; //troca
+          imgs_icones[i].style.transform = "rotateY(0deg)"; // Retorno
+
+          jotas[i].j = (jotas[i].j + 1) % jotas[i].max;
+        }, 320);
     }
-    else {
-        jotas[i].j = 0;
-    }
+    else { jotas[i].j = 0; }
+
     setTimeout(() => {
       trocarImagens(i + 1);
-    }, 100);
-  } else {
+    }, 4000);
+  }
+  else {
     setTimeout(() => {
       trocarImagens();
-    }, 100);
+    }, 4000);
   }
 }
-
+// trocarImagens();
 
 //chamar a rolagem do site a partir da div anuncio
 const anuncio = document.getElementById('anuncio');
@@ -339,40 +379,6 @@ function startMomentumScroll1() {
   };
   requestAnimationFrame(step);
 };
-
-function adicionarBackgroundImagem() {
-  const divsFundoAnun = document.querySelectorAll('.fundo_anun');
-
-  let styleContent = '';
-
-  divsFundoAnun.forEach(div => {
-      const imgFilha = div.querySelector('img');
-      if (imgFilha) {
-          const urlImagem = imgFilha.src;
-          styleContent += `
-              #${div.id}::before {
-                  background-image: url('${urlImagem}');
-              }
-          `;
-      }
-  });
-
-  // Cria e injeta a folha de estilos no <head> apenas uma vez
-  if (styleContent) {
-    let firstStyleTag = document.head.querySelector('style');
-        
-    if (firstStyleTag) {
-        firstStyleTag.innerHTML += styleContent;
-    } else {
-        // Caso não exista um <style> no head, cria um
-        const styleSheet = document.createElement('style');
-        styleSheet.innerHTML = styleContent;
-        document.head.appendChild(styleSheet);
-    }
-  }
-}
-
-adicionarBackgroundImagem();
 
 //limites de rolagem para anuncios
 const imgs_anun = document.getElementById('imgs_anun');

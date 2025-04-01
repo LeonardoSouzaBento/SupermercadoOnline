@@ -1,0 +1,51 @@
+2. Conectar ao banco via Cliente SQL
+Para acessar seu banco a partir do seu computador ou aplicação:
+
+Vá até Project Settings → Database no painel do Supabase.
+
+Copie a Connection String do PostgreSQL.
+
+Ela terá este formato:
+postgresql://postgres:[SENHA]@db.[HOST].supabase.co:5432/postgres
+
+//
+postgresql://postgres:[YOUR-PASSWORD]@db.tytxrbgzoembbfryyeqy.supabase.co:5432/postgres
+
+Para conectar localmente, use um cliente como pgAdmin ou DBeaver, ou a linha de comando:
+psql -h db.[HOST].supabase.co -U postgres -d postgres
+
+3. Importar um Banco de Dados Existente
+
+Se já tem um banco PostgreSQL local e deseja migrá-lo para o Supabase:
+Exporte seu banco atual:
+pg_dump -U SEU_USUARIO -h localhost -d SEU_BANCO -F c -f backup.dump
+
+Envie para o Supabase:
+pg_restore --host=db.[HOST].supabase.co --port=5432 --username=postgres --dbname=postgres --no-owner --verbose backup.dump
+Digite a senha (aquela definida no Supabase).
+
+4. Configurar Regras de Acesso
+No Supabase, acesse Auth > Policies e configure permissões para que os usuários possam acessar os dados.
+
+O Supabase usa Row Level Security (RLS) por padrão. Se quiser desativar temporariamente:
+
+ALTER TABLE sua_tabela DISABLE ROW LEVEL SECURITY;
+
+5. Testar Conexão
+Você pode testar a conexão no Supabase SQL Editor, rodando:
+
+SELECT * FROM pg_tables;
+
+6. Usar na Aplicação
+Se estiver usando Node.js, instale pg:
+
+npm install pg
+Conecte no banco com o Supabase:
+
+const { Client } = require("pg");
+const client = new Client({
+  connectionString: "postgresql://postgres:[SENHA]@db.[HOST].supabase.co:5432/postgres",
+  ssl: { rejectUnauthorized: false }
+});
+client.connect();
+Pronto! Seu PostgreSQL agora está rodando no Supabase. Se precisar de algo mais específico, só avisar!
