@@ -150,6 +150,7 @@ div#promos{
         height: 100%;
         display: flex;
         flex-flow: column nowrap;
+        justify-content: space-between;
     }
         p.nome{
             font-size: 0.8em;
@@ -164,17 +165,16 @@ div#promos{
         p.preco{
             font-weight: bold;
             text-align: center;
+            padding-bottom: 8px;
         }
     div.for_quant{
         width: 88%;
         height: 40px;
-        margin: auto;
         background-color: #e3e3e3;
         border-radius: 18.5px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: relative;
     }
     .for_menos{
         display: flex;
