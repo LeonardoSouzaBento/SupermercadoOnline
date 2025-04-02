@@ -67,11 +67,9 @@ cats.forEach(el => {
 
   };
 
-  el.addEventListener("mousedown", startPress);
+  el.addEventListener("pointerdown", startPress);
   el.addEventListener("mousemove", detectMove);
   el.addEventListener("mouseup", endPress);
-
-  el.addEventListener("touchstart", startPress);
   el.addEventListener("touchmove", detectMove);
   el.addEventListener("touchend", endPress);
 });
