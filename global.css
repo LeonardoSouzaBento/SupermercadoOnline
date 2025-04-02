@@ -15,53 +15,151 @@ body{
     width: 0;
     visibility: hidden;
 }
+
+#div_entrada{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: red;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    gap: 10px;
+    transition: opacity 1.2s linear;
+}
+#div_entrada>div{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -65%);
+    gap: 15px;
+}
+.loading{
+ width: 100%;
+ display: flex;
+ justify-content: center;
+}
+
+.loading>img{
+    color: white;
+    height: 28.8px;
+    width: 28.8px;
+    animation: girar 1.2s linear infinite;
+}
+
+@keyframes girar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#div_entrada>div>img{
+    height: 110px;
+    width: 110px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
+    border-radius: 10px;
+}
+#div_entrada>div>p{
+    width: 200px;
+    text-align: center;
+    line-height: 22px;
+    color: white;
+    font-family: "Fira Sans", sans-serif;
+    font-size: 1.15em;
+}
+
+#ajuda{
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.554) !important;
+    z-index: 6;
+    display: none;
+}
+    #ajuda>div{
+        width: 300px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -45%);
+        background-color: white;
+        z-index: 15;
+    }
+    #ajuda>div>p{
+        width: 300px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -45%);
+        background-color: white;
+        padding: 10px 20px;
+        border-radius: 7px;
+        font-family: "Fira Sans", serif;
+        letter-spacing: 1px;
+        line-height: 25px;
+    }
+
+/*menu de opções*/
 menu{
     position: fixed;
     top: 0px;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.419);
+    background-color: rgba(0, 0, 0, 0.505);
     z-index: 5;
     transition: opacity 0.3s ease;
     display: none;
     opacity: 0%;
     touch-action: none;
 }
-#for_opcoes{
-    width: 70vw;
-    position: absolute;
-    background-color: white;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    border-radius: 10px 0px 0px 10px;
-    transform: translateX(100%);
-    transition: transform 0.4s ease;
-    font-family: "Fira Sans", sans-serif;
-}
-#for_opcoes>div{
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-#legenda{
-    padding: 0px 20px !important;
-    padding-top: 15px !important;
-    margin-bottom: 8px !important;
-}
-#mais_opcoes{
-    color: rgb(156, 156, 156);
-    font-family: "Roboto", Arial, sans-serif;
-    letter-spacing: 1.3px !important;
-}
-#for_opcoes>div>span{
-    font-size: 1.35em;
-    color: #4e4848;
-}
+    #for_opcoes{
+        width: 70vw;
+        position: absolute;
+        background-color: white;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        border-radius: 8px 0px 0px 8px;
+        transform: translateX(100%);
+        transition: transform 0.4s ease;
+        font-family: "Fira Sans", sans-serif;
+        padding: 20px 25px;
+        padding-right: 10px;
+    }
+    #for_opcoes>div{
+        display: flex;
+        align-items: center;
+        padding-top:12px;
+        gap: 12px;
+        padding-bottom: 12px;
+    }
+    #legenda{
+        padding: 0px !important;
+        margin-bottom: 8px !important;
+    }
+    #for_opcoes .material-symbols-rounded{
+        font-variation-settings:'FILL' 1;
+        color: rgb(101, 101, 101);
+    }
+    
+    #mais_opcoes{
+        color: rgb(101, 101, 101);
+        font-family: "Roboto", Arial, sans-serif;
+        letter-spacing: 1.3px !important;
+        font-weight: bold;
+    }
+    #for_opcoes>div>span{
+        font-size: 1.35em;
+        color: #4e4848;
+    }
 
-#pastlist{
+/*Carrinho*/
+#carrinho{
     position: fixed;
     overflow-y: hidden;
     height:  calc(100vh - 60px);
@@ -72,40 +170,48 @@ menu{
     display: none;
     transition: background-color 0.4s ease;
 }
-#voltar{
-    position: absolute;
-    bottom: 5px;
-    right: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 130px;
-    height: 45px;
-    background-color: rgb(239, 239, 239);
-    border: 1px solid rgb(195, 195, 195);
-    box-shadow: 0px 2px 4px rgb(130, 130, 130);
-    border-radius: 4px;
-    padding-top: 15.5px;
-    padding-bottom: 16px;
-}
-#voltar>p{
-    font-size: 1.25em;
-    letter-spacing: 1.4px;
-    padding-left: 10px;
-}
-#voltar>span{
-    color: rgb(0, 0, 0);
-    font-size: 2em;
-}
+    #voltar{
+        position: absolute;
+        bottom: 5px;
+        right: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 130px;
+        height: 45px;
+        background-color: rgb(239, 239, 239);
+        border: 1px solid rgb(195, 195, 195);
+        box-shadow: 0px 2px 4px rgb(130, 130, 130);
+        border-radius: 4px;
+        padding-top: 15.5px;
+        padding-bottom: 16px;
+    }
+    #voltar>p{
+        font-size: 1.25em;
+        letter-spacing: 1.4px;
+        padding-left: 10px;
+    }
+    #voltar>span{
+        color: rgb(0, 0, 0);
+        font-size: 2em;
+    }
+    .voltar {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
 
+/*header*/
 header{
     background-color: #d2482d;
     max-width: 1390px;
-    padding: 8px 0px;
+    padding-bottom: 8px;
     padding-top: 17px;
     box-sizing: border-box;
     margin: auto;
-    margin-bottom: -1px;
+    margin-bottom: -2px;
 }
 @media only screen and (min-width: 993px){
     header{
@@ -129,6 +235,16 @@ div#cabecalho{
     gap: 10px;
     align-items: center;
 }
+
+div#for_logo{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    color: rgb(255, 255, 255);
+}
+
 div#for_logo>img{
     height: 100%;
     border-radius: 40%;
@@ -203,98 +319,11 @@ div#userEnotif>div{
     }     
 }
 
+
 main{
     margin: auto;
     padding-top: 23px;
     background-color: rgb(228, 228, 228);
-}
-
-#div_entrada{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: red;
-    position: fixed;
-    top: 0;
-    z-index: 5;
-    gap: 10px;
-    transition: opacity 1.2s linear;
-}
-#div_entrada>div{
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    right: 50%;
-    transform: translate(50%, -65%);
-    gap: 15px;
-}
-.loading{
- width: 100%;
- display: flex;
- justify-content: center;
-}
-
-.loading>img{
-    color: white;
-    height: 28.8px;
-    width: 28.8px;
-    animation: girar 1.2s linear infinite;
-}
-
-@keyframes girar {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-#div_entrada>div>img{
-    height: 110px;
-    width: 110px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.435);
-    border-radius: 10px;
-}
-#div_entrada>div>p{
-    width: 200px;
-    text-align: center;
-    line-height: 22px;
-    color: white;
-    font-family: "Fira Sans", sans-serif;
-    font-size: 1.15em;
-}
-
-#ajuda{
-    position: absolute;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 0, 0, 0.554) !important;
-    z-index: 6;
-    display: none;
-}
-#ajuda>div{
-    width: 300px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -45%);
-    background-color: white;
-    z-index: 15;
-}
-#ajuda>div>p{
-    width: 300px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -45%);
-    background-color: white;
-    padding: 10px 20px;
-    border-radius: 7px;
-    font-family: "Fira Sans", serif;
-    letter-spacing: 1px;
-    line-height: 25px;
 }
 
 #div_search{
@@ -347,8 +376,9 @@ div#anuncio{
     position: relative;
     overflow-x: hidden;
     margin: auto;
-    padding-bottom: 40px;
+    padding-bottom: 60px;
     touch-action: pan-x;
+    border-radius: 5px;
 }
 div#anuncio>p{
     width: 100%;
@@ -417,15 +447,11 @@ div#imgs_anun img{
 }
 
 #part_sections{
+   width: calc(100% - 20px);
    overflow-x: hidden;
-   margin-left: 26px;
+   margin-left: 20px;
    touch-action: pan-x;
    position: relative;
-}
-@media only screen and (max-width: 576px){
-    #part_sections{
-        margin-left: 14px;
-     }
 }
 
 #part_sections>span{
@@ -457,7 +483,7 @@ div#imgs_anun img{
     margin: auto;
     display: flex;
     flex-flow: row nowrap;
-    padding-bottom: 16px;
+    padding-bottom: 18px;
     position: relative;
     gap: 10px;
     box-sizing: border-box;
@@ -542,24 +568,7 @@ div#promos{
     flex: none;
     position: relative;
 }
-@media only screen and (min-width: 320px){
-    .for_prod{
-        max-width: 300px;
-    }
-}
-@media only screen and (min-width: 375px){
-    .for_prod{
-        max-width: 330px;
-    }
-}
 
-@media only screen and (min-width: 577px){
-    #for_promos{
-        width: calc(100% - 25px);
-        margin-left: 25px;
-        overflow-x: hidden;
-    }
-}
 .oferta{
     width: 50%;
     height: 100%;
@@ -669,7 +678,7 @@ footer>div{
     width: 28.5%;
     justify-content: center;
     align-items: center;
-    gap: 2px;
+    gap: 3px;
 }
 #colarLista{
     width: 42%;
@@ -683,7 +692,6 @@ footer>div>span{
 footer>div>p{
     font-family: "Fira Sans", serif;
     font-weight: 400;
-    letter-spacing: normal;
     width: max-content;
     text-align: center;
     text-transform: uppercase;

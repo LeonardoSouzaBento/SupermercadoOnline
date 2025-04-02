@@ -1,4 +1,7 @@
-
+header{
+    padding-bottom: 8px;
+    padding-top: 20px;
+}
 div, p{
     cursor: default;
 }
@@ -15,18 +18,8 @@ footer{
         letter-spacing: 0.5px;
     }
 
-    div#for_logo{
-        height: 100%;
-        width: 360px;
-        display: flex;
-        align-items: center;
-        border-radius: 7px;
-        padding: 5px;
-        color: white;
-        gap: 15px;
-    }
     #for_logo>div>p{
-        font-size: 0.95em;
+        font-size: 1em;
         letter-spacing: 0.5px;
         font-weight: 400;
         font-family: "Fira Sans", serif;
@@ -68,7 +61,8 @@ main{
 /*Banner promocional*/
     div#anuncio{
         width: calc(100% - 50px);
-        margin-bottom: 50px;
+        margin-bottom: 70px;
+        padding-bottom: 0px;
     }
     div#anuncio>p{
         font-size: 1.3em;
@@ -85,7 +79,8 @@ main{
         width: calc(100% - 52px);
         margin: auto;
     }
-/*Todos os produtos*/
+
+
 div#promos{
     padding-top: 5px;
     gap: 15px;

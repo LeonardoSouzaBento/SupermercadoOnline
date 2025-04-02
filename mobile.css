@@ -9,12 +9,7 @@
     }
 
     div#for_logo{
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
         gap: 10px;
-        color: rgb(255, 255, 255);
     }
 /*Banner promocional*/
     div#anuncio{
@@ -28,7 +23,11 @@
         scroll-snap-align: center;
     }
     
+
 /*Seções*/
+#part_sections{
+    margin-left: 14px;
+ }
 /*
     @keyframes aparecer {
         from {
@@ -63,18 +62,15 @@
             opacity: 0;
         }
     }
-
-    #for_promos{
-        width: calc(100% - 12px);
-        margin-left: 12px;
-        overflow-x: hidden;
-    }
-/*Todos os produtos*/
 /**/
-        p.nome{
-            font-size: 0.7em;
-            letter-spacing: 1px;
-        }
+
+#for_promos{
+    width: calc(100% - 12px);
+    margin-left: 12px;
+}
+.for_prod{
+    max-width: 330px;
+}
         p.preco{
             font-weight: bold;
             text-align: center;

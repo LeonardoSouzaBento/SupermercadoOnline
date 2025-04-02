@@ -9,14 +9,6 @@
         letter-spacing: 0.5px;
     }
 
-    div#for_logo{
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: rgb(255, 255, 255);
-        gap: 15px;
-    }
     #for_logo>div>p{
         font-size: 0.9em;
         letter-spacing: 0.5px;
@@ -45,14 +37,14 @@
         min-width: 340px;
         scroll-snap-align: center;
     }
-/*Todos os produtos*/
+
 #for_promos{
-    overflow-x: hidden;
+    width: calc(100% - 20px);
+    margin-left: 20px;
 }
 .for_prod{
     max-width: 335px;
 }
-/**/
         p.preco{
             font-weight: bold;
             text-align: center;

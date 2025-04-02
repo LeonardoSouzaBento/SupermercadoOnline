@@ -9,14 +9,6 @@
         letter-spacing: 0.5px;
     }
 
-    div#for_logo{
-        height: 100%;
-        width: 370px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        color: rgb(255, 255, 255);
-    }
     #for_logo>div>p{
         font-size: 1em;
         letter-spacing: 0.5px;
@@ -34,7 +26,6 @@
 /*Banner promocional*/
     div#anuncio{
         width: calc(100% - 20px);
-        box-sizing: border-box;
     }
     div#anuncio>p{
         font-size: 1.25em;
@@ -46,6 +37,10 @@
         min-width: 340px;
     }
 
+#for_promos{
+    width: calc(100% - 20px);
+    margin-left: 20px;
+}
 .for_prod{
     max-width: 340px;
 }

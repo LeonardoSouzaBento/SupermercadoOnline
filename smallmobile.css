@@ -1,0 +1,13 @@
+p.nome{
+    font-size: 0.7em;
+    letter-spacing: 1px;
+    font-weight: 600;
+
+}
+.for_prod{
+    max-width: 300px;
+}
+#for_promos{
+    width: calc(100% - 5px);
+    margin-left: 5px;
+}

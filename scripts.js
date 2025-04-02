@@ -43,14 +43,7 @@ adicionarBackgroundImagem();
 //seleção dos icones de categorias
 const cats = Array.from(document.querySelectorAll('#for_sections > div'));
 let time_touch = 0;
-let arrastando = false; // impedir seleção se for click de rolagem
-
-document.querySelector("#for_sections").addEventListener("mousedown", () => {
-  arrastando = false;
-});
-document.querySelector("#for_sections").addEventListener("mousemove", () => {
-  arrastando = true;
-});
+let dragXglobal = false;
 
 cats.forEach(el => {
   const startPress = (e) => {
@@ -63,10 +56,10 @@ cats.forEach(el => {
   };
 
   const endPress = (e) => {
-    if (arrastando) {
-      arrastando = false;
+    if (dragXglobal) {
+      dragXglobal= false;
       return;
-  }
+    }
     if (Date.now() - time_touch < 100) {
       cats.forEach(div => div.classList.remove("catselected"));
       e.currentTarget.classList.add("catselected");
@@ -87,7 +80,7 @@ cats.forEach(el => {
 const div_footer = [...document.querySelectorAll('footer>div')]
 const inicio = document.getElementById('botaoInicio');
 const maisFooter = document.getElementById('maisFooter');
-const colarLista = document.getElementById('colarLista');
+const colarLista = document.getElementById('carrinho');
 
 const mais_opcoes = document.querySelector('#userEnotif div:nth-child(2)');
 const menu = document.querySelector('body > menu');
@@ -522,6 +515,7 @@ function atualizarPaginacao() {
 const iniciarArraste1 = (e) => {
   e.preventDefault();
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
+  dragXglobal = false;
   //pagina
   initialY =  e.touches ? e.touches[0].clientY : e.clientY;
   initialX =  e.touches ? e.touches[0].clientX : e.clientX;
@@ -550,6 +544,8 @@ const aoMover1 = (e) => {
   if (posicaoX === null || currentY === null) return;
   diffX = Math.abs(posicaoX - initialX);
   diffY = Math.abs(currentY - initialY);
+
+  dragXglobal = true;
 
   //Ignore tiny drags
   const limiar = 1;
@@ -666,8 +662,9 @@ limi1.div.addEventListener('mouseup', finalizarArraste1);
 
 //Arraste para secoes e promocoes
 const iniciarArraste = (e, i) => {
-  
   e.preventDefault();
+
+  dragXglobal = false;
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
   //pagina
   initialY =  e.touches ? e.touches[0].clientY : e.clientY;
@@ -688,6 +685,7 @@ const iniciarArraste = (e, i) => {
 // Movimento
 const aoMover = (e, i) => {
   if(!limi[i].arrastando) return;
+  dragXglobal = true;
   const tempoAtual = Date.now();
   tempoDecorrido = Math.max(1, tempoAtual - limi[i].time_touch);
 
