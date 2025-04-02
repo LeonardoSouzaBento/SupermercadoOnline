@@ -51,10 +51,6 @@ cats.forEach(el => {
     time_touch = Date.now();
   };
 
-  const detectMove = () => {
-    arrastando = true;
-  };
-
   const endPress = (e) => {
     if (dragXglobal) {
       dragXglobal= false;
@@ -68,7 +64,6 @@ cats.forEach(el => {
   };
 
   el.addEventListener("pointerdown", startPress);
-  el.addEventListener("pointermove", detectMove);
   el.addEventListener("pointerup", endPress);
 });
 
