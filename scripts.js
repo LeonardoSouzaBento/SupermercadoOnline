@@ -68,10 +68,8 @@ cats.forEach(el => {
   };
 
   el.addEventListener("pointerdown", startPress);
-  el.addEventListener("mousemove", detectMove);
-  el.addEventListener("mouseup", endPress);
-  el.addEventListener("touchmove", detectMove);
-  el.addEventListener("touchend", endPress);
+  el.addEventListener("pointermove", detectMove);
+  el.addEventListener("pointerup", endPress);
 });
 
 // Seleção do footer
