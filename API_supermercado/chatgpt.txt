@@ -1,0 +1,48 @@
+ O Netlify Functions é uma boa opção para back-ends leves, mas para APIs mais robustas, considere plataformas como Heroku, AWS, GCP ou Azure.
+
+1. Criar um evento de clique nas divs das categorias
+Cada categoria deve ter um identificador que corresponda ao id no banco de dados.
+
+document.querySelectorAll(".categoria").forEach((categoria) => {
+    categoria.addEventListener("click", function () {
+        const categoriaId = this.getAttribute("data-id");
+
+        fetch(`/api/produtos?categoria=${categoriaId}`)
+            .then((response) => response.json())
+            .then((produtos) => {
+                const listaContainer = document.querySelector(".lista");
+                listaContainer.textContent = produtos
+                    .map(produto => `${produto.nome} - R$${produto.preco.toFixed(2)}`)
+                    .join(", ");
+            })
+            .catch((error) => console.error("Erro ao buscar produtos:", error));
+    });
+});
+
+api
+const express = require("express");
+const app = express();
+const { Pool } = require("pg");
+
+const pool = new Pool({
+    user: "seu_usuario",
+    host: "localhost",
+    database: "seu_banco",
+    password: "sua_senha",
+    port: 5432,
+});
+
+app.get("/api/produtos", async (req, res) => {
+    const { categoria } = req.query;
+
+    try {
+        const result = await pool.query("SELECT * FROM produtos WHERE categoria_id = $1", [categoria]);
+        res.json(result.rows);
+    } catch (error) {
+        res.status(500).json({ error: "Erro ao buscar produtos" });
+    }
+});
+
+app.listen(3000, () => {
+    console.log("Servidor rodando na porta 3000");
+});

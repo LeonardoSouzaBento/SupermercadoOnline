@@ -1,0 +1,52 @@
+Suas variáveis de ambiente dependerão das necessidades específicas do seu aplicativo e das informações confidenciais que você precisa proteger. No entanto, aqui estão algumas variáveis de ambiente comuns que você pode precisar configurar:
+
+1. Variáveis de ambiente de banco de dados:
+
+DATABASE_URL: A URL de conexão do seu banco de dados.
+DATABASE_USER: O nome de usuário do seu banco de dados.
+DATABASE_PASSWORD: A senha do seu banco de dados.
+DATABASE_HOST: O host do seu banco de dados.
+DATABASE_PORT: A porta do seu banco de dados.
+DATABASE_NAME: O nome do seu banco de dados.
+2. Variáveis de ambiente de API:
+
+API_KEY: A chave de API para serviços externos.
+API_SECRET: O segredo da API para serviços externos.
+API_URL: A URL base da API externa.
+3. Variáveis de ambiente de autenticação:
+
+JWT_SECRET: O segredo usado para assinar tokens JWT.
+SESSION_SECRET: O segredo usado para assinar sessões.
+OAUTH_CLIENT_ID: O ID do cliente OAuth.
+OAUTH_CLIENT_SECRET: O segredo do cliente OAuth.
+4. Variáveis de ambiente de serviço de e-mail:
+
+EMAIL_HOST: O host do seu servidor de e-mail.
+EMAIL_PORT: A porta do seu servidor de e-mail.
+EMAIL_USER: O nome de usuário do seu servidor de e-mail.
+EMAIL_PASSWORD: A senha do seu servidor de e-mail.
+5. Variáveis de ambiente de serviço de armazenamento em nuvem:
+
+AWS_ACCESS_KEY_ID: O ID da chave de acesso da AWS.
+AWS_SECRET_ACCESS_KEY: A chave de acesso secreta da AWS.
+AWS_S3_BUCKET_NAME: O nome do bucket S3.
+6. Variáveis de ambiente de produção:
+
+NODE_ENV: Defina como "production" para otimizar o desempenho.
+PORT: A porta em que seu aplicativo será executado.
+
+Sim, você pode definir suas variáveis de ambiente mais tarde no Render. A plataforma oferece flexibilidade para adicionar, modificar ou remover variáveis de ambiente a qualquer momento, mesmo após a implantação do seu site ou API.
+
+Aqui estão algumas maneiras de gerenciar suas variáveis de ambiente no Render:
+
+1. Através do painel do Render:
+
+Após fazer login no Render, vá para o painel do seu serviço (seu site ou API).
+Clique na guia "Environment".
+Nesta guia, você pode adicionar novas variáveis de ambiente, editar as existentes ou remover as que não são mais necessárias.
+O Render oferece opções para salvar as alterações e reimplantar seu serviço automaticamente.
+2. Usando um arquivo .env:
+
+Você pode criar um arquivo .env na raiz do seu repositório Git e definir suas variáveis de ambiente nesse arquivo.
+O Render pode ler automaticamente as variáveis de ambiente do arquivo .env durante a implantação.
+Importante: Evite incluir informações confidenciais no arquivo .env se você estiver usando um repositório público.
