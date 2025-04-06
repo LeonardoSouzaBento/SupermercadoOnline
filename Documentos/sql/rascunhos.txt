@@ -1,1 +1,0 @@
-escreva o comando SQL que adiciona esses produtos a tabela. Os campos são nome(o nome completo, com a variação), variação, preco(descrito na lista abaixo), medida, peso (1 no caso de medida em kg) estoque (50 para todos), cat_id ("1" para todos).

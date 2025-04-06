@@ -60,7 +60,6 @@ cats.forEach(el => {
       cats.forEach(div => div.classList.remove("catselected"));
       e.currentTarget.classList.add("catselected");
     }
-
   };
 
   el.addEventListener("pointerdown", startPress);

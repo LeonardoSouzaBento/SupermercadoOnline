@@ -1,3 +1,6 @@
+#for_logo>div>p{
+    display: none;
+}
 p.nome{
     font-size: 0.7em;
     letter-spacing: 1px;

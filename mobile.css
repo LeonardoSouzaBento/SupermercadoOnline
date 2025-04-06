@@ -1,16 +1,3 @@
-
-#for_opcoes{
-    position: absolute;
-    right: 0px;
-    bottom: 60px;
- }
-    #for_opcoes>div>p{
-        letter-spacing: 0.5px;
-    }
-
-    div#for_logo{
-        gap: 10px;
-    }
 /*Banner promocional*/
     div#anuncio{
         width: 100%;
@@ -23,7 +10,6 @@
         scroll-snap-align: center;
     }
     
-
 /*Seções*/
 #part_sections{
     margin-left: 14px;
@@ -71,25 +57,3 @@
 .for_prod{
     max-width: 330px;
 }
-        p.preco{
-            font-weight: bold;
-            text-align: center;
-        }
-    div.for_quant{
-        width: 88%;
-        height: 40px;
-        margin: auto;
-        background-color: #e3e3e3;
-        border-radius: 18.5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-    }
-    .for_menos{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        font-size: 1.6em;
-    }

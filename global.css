@@ -1,3 +1,10 @@
+.lista{
+    height: 500px;
+    width: 100%;
+    background-color: white;
+    display: none;
+}
+
 *{
     -webkit-user-select: none;
     user-select: none;
@@ -45,16 +52,16 @@ body{
  justify-content: center;
 }
 
+@keyframes girar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .loading>img{
     color: white;
     height: 28.8px;
     width: 28.8px;
     animation: girar 1.2s linear infinite;
-}
-
-@keyframes girar {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }
 
 #div_entrada>div>img{
@@ -118,7 +125,9 @@ menu{
     touch-action: none;
 }
     #for_opcoes{
-        width: 70vw;
+        min-width: 300px;
+        width: 70%;
+        max-width: 360px;
         position: absolute;
         background-color: white;
         display: flex;
@@ -130,6 +139,8 @@ menu{
         font-family: "Fira Sans", sans-serif;
         padding: 20px 25px;
         padding-right: 10px;
+        right: 0px;
+        bottom: 60px;
     }
     #for_opcoes>div{
         display: flex;
@@ -137,6 +148,9 @@ menu{
         padding-top:12px;
         gap: 12px;
         padding-bottom: 12px;
+    }
+    #for_opcoes>div>p{
+        letter-spacing: 0.5px;
     }
     #legenda{
         padding: 0px !important;
@@ -212,6 +226,7 @@ header{
     box-sizing: border-box;
     margin: auto;
     margin-bottom: -2px;
+    background-image: linear-gradient(to right,#e34343,#C7381A);
 }
 @media only screen and (min-width: 993px){
     header{
@@ -219,8 +234,6 @@ header{
     }
     #div_search{
         background-image: linear-gradient(to right,#e34343,#C7381A);
-        max-width: 1390px;
-        margin: auto;
     }
 }
 div#cabecalho{
@@ -250,19 +263,15 @@ div#for_logo>img{
     border-radius: 40%;
     box-shadow:0px 0px 6px #ab3636;
 }
-@media only screen and (max-width: 360px){
-    #for_logo>div>p{
-       display: none;
-    }
+#for_logo>div>p{
+    letter-spacing: 0.5px;
+    font-weight: 300;
+    font-family: "Fira Sans", serif;
+    line-height: 20px;
 }
 @media only screen and (min-width: 320px) and (max-width: 520px){
     #for_logo>div>p{
         font-size: 0.84em;
-        letter-spacing: 0.5px;
-        font-weight: 300;
-        font-family: "Fira Sans", serif;
-        line-height: 15px;
-        padding: 5px;
     }
     #for_logo>div>p>strong{
         letter-spacing: 1px;
@@ -279,11 +288,6 @@ div#for_logo>img{
 @media only screen and (min-width: 521px) and (max-width: 576px){
     #for_logo>div>p{
         font-size: 0.9em;
-        letter-spacing: 0.5px;
-        font-weight: 300;
-        font-family: "Fira Sans", serif;
-        line-height: 17px;
-        padding: 5px;
     }
     #for_logo>div>p>strong{
         letter-spacing: 1.3px;
@@ -298,6 +302,7 @@ div#userEnotif{
     align-items: center;
     gap: 10px;
 }
+
 div#userEnotif>div{
     display: none;
 }
@@ -329,14 +334,11 @@ main{
 #div_search{
     width: 100%;
     background-color: #d3482c;
+    background-image: linear-gradient(to right,#e34343,#C7381A);
     position: sticky;
     top: 0;
     z-index: 3;
-}
-@media only screen and (min-width: 577px){
-    #search{
-        font-size: 0.95em !important;
-    }
+    max-width: 1380px;
 }
 
 form#for_search{
@@ -620,6 +622,8 @@ p.nome{
 .preco{
     font-family: "Fira Sans",Arial,sans-serif;
     padding-bottom: 7px;
+    font-weight: bold;
+    text-align: center;
 }
 .desconto{
     position: absolute;
@@ -636,6 +640,24 @@ p.nome{
 }
 .peso{
     font-family: "Poppins",Arial,sans-serif;
+}
+
+div.for_quant{
+    width: 88%;
+    height: 40px;
+    margin: auto;
+    background-color: #e3e3e3;
+    border-radius: 18.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.for_menos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    font-size: 1.6em;
 }
 .mais{
     display: flex;
@@ -656,13 +678,14 @@ p.nome{
 }
 
 
+
 footer{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
     background-color: #ffffff;
-    height: 62px;
+    height: 63px;
     width: 100%;
     position: sticky;
     bottom: 0;
@@ -673,7 +696,7 @@ footer{
 }
 footer>div{
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     height: 40px;
     width: 28.5%;
     justify-content: center;
@@ -697,6 +720,12 @@ footer>div>p{
     text-transform: uppercase;
     font-size: 0.9em;
 }
+footer>div>div{
+    width: 90%;
+    height: 4.5px;
+    border-radius: 2.3px;
+    background-color: white;
+}
 .selected1{
-    border-bottom: 4.5px solid #D3482C;
+    background-color: red;
 }

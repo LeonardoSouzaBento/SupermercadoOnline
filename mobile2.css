@@ -1,28 +1,11 @@
-
-#for_opcoes{
-    width: 320px;
-    position: absolute;
-    right: 0px;
-    bottom: 60px;
-}
-    #for_opcoes>div>p{
-        letter-spacing: 0.5px;
-    }
-
-    #for_logo>div>p{
+#for_logo>div>p{
         font-size: 0.9em;
-        letter-spacing: 0.5px;
-        font-weight: 300;
-        font-family: "Fira Sans", serif;
-        line-height: 20px;
-        text-align: justify;
-        padding: 5px;
     }
     #for_logo>div>p>strong{
         font-family: "Fira Sans", serif;
-        font-size: 0.95em;
         letter-spacing: 1.2px;
     }
+    
 /*Banner promocional*/
     div#anuncio{
         width: calc(100% - 15px);
@@ -38,6 +21,9 @@
         scroll-snap-align: center;
     }
 
+#search{
+    font-size: 0.95em !important;
+}
 #for_promos{
     width: calc(100% - 20px);
     margin-left: 20px;
@@ -45,28 +31,6 @@
 .for_prod{
     max-width: 335px;
 }
-        p.preco{
-            font-weight: bold;
-            text-align: center;
-        }
-    div.for_quant{
-        width: 88%;
-        height: 40px;
-        margin: auto;
-        background-color: #e3e3e3;
-        border-radius: 18.5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-    }
-    .for_menos{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        font-size: 1.6em;
-    }
     .for_quant>p{
         font-weight: 300;
         font-size: 1.2em;

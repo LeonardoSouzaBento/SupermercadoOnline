@@ -1,9 +1,0 @@
-Wordpress com woocommerce CMS (Content Management Systems
-
-vai demorar para colocar o site no ar, implantar
-hospedar no servidor
-obter o certificado SSL, de criptografia de dados (é pago)
-necessária a integração com o sistema de gestão do negocio (o ERP)
-
-plataforma saas como nuvenshop
-
