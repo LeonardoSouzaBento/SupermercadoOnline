@@ -416,7 +416,7 @@ let tempoDecorrido = 0;
 let startTime = null; let speed = 0; let deltaY = null;
 const minSpeed = 0.7;
 const maxSpeed = 2.0;
-const limiar = 8;
+const limiar = 4;
 const larg_img = document.querySelector('#imgs_anun img').offsetWidth;
 let arrastando2 = false;
 
