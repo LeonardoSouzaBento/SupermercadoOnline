@@ -1,5 +1,4 @@
 window.onload = function(){
-
 const div_entrada = document.getElementById('div_entrada')
 div_entrada.style.opacity = '0%';
 setTimeout(() => {
@@ -40,112 +39,61 @@ function adicionarBackgroundImagem() {
 }
 adicionarBackgroundImagem();
 
-//seleção dos icones de categorias
-const cats = Array.from(document.querySelectorAll('#for_sections > div'));
+//Seleção do footer
 let time_touch = 0;
-let dragXglobal = false;
-
-cats.forEach(el => {
-  const startPress = (e) => {
-    if (e.type == "mousedown" && e.button !== 0) return;
-    time_touch = Date.now();
-  };
-
-  const endPress = (e) => {
-    if (dragXglobal) {
-      dragXglobal= false;
-      return;
-    }
-    if (Date.now() - time_touch < 100) {
-      cats.forEach(div => div.classList.remove("catselected"));
-      e.currentTarget.classList.add("catselected");
-    }
-  };
-
-  el.addEventListener("pointerdown", startPress);
-  el.addEventListener("pointerup", endPress);
-});
-
-// Seleção do footer
 const div_footer = [...document.querySelectorAll('footer>div')]
 const inicio = document.getElementById('botaoInicio');
 const maisFooter = document.getElementById('maisFooter');
-const colarLista = document.getElementById('carrinho');
+const buttoncart = document.getElementById('button-cart');
 
 const mais_opcoes = document.querySelector('#userEnotif div:nth-child(2)');
 const menu = document.querySelector('body > menu');
 const for_opcoes= document.getElementById('for_opcoes')
-const pastlistDiv = document.getElementById('pastlist');
+const divCart = document.getElementById('div-cart');
 const buttonVoltar = document.getElementById('voltar');
-
+const tracos = [...document.querySelectorAll('footer>div>div')];
 let i = 0; //memorizar a div com classe no menu atras de mais opções
-let ispastListOn = false;
+let isOnCart = false;
 
 function startPress(e) {
   time_touch = Date.now();
-  if(e.touches){
-    div_footer.forEach((e)=>{
-      e.removeEventListener("mousedown", startPress); 
-      e.removeEventListener("mouseup", endPress);
-    })
-  }
-  else{
-    div_footer.forEach((e)=>{
-      e.removeEventListener("touchstart", startPress); 
-      e.removeEventListener("touchend", endPress);
-    })
-  }
 }
 
 function endPress(e) {
-  if(e.touches){
-    div_footer.forEach((e)=>{
-      e.removeEventListener("mousedown", startPress); 
-      e.removeEventListener("mouseup", endPress);
-    })
-  }
-  else{
-    div_footer.forEach((e)=>{
-      e.removeEventListener("touchstart", startPress); 
-      e.removeEventListener("touchend", endPress);
-    })
-  }
-
-  //Seleção
-  let isInicioOn = null;
+let isInicioOn = null;
   if (Date.now() - time_touch < 100) {
     //inicio
     if(e.currentTarget == inicio){
       i=0;
       isInicioOn = true;
-      div_footer.forEach(div => div.classList.remove("selected1"));
-      e.currentTarget.classList.add("selected1");
+      tracos.forEach(div => div.classList.remove("selected1"));
+      tracos[0].classList.add("selected1");
       //sair de pastlist no com o botão inicio
-      if(ispastListOn && isInicioOn){
+      if(isOnCart && isInicioOn){
         setTimeout(() => {
-          pastlistDiv.style.backgroundColor = "rgba(255, 255, 255, 0.252)";
+          divCart.style.isOnCartbackgroundColor = "rgba(255, 255, 255, 0.252)";
         }, 20);
         setTimeout(() => {
-          pastlistDiv.style.display= "none";
+          divCart.style.display= "none";
         }, 500);
-        ispastListOn = false;
+        isOnCart = false;
     }}
     //botão colar lista
-    if(e.currentTarget == colarLista){
+    if(e.currentTarget == buttoncart){
       i=1;
-      div_footer.forEach(div => div.classList.remove("selected1"));
-      e.currentTarget.classList.add("selected1");
+      tracos.forEach(div => div.classList.remove("selected1"));
+      tracos[1].classList.add("selected1");
 
-      ispastListOn = true
-      pastlistDiv.style.display = "block";
+      isOnCart = true
+      divCart.style.display = "block";
       document.body.style.overflowY = "hidden";
       setTimeout(() => {
-        pastlistDiv.style.backgroundColor = "white";
+        divCart.style.backgroundColor = "white";
       }, 20);
     }
     if(e.currentTarget == maisFooter){
-      div_footer.forEach(div => div.classList.remove("selected1"));
-      e.currentTarget.classList.add("selected1");
+      tracos.forEach(div => div.classList.remove("selected1"));
+      tracos[2].classList.add("selected1");
 
       document.body.style.overflowY = "hidden";
       menu.removeEventListener("click", voltar);
@@ -160,28 +108,26 @@ function endPress(e) {
         menu.addEventListener("click", voltar);
       }, 330);
     }
-  } //apenas tempo de toque curto
+  }
 }
 
 div_footer.forEach((e)=>{
-  e.addEventListener("mousedown",  startPress);
-  e.addEventListener("mouseup", endPress);
-  e.addEventListener("touchstart",  startPress);
-  e.addEventListener("touchend", endPress);
+  e.addEventListener("pointerdown",  startPress);
+  e.addEventListener("pointerup", endPress);
 })
 
 //botao voltar em colar lista
 function voltarColarLista(){
-  div_footer.forEach(div => div.classList.remove("selected1"));
-  div_footer[0].classList.add("selected1");
+  tracos.forEach(div => div.classList.remove("selected1"));
+  tracos[0].classList.add("selected1");
 
   buttonVoltar.style.display= "none";
   document.body.style.overflowY = "auto";
   setTimeout(() => {
-    pastlistDiv.style.backgroundColor= "rgba(255, 255, 255, 0)";
+    divCart.style.backgroundColor= "rgba(255, 255, 255, 0)";
   }, 20);
   setTimeout(() => {
-    pastlistDiv.style.display= "none";
+    divCart.style.display= "none";
     buttonVoltar.style.display= "flex";
   }, 420);
 }
@@ -199,10 +145,11 @@ function mostrarMais() {
     for_opcoes.style.transform= "translateX(0%)";
   }, 750);
 }
+//cart voltar mais voltar
 function voltar(){ //i global usado aqui
   document.body.style.overflowY = "auto";
-  div_footer.forEach(div => div.classList.remove("selected1"));
-  div_footer[i].classList.add("selected1");
+  tracos.forEach(div => div.classList.remove("selected1"));
+  tracos[i].classList.add("selected1");
   setTimeout(() => {
     for_opcoes.style.transform= "translateX(100%)";
   }, 10);
@@ -386,7 +333,6 @@ let anun_visible = 0;
 imgs_anun.style.transform = `translateX(${meio}px)`;
 
 //para paginação
-
 function desenharSpans(){
   const imgsContainer = document.querySelector("#imgs_anun");
   const paginationContainer = document.querySelector("#pagination");
@@ -443,12 +389,10 @@ let fim_promos = 0;
   }
   obterLimites3();
 
-//variaveis para anuncio
-let limi1 = { 
-  div: imgs_anun, arraste: meio, limite: fim_anun, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacaoRolagem: null, arrastando: false
-};
 //variaveis para secoes e produtos
 let limi = [
+  { div: imgs_anun, arraste: meio, limite: fim_anun, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacaoRolagem: null, arrastando: false
+  },
   { div: secoes, arraste: 0, limite: fim_sections, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacaoRolagem: null, arrastando: false },
   { div: promos, arraste: 0, limite: fim_promos, toc_ini: 0, toc_ini2: 0, time_touch: 0, velocidade: 0, animacaoRolagem: null, arrastando: false }
 ];
@@ -475,8 +419,9 @@ let tempoDecorrido = 0;
 let startTime = null; let speed = 0; let deltaY = null;
 const minSpeed = 0.7;
 const maxSpeed = 2.0;
-
+const limiar = 8;
 const larg_img = document.querySelector('#imgs_anun img').offsetWidth;
+let arrastando2 = false;
 
 function atualizarPaginacao() {
   const imagens = [...document.querySelectorAll("#imgs_anun img")];
@@ -498,162 +443,30 @@ function atualizarPaginacao() {
   indicesVisiveis.forEach((i) => {
     paginacao[i].classList.add("atual");
   });
-
 }
 
-// Início do arraste em anuncios
-const iniciarArraste1 = (e) => {
-  e.preventDefault();
-  const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
-  dragXglobal = false;
-  //pagina
-  initialY =  e.touches ? e.touches[0].clientY : e.clientY;
-  initialX =  e.touches ? e.touches[0].clientX : e.clientX;
-  speed = 0;
-  deltaY = 0;
-  startTime = Date.now();
-
-  //divs
-  limi1.toc_ini = posicaoX - limi1.arraste; //divs
-  limi1.time_touch = Date.now();
-  limi1.arrastando = true;
-  if (limi1.animacaoRolagem) {
-    cancelAnimationFrame(limi1.animacaoRolagem);
-    limi1.animacaoRolagem = null;
-  }
-};
-// Movimento do arraste em anuncios
-const aoMover1 = (e) => {
-  if(!limi1.arrastando) return;
-  const tempoAtual = Date.now();
-  tempoDecorrido = Math.max(1, tempoAtual - limi1.time_touch);
-
-  const posicaoX = e.touches ? (e.touches[0] ? e.touches[0].clientX : null) : e.clientX;
-  const currentY = e.touches ? (e.touches[0] ? e.touches[0].clientY : null) : e.clientY;
-
-  if (posicaoX === null || currentY === null) return;
-  diffX = Math.abs(posicaoX - initialX);
-  diffY = Math.abs(currentY - initialY);
-
-  dragXglobal = true;
-
-  //Ignore tiny drags
-  const limiar = 1;
-  if (diffX < limiar && diffY < limiar) return;
-  //Calc angle
-  if (firstDiffX === null && firstDiffY === null) {
-    firstDiffX = diffX;
-    firstDiffY = diffY;
-    firstAngle = Math.atan2(diffY, diffX) * (180 / Math.PI);
-    if (firstAngle === null) firstAngle = 0;
-  }
-
-  //Divs drag
-  if (firstAngle < 45) {
-    dragY= false;
-    if (tempoDecorrido > 0) {
-      limi1.velocidade = (posicaoX - limi1.toc_ini2) / tempoDecorrido; // px/ms
+//seleção de categorias
+const cats = Array.from(document.querySelectorAll('#for_sections > div'));
+cats.forEach(div => {
+  div.addEventListener("mouseup", (e) => {
+    if (arrastando2 == false && tempoDecorrido < 100) {
+      cats.forEach(div => div.classList.remove("catselected"));
+      e.currentTarget.classList.add("catselected");
     }
-    limi1.time_touch = tempoAtual;
-    limi1.toc_ini2 = posicaoX;
-    limi1.arraste = posicaoX - limi1.toc_ini;
-    aplicarLimites1();
-    imgs_anun.style.transform = `translateX(${limi1.arraste}px)`;
-
-    initialX = posicaoX;
-  }
-  //Page drag
-  if(firstAngle > 60 && window.innerWidth < 993){
-    deltaY = currentY - initialY;
-    if (tempoDecorrido > 0) {
-      speed = deltaY / tempoDecorrido;
-      speed = Math.sign(speed) * Math.max(minSpeed, Math.min(Math.abs(speed), maxSpeed));
+  });
+  div.addEventListener("touchend", (e) => {
+    if (arrastando2 == false && tempoDecorrido < 100) {
+      cats.forEach(div => div.classList.remove("catselected"));
+      e.currentTarget.classList.add("catselected");
     }
-    window.scrollBy(0, -deltaY);
-    initialY = currentY;
-    startTime = tempoAtual;
-    dragY = true;
-  }
-  else{dragY=null};
-};
+  });
+});
 
-// Finalizar arraste e iniciar desaceleração em anuncios
-const finalizarArraste1 = (e) => {
-  if(!dragY){
-   if (!limi1.arrastando) return;
-    limi1.arrastando = false;
-    const desacelerar = () => {
-      if (Math.abs(limi1.velocidade) > 0.01) {
-        limi1.velocidade *= 0.95;
-        limi1.arraste += limi1.velocidade * 16;
-        // Aplicar limites
-        aplicarLimites1();
-        imgs_anun.style.transform = `translateX(${limi1.arraste}px)`;
-
-        if (Math.abs(limi1.velocidade) < 0.6) {
-          atualizarPaginacao();
-        }
-
-        limi1.animacaoRolagem = requestAnimationFrame(desacelerar);
-      } else {
-        limi1.animacaoRolagem = null;
-        atualizarPaginacao();
-      }
-    };
-    desacelerar();
-  }
-
-  if (dragY) {
-    if (Math.abs(speed) < minSpeed) {
-      speed = minSpeed * Math.sign(speed); // Garante movimento mínimo
-    }
-
-    if (!Number.isFinite(speed)) speed = minSpeed * Math.sign(deltaY);
-    
-    startMomentumScroll();
-  }
-
-  initialY = null; initialX = null; 
-  firstAngle = null; firstDiffX = null; 
-  firstDiffY = null;
-  dragY=null;
-};
-
-function startMomentumScroll() {
-  const decay = 0.95;
-  const step = () => {
-    if (Math.abs(speed) > 0.1) {
-      speed *= decay;
-      window.scrollBy(0, -speed * 16);
-      requestAnimationFrame(step);
-    }
-    //removi o else daqui
-  };
-  requestAnimationFrame(step);
-}
-const aplicarLimites1 = (i) => {
-  if (limi1.arraste < limi1.limite) {
-    limi1.arraste = limi1.limite;
-    limi1.velocidade = 0;
-  }
-  if (limi1.arraste > 0) {
-    limi1.arraste = 0;
-    limi1.velocidade = 0;
-  }
-};
-
-// Adiciona event listeners 
-limi1.div.addEventListener('touchstart',  iniciarArraste1,{ passive: false });
-limi1.div.addEventListener('mousedown', iniciarArraste1,{ passive: false });
-limi1.div.addEventListener('touchmove', aoMover1,{ passive: false });
-limi1.div.addEventListener('mousemove', aoMover1,{ passive: false });
-limi1.div.addEventListener('touchend', finalizarArraste1);
-limi1.div.addEventListener('mouseup', finalizarArraste1);
-
-//Arraste para secoes e promocoes
+//Iniciar arraste
 const iniciarArraste = (e, i) => {
   e.preventDefault();
-
+  arrastando2 = false;
+  if (e.type == "mousedown" && e.button !== 0) return;
   dragXglobal = false;
   const posicaoX = e.touches ? e.touches[0].clientX : e.clientX;
   //pagina
@@ -687,9 +500,8 @@ const aoMover = (e, i) => {
   diffY = Math.abs(currentY - initialY);
 
   // Limiar para ignorar movimentos muito pequenos
-  const limiar = 1;
-  if (diffX < limiar && diffY < limiar) return;
-
+  if (diffX <= limiar && diffY <= limiar) return;
+  arrastando2 = true;
   if (firstDiffX === null && firstDiffY === null) {
     firstDiffX = diffX;
     firstDiffY = diffY;
@@ -724,6 +536,7 @@ const aoMover = (e, i) => {
   }
   else{dragY=null};
 };
+
 // Finalizar arraste e iniciar desaceleração
 const finalizarArraste = (e, i) => {
   if(!dragY){
@@ -736,9 +549,11 @@ const finalizarArraste = (e, i) => {
         // Aplicar limites corretamente
         aplicarLimites(i);
         limi[i].div.style.transform = `translateX(${limi[i].arraste}px)`;
+        if (Math.abs(limi[i].velocidade && e.currentTarget==imgs_anun) < 0.7) {atualizarPaginacao();}
         limi[i].animacaoRolagem = requestAnimationFrame(desacelerar);
       } else {
         limi[i].animacaoRolagem = null;
+        if (e.currentTarget==imgs_anun) {atualizarPaginacao();}
       }
     };
     desacelerar();
@@ -784,6 +599,7 @@ const aplicarLimites = (i) => {
   }
 };
 
+
 //Rolagem com touchPad
 let verificou = false;
 let isTouchPad = null;
@@ -826,6 +642,7 @@ const aoRolar = (e) => {
 imgs_anun.addEventListener('wheel', aoRolar);
 secoes.addEventListener('wheel', aoRolar);
 promos.addEventListener('wheel', aoRolar);
+
 
 };
 

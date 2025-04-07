@@ -173,7 +173,7 @@ menu{
     }
 
 /*Carrinho*/
-#carrinho{
+#div-cart{
     position: fixed;
     overflow-y: hidden;
     height:  calc(100vh - 60px);
@@ -323,7 +323,6 @@ div#userEnotif>div{
         padding: 11px;
     }     
 }
-
 
 main{
     margin: auto;
@@ -557,7 +556,6 @@ div#promos{
     display: flex;
     border: none;
     gap: 12px;
-    touch-action: pan-x;
 }
 .for_prod{
     height: 150px;
@@ -700,10 +698,10 @@ footer>div{
     height: 40px;
     width: 28.5%;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     gap: 3px;
 }
-#colarLista{
+#button-cart{
     width: 42%;
     padding-left: 8px;
 }
@@ -722,8 +720,8 @@ footer>div>p{
 }
 footer>div>div{
     width: 90%;
-    height: 4.5px;
-    border-radius: 2.3px;
+    height: 4px;
+    border-radius: 2px;
     background-color: white;
 }
 .selected1{
