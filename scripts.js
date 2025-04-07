@@ -65,6 +65,7 @@ let isInicioOn = null;
     //inicio
     if(e.currentTarget == inicio){
       i=0;
+
       isInicioOn = true;
       tracos.forEach(div => div.classList.remove("selected1"));
       tracos[0].classList.add("selected1");
@@ -86,7 +87,6 @@ let isInicioOn = null;
 
       isOnCart = true
       divCart.style.display = "block";
-      document.body.style.overflowY = "hidden";
       setTimeout(() => {
         divCart.style.backgroundColor = "white";
       }, 20);
@@ -95,7 +95,6 @@ let isInicioOn = null;
       tracos.forEach(div => div.classList.remove("selected1"));
       tracos[2].classList.add("selected1");
 
-      document.body.style.overflowY = "hidden";
       menu.removeEventListener("click", voltar);
       menu.style.display= "block";
       setTimeout(() => {
@@ -118,47 +117,45 @@ div_footer.forEach((e)=>{
 
 //botao voltar em colar lista
 function voltarColarLista(){
+  i=0;
   tracos.forEach(div => div.classList.remove("selected1"));
   tracos[0].classList.add("selected1");
 
   buttonVoltar.style.display= "none";
-  document.body.style.overflowY = "auto";
   setTimeout(() => {
     divCart.style.backgroundColor= "rgba(255, 255, 255, 0)";
   }, 20);
   setTimeout(() => {
     divCart.style.display= "none";
     buttonVoltar.style.display= "flex";
-  }, 420);
+  }, 320);
 }
 buttonVoltar.addEventListener("click", voltarColarLista);
 
 
 //Mais opções no desktop e voltar no menu atras de opcoes
 function mostrarMais() {
-  document.body.style.overflowY = "hidden";
   menu.style.display= "block";
   setTimeout(() => {
     menu.style.opacity= "100%";
-  }, 150);
+  }, 20);
   setTimeout(() => {
     for_opcoes.style.transform= "translateX(0%)";
-  }, 750);
+  },320);
 }
 //cart voltar mais voltar
 function voltar(){ //i global usado aqui
-  document.body.style.overflowY = "auto";
   tracos.forEach(div => div.classList.remove("selected1"));
   tracos[i].classList.add("selected1");
   setTimeout(() => {
     for_opcoes.style.transform= "translateX(100%)";
-  }, 10);
+  }, 20);
   setTimeout(() => {
     menu.style.opacity= "0%";
-  }, 600);
+  }, 320);
   setTimeout(() => {
     menu.style.display= "none";
-  }, 1200);
+  }, 320);
 }
 mais_opcoes.addEventListener("click", mostrarMais);
 menu.addEventListener("click", voltar);
