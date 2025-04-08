@@ -6,7 +6,7 @@ setTimeout(() => {
 }, 1200);
 
 //Adicionar fundo desfocado aos anuncios
-function adicionarBackgroundImagem() {
+function addBackground() {
   const divsFundoAnun = document.querySelectorAll('.fundo_anun');
 
   let styleContent = '';
@@ -37,7 +37,7 @@ function adicionarBackgroundImagem() {
     }
   }
 }
-adicionarBackgroundImagem();
+addBackground();
 
 //Seleção do footer
 let time_touch = 0;

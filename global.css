@@ -313,7 +313,7 @@ div#userEnotif>div{
     box-shadow: 0px 0px 4px rgb(110, 18, 18);
 }
 
-@media only screen and (min-width: 521px){
+@media screen and (min-width: 521px){
     #img_user{
         height: 45px;
         padding: 4px;
@@ -402,7 +402,6 @@ div#imgs_anun{
 }
 .fundo_anun{
     position: relative;
-    filter: blur(1.5);
     height: 170px;
     width: 340px;
 }
@@ -686,7 +685,7 @@ footer{
     position: sticky;
     bottom: 0;
     z-index: 4;
-    box-shadow: 0px -2px 6px #00000032;
+    box-shadow: 0px -2px 5px #00000032;
     box-sizing: border-box;
     padding: 0px 15px;
     border-bottom: 1px solid rgb(193, 193, 193);

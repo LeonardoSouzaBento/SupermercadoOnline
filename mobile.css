@@ -7,7 +7,6 @@
     }
     div#imgs_anun>div>img{
         min-width: 290px;
-        scroll-snap-align: center;
     }
     
 /*Seções*/
