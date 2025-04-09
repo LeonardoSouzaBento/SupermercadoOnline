@@ -7,6 +7,7 @@ body{
     height: 100vh;
     background-color: #eeeeee;
 }
+
 ::-webkit-scrollbar{
     visibility: hidden;
     height: 0px;
@@ -14,30 +15,31 @@ body{
 }
 
 #prod_section{
-    background-color: white;
-    padding-bottom: 20px;
-    border-radius: 0px 0px 30px 30px;
-    box-shadow: 0px 1px 3px rgb(182, 182, 182);
+    width: calc(100% - 30px);
+    max-width: 430px;
+    margin-left: 15px;
     margin-bottom: 18px;
+    margin-top: 10px;
+    background-color: white;
+    padding-bottom: 15px;
+    border-radius: 8px 8px 20px 20px;
+    box-shadow: 0px 1px 3px rgb(182, 182, 182);
 }
 
 #div_pai_prod{
-    padding: 12px;
-    padding-bottom: 0px;
+    padding: 0px 12px;
     width: 100%;
     box-sizing: border-box;
-    box-shadow: 0px 1.5px 0px #dfdfdf;
+    box-shadow: 0px 1px 0px #d2d2d2;
 }
 #div_prod{
     position: relative;
     width: 100%;
-    height: 230px;
     margin: auto;
-    border-radius: 7px;
 }
 #desconto{
     position: absolute;
-    top: 0;
+    top: 8px;
     left: 0;
     display: flex;
     justify-content: center;
@@ -55,29 +57,37 @@ body{
     height: 25px;
     width: 75px;
     position: absolute;
-    bottom: 0px;
+    bottom: 9px;
     left: 0px;
-    background-color: rgb(164, 164, 164);
+    background-color: rgb(159, 159, 159);
     color: white;
     border-radius: 13px;
 }
-#div_prod>img{
-    display: block;
+#div-main-img{
     width: 100%;
     max-width: 500px;
     margin: auto;
-    height: 205px;
-    object-fit: cover;
-    border-radius: 7px;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 12px;
+}
+#div_prod img{
+    display: block;
+    width: 100%;
+    max-width: 380px;
+    max-height: 300px;
+    margin: auto;
+    object-fit: contain;
+    object-position: center;
 }
 #name_prod{
     width: 100%;
-    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 1.5px 0px #dfdfdf;
+    box-shadow: 0px 1px 0px #d0d0d0;
     margin-bottom: 14px;
+    padding: 12px 0px;
 }
 #name_prod>p{
     width: calc(100% - 30px);
@@ -88,79 +98,111 @@ body{
     letter-spacing: 0.9px;
     font-weight: 400;
 }
+
 #div_variacoes{
     width: calc(100% - 30px);
     margin: auto;
     position: relative;
 }
-#vari_amostra, #vari_retorno{
+#vari_amostra{
     width: 100%;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    box-shadow: 0px 1.5px 0px #dfdfdf;
+    flex-flow: column;
+    box-shadow: 0px 1px 0px #c3c3c3;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
-#vari_retorno{
-    justify-content: space-evenly;
-    box-shadow: 0px -1px 0px rgb(210, 210, 210);
-}
-#vari_amostra>p, #vari_retorno>p{
+#p-head{
     width: 100%;
     text-align: center;
     background-color: #dfdfdf;
-    padding: 5px 0px;
+    padding: 10px 0px;
     margin-bottom: 10px;
-    border-radius: 3px;
     text-transform: none;
 }
-#vari_retorno>p{
-   border-radius: 4px 0px 0px 0px;
+#variacoes{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
-#vari_amostra>div, #vari_retorno>div{
-    height: 20px;
-    padding-bottom: 18px;
-    min-width: 48.7%;
+#variacoes>div{
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 47.5%;
+    flex: 1 0 auto;
+    background-color: #dfdfdf;
 }
-#vari_retorno>div{
-    min-width: 46%;
-}
-#vari_amostra>div>p, #vari_retorno>div>p{
-    background-color: #dfdfdf ;
-    padding: 5px 10px;
+#variacoes>div>p{
+    padding: 0px 10px;
     border-radius: 3px;
     letter-spacing: 1.3px;
     font-size: 0.85em;
+    text-transform: uppercase;
 }
-#vari_retorno>div>p{
-    border-radius: 0px;
-    border: 2px solid rgb(210, 210, 210);
+
+#vari_retorno{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    box-shadow: 0px 2px 4px rgb(214, 214, 214), 0px -2px 4px rgb(214, 214, 214);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #c6c6c6;
+    display: none;
 }
+
+#head-retorno{
+    height: 40px;
+    min-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(228, 228, 228);
+    margin-bottom: 12px;
+}
+#head-retorno  span{
+    font-weight: 500;
+    font-size: 1.45em;
+}
+#head-retorno>p{
+    width: calc(100% - 40px);
+    text-align: center;
+}
+#head-retorno>div{
+    height: 100%;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.divar{
+    display: flex;
+    align-items: center;
+    height: 37px;
+    min-width: 46%;
+    max-width: 97%;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    background-color: rgb(232, 232, 232);
+    box-sizing: border-box;
+    padding: 0px 10px;
+}
+.divar>p{
+    width: 100%;
+    text-align: center;
+}
+
+
 #pver_mais{
     color: rgb(114, 114, 114);
     font-weight: bold;
 }
 
-#vari_retorno{
-    width: 100%;
-    border: 2px solid #dfdfdf;
-    position: absolute;
-    top: 0;
-    z-index: 1;
-    background-color: white;
-    border-radius: 6px;
-    display: none;
-}
-#vari_retorno>span{
-   position: absolute;
-   top: 0px;
-   right: 0px;
-   background-color: black;
-   color: white;
-   padding: 2px;
-   border-radius: 6px;
-}
 .var_selected{
     background-color: #CECEE1 !important;
     border: 1px solid #9191be !important;
@@ -169,6 +211,7 @@ body{
 #quantEsubtotal{
     display: flex;
     width: calc(100% - 30px);
+    height: 40px;
     margin: auto;
     margin-bottom: 18px;
     justify-content: space-between;
@@ -179,7 +222,7 @@ body{
 
 .for_quant{
     width: 40%;
-    height: 40px;
+    height: 100%;
     background-color: #e3e3e3;
     border-radius: 18.5px;
     display: flex;
@@ -192,6 +235,7 @@ body{
     justify-content: center;
     align-items: center;
     width: 40px;
+    height: 100%;
     font-size: 1.6em;
 }
 .for_quant>p{
@@ -242,7 +286,7 @@ body{
     width: 57.3%;
     align-items: center;
     background-color: #dfdfdf;
-    border-radius: 6px;
+    border-radius: 5px;
     justify-content: center;
     gap: 10px;
 }
@@ -278,17 +322,16 @@ body{
     padding-bottom: 10px;
 }
 #pai_similares{
-    width: calc(100% - 15px);
-    margin-left: 15px;
+    width: calc(100% - 30px);
+    margin: auto;
 }
 #head_similares{
     height: 40px;
-    width: calc(100% - 15px);
+    min-width: 100%;
     display: flex;
     justify-content: space-between;
     margin-bottom: 14px;
     background-color: rgb(226, 226, 226);
-    border-radius: 5px;
 }
 #head_similares>p{
   padding: 10px 0px;
@@ -300,36 +343,34 @@ body{
     align-items: center;
     padding: 10px 15px;
     background-color: rgb(203, 203, 203);
-    border-radius: 5px;
 }
 #div_vermais>p{
     font-size: 0.95em;
 }
 
 .lista_similares{
-    padding-bottom: 11px;
+    padding-bottom: 12px;
 }
 .pai_prod{
     display: flex;
-    height: 135px;
-    width: 290px;
+    align-items: center;
+    min-width: 290px;
+    max-width: 350px;
+    height: 150px;
     border: 1px solid rgb(204, 204, 204);
-    justify-content: space-between;
-    border-radius: 5px;
+    border-radius: 6px;
     background-color: white;
     box-shadow: 0px 0px 2px rgb(203, 203, 203);
 }
 .oferta{
     width: 50%;
     height: 100%;
-    border-radius: 4px;
-    margin-bottom: 10px;
     position: relative;
 }
     .desconto{
         position: absolute;
-        top: 3px;
-        left: 10px;
+        top: 7px;
+        left: 9px;
         font-size: 0.84em;
         border-radius: 9px;
         background-color: #de4f53;
@@ -341,18 +382,20 @@ body{
     .div_img{
         width: 100%;
         height: 100%;
+        box-sizing: border-box;
         overflow: hidden;
+        padding: 5px;
     }
     .div_img>img{
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         border-radius: 5px;
     }
     .peso{
         position: absolute;
-        bottom: 5px;
-        left: 10px;
+        bottom: 7px;
+        left: 9px;
         font-family: "Poppins",Arial,sans-serif;
         background-color: rgb(108, 108, 108);
         padding: 1px 6px;
@@ -367,13 +410,12 @@ body{
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-evenly;
-    padding-right: 8px;
-    padding-left: 8px;
+    padding: 8px;
 } 
     .nome{
         font-family: "Poppins",Arial,sans-serif;
         font-size: 0.85em;
-        letter-spacing: 1px;
+     
     }
     .preco{
         text-align: center;

@@ -1,0 +1,25 @@
+#prod_section{
+    width: calc(100% - 20px);
+    margin-left: 10px;
+}
+#desconto{
+    width: 80px;
+    font-size: 0.95em;
+}
+#peso{
+    height: 25px;
+    width: 60px;
+    font-size: 0.95em;
+}
+#name_prod>p{
+    line-height: 20px;
+    font-size: 0.95em;
+}
+#div_variacoes{
+    width: calc(100% - 16px);
+}
+.nome{
+    font-size: 0.88em;
+}
+
+

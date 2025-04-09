@@ -4,8 +4,15 @@
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Produtotal</title>
+
     <link rel="stylesheet" href="globalprod.css">
-    <link rel="stylesheet" href="ajustesprod.css">
+    <link rel="stylesheet" href="smallmobile.css" media="screen and (max-width: 374px)">
+    <!-- <link rel="stylesheet" href="mobile.css" media="screen and (min-width: 375px) and (max-width: 576px)">
+    <link rel="stylesheet" href="mobile2.css" media="screen and (min-width: 577px) and (max-width: 768px)">
+    <link rel="stylesheet" href="tablet.css" media="screen and (min-width: 769px) and (max-width: 992px)">
+    <link rel="stylesheet" href="desktop1.css" media="screen and (min-width: 993px) and (max-width: 1200px)">
+    <link rel="stylesheet" href="desktop2.css" media="screen and (min-width: 1201px)"> -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,500;1,14..32,500&display=swap" rel="stylesheet">
@@ -18,7 +25,7 @@
         <div id="div_pai_prod">
             <div id="div_prod">
                 <div id="desconto"><p>25% off</p></div>
-                <img src="Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg" alt="">
+                <div id="div-main-img"><img src="/Imagens/biscoitoExemplo.jpg" alt=""></div>
                 <div id="peso">140g</div>
             </div>
         </div>
@@ -28,22 +35,30 @@
         <div id="div_paivariacoes">
             <div id="div_variacoes">
                 <div id="vari_amostra">
-                    <p>Selecione a variação</p>
-                    <div><p class="var_selected">Amarelo</p></div>
-                    <div><p>Verde caqui</p></div>
-                    <div><p>laranja</p></div>
-                    <div><p id="pver_mais">Ver mais (x)</p></div>
+                    <p id="p-head">Selecione a variação</p>
+                    <div id="variacoes">
+                        <div class="var_selected">
+                            <p >Amarelo</p>
+                        </div>
+                        <div><p>Verde caqui</p></div>
+                        <div><p>laranja</p></div>
+                        <div><p id="pver_mais">Ver mais (x)</p></div>
+                    </div>
                 </div>
 
                 <div id="vari_retorno">
-                    <p>Selecione a variação</p>
-                    <span class="material-symbols-outlined">
-                        close
-                    </span>
-                    <div><p class="var_selected">Amarelo</p></div>
-                    <div><p>Verde</p></div>
-                    <div><p>laranja</p></div>
-                    <div><p>Rosa</p></div>
+                    <div id="head-retorno">
+                        <p>Selecione a variação</p>
+                        <div>
+                            <span class="material-symbols-outlined">
+                                close
+                            </span>
+                        </div>
+                    </div>
+                    <div class="divar var_selected"><p >Amarelo com listras pretas</p></div>
+                    <div class="divar"><p>Verde</p></div>
+                    <div class="divar"><p>laranja</p></div>
+                    <div class="divar"><p>Rosa</p></div>
                 </div>
             </div>
         </div>
@@ -107,7 +122,7 @@
                     <div class="oferta">
                         <p class="desconto">-28%</p>
                         <div class="div_img">
-                            <img src="Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg" alt="">
+                            <img src="https://i.pinimg.com/736x/30/4e/a4/304ea4c6fbcbeca5a6e2ae8420697c7c.jpg" alt="">
                         </div>
                         <p class="peso">120g</p>
                     </div>
@@ -123,7 +138,7 @@
                     <div class="oferta">
                         <p class="desconto">-28%</p>
                         <div class="div_img">
-                            <img src="Imagens/33a4bcbab75e9ce724ca78e2f344944f.jpg" alt="">
+                            <img src="https://i.pinimg.com/736x/c5/7e/a0/c57ea098ba031b807e46e2493d86c32b.jpg" alt="">
                         </div>
                         <p class="peso">120g</p>
                     </div>
@@ -136,7 +151,7 @@
             </div>
         </div>
     </div>
-
+    
     <script src="prodscripts.js"></script>
 </body>
 </html>
