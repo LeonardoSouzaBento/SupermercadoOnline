@@ -1,5 +1,4 @@
 #prod_section{
-    width: calc(100% - 20px);
     margin-left: 10px;
 }
 #desconto{
@@ -14,9 +13,6 @@
 #name_prod>p{
     line-height: 20px;
     font-size: 0.95em;
-}
-#div_variacoes{
-    width: calc(100% - 16px);
 }
 .nome{
     font-size: 0.88em;
