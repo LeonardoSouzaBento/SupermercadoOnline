@@ -16,6 +16,8 @@ body{
     overflow-x: hidden;
     height: 100%;
     background-color: rgb(228, 228, 228);
+    max-width: 1390px;
+    margin: auto;
 }
 ::-webkit-scrollbar{
     height: 0;
@@ -220,7 +222,7 @@ menu{
 /*header*/
 header{
     background-color: #d2482d;
-    max-width: 1390px;
+    width: 100%;
     padding-bottom: 8px;
     padding-top: 17px;
     box-sizing: border-box;
@@ -325,7 +327,6 @@ div#userEnotif>div{
 }
 
 main{
-    margin: auto;
     padding-top: 23px;
     background-color: rgb(228, 228, 228);
 }
@@ -337,7 +338,6 @@ main{
     position: sticky;
     top: 0;
     z-index: 3;
-    max-width: 1380px;
 }
 
 form#for_search{

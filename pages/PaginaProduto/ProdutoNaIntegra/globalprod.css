@@ -43,11 +43,12 @@ body{
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: red;
+        background-color: #CDD4AE;
         width: 100px;
         height: 27px;
         border-radius: 7px 0px 15px 0px;
-        color: white;
+        color: #13450A;
+        font-family: "Inter", Arial, Helvetica, sans-serif;
     }
     #peso{
         display: flex;
@@ -347,8 +348,7 @@ body{
     #head_similares>p{
         width: 100%;
         text-indent: 10px;
-        font-family: "Roboto", sans-serif;
-        font-weight: 400;
+        font-family: "Roboto Condensed", sans-serif;
     }
 
     .lista_similares{
@@ -378,7 +378,7 @@ body{
         .desconto{
             align-self: flex-start;
             border-radius: 9px;
-            background-color: #de4f53;
+            background-color: #0e7115;
             padding: 0px 7px;
             color: white;
             z-index: 1;

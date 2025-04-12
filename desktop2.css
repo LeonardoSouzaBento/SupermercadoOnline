@@ -1,6 +1,10 @@
 header{
     padding-top: 20px;
 }
+#div_search{
+    max-width: 1390px;
+    margin: auto;
+}
 div, p{
     cursor: default;
 }
