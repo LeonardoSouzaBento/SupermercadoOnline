@@ -3,13 +3,14 @@
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Produtotal</title>
+    <title>Produto na íntegra</title>
 
+    <!-- <link rel="icon" href="/favicon.ico" type="image/x-icon"> -->
     <link rel="stylesheet" href="globalprod.css">
     <link rel="stylesheet" href="smallmobile.css" media="screen and (min-width: 320px) and (max-width: 374px)">
     <link rel="stylesheet" href="mobile.css" media="screen and (min-width: 375px) and (max-width: 576px)">
-    <!-- <link rel="stylesheet" href="mobile2.css" media="screen and (min-width: 577px) and (max-width: 768px)">
-    <link rel="stylesheet" href="tablet.css" media="screen and (min-width: 769px) and (max-width: 992px)">
+    <link rel="stylesheet" href="mobile2.css" media="screen and (min-width: 577px) and (max-width: 768px)">
+    <!-- <link rel="stylesheet" href="tablet.css" media="screen and (min-width: 769px) and (max-width: 992px)">
     <link rel="stylesheet" href="desktop1.css" media="screen and (min-width: 993px) and (max-width: 1200px)">
     <link rel="stylesheet" href="desktop2.css" media="screen and (min-width: 1201px)"> -->
 
@@ -26,129 +27,120 @@
 </head>
 
 <body>
-    <div id="prod_section">
-        <div id="div_pai_prod">
-            <div id="div_prod">
-                <div id="desconto"><p>25% off</p></div>
-                <div id="div-main-img"><img src="/Imagens/biscoitoExemplo.jpg" alt=""></div>
-                <div id="peso">140g</div>
-            </div>
-        </div>
-        <div id="name_prod">
-            <p>BISCOITO RECHEADO SABOR CHOCOLATE AO LEITE COM BAUNILHA</p>
-        </div>
-        <div id="div_paivariacoes">
-            <div id="div_variacoes">
-                <div id="vari_amostra">
-                    <p id="p-head">Selecione a variação</p>
-                    <div id="variacoes">
-                        <div class="var_selected">
-                            <p >Amarelo</p>
-                        </div>
-                        <div><p>Verde caqui</p></div>
-                        <div><p>laranja</p></div>
-                        <div><p id="pver_mais">Ver mais (x)</p></div>
-                    </div>
-                </div>
 
-                <div id="vari_retorno">
-                    <div id="head-retorno">
-                        <p>Selecione a variação</p>
-                        <div>
-                            <span class="material-symbols-outlined">
-                                close
-                            </span>
-                        </div>
-                    </div>
-                    <div class="divar var_selected"><p >Amarelo com listras pretas</p></div>
-                    <div class="divar"><p>Verde</p></div>
-                    <div class="divar"><p>laranja</p></div>
-                    <div class="divar"><p>Rosa</p></div>
+    <main>
+        <div id="prod_section">
+            <div id="div_pai_prod">
+                <div id="div_prod">
+                    <div id="desconto"><p>25% off</p></div>
+                    <div id="div-main-img"><img src="/Imagens/biscoitoExemplo.jpg" alt=""></div>
+                    <div id="peso">140g</div>
                 </div>
             </div>
-        </div>
-        <div id="quantEsubtotal">
-            <!--Componente react-->
-            <div class="for_quant">
-                <div class="for_menos">
-                    <p>-</p>
+            <div id="name_prod">
+                <p>Biscoito recheado nestlê passatempo sabor chocolate</p>
+            </div>
+            <div id="div_paivariacoes">
+                <div id="div_variacoes">
+                    <div id="vari_amostra">
+                        <p id="p-head">Selecione a variação</p>
+                        <div id="variacoes">
+                            <div class="var_selected">
+                                <p >Chocolate</p>
+                            </div>
+                            <div><p>Morango</p></div>
+                            <div><p>Coco</p></div>
+                            <div><p id="pver_mais">Ver mais (x)</p></div>
+                        </div>
+                    </div>
+                    <div id="vari_retorno">
+                        <div id="head-retorno">
+                            <p>Selecione a variação</p>
+                            <div>
+                                <span class="material-symbols-outlined">
+                                    close
+                                </span>
+                            </div>
+                        </div>
+                        <div class="divar var_selected"><p >Amarelo com listras pretas</p></div>
+                        <div class="divar"><p>Verde</p></div>
+                        <div class="divar"><p>laranja</p></div>
+                        <div class="divar"><p>Rosa</p></div>
+                    </div>
                 </div>
-                <p>0</p>
-                <div class="mais">
+            </div>
+            <div id="quantEsubtotal">
+                <!--Componente react-->
+                <div class="for_quant">
+                    <div class="for_menos">
+                        <p>-</p>
+                    </div>
+                    <p>0</p>
+                    <div class="mais">
+                        <span class="material-symbols-outlined">
+                            add
+                        </span>
+                    </div>
+                </div>
+                <div id="div_sub">
+                    <p id="p_sub">Subtotal:</p><p id="value">0,00</p>
+                </div>
+            </div>
+            <!--escondida-->
+            <div id="div_info">
+                <div id="info_head">
+                    <p>Informações detalhadas</p>
                     <span class="material-symbols-outlined">
-                        add
+                        stat_minus_1
                     </span>
                 </div>
-            </div>
-            <div id="div_sub">
-                <p id="p_sub">Subtotal:</p><p id="value">0,00</p>
-            </div>
-        </div>
-        <!--escondida-->
-        <div id="selec_quant">
-            <p>Selecione a quantidade:</p>
-            <div class="mais_quant">
-                <div>
-                    <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p>
-                    <p>7</p><p>8</p><p>9</p>
-                    <p>10</p><p>11</p><p>12</p>
-                    <p>13</p><p>14</p><p>15</p>
+                <div id="div_info_desc">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sapiente esse quas id dolore quidem itaque quia commodi ad quis illum numquam corporis, incidunt facere quasi odit dolores voluptates eius.</p>
                 </div>
             </div>
         </div>
-        <!--escondida-->
-        <div id="div_info">
-            <div id="info_head">
-                <p>Informações detalhadas</p>
-                <span class="material-symbols-outlined">
-                    stat_minus_1
-                </span>
+        <div id="similares_section">
+            <div id="head_similares">
+                <p>Produtos similares:</p>
             </div>
-            <div id="div_info_desc">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sapiente esse quas id dolore quidem itaque quia commodi ad quis illum numquam corporis, incidunt facere quasi odit dolores voluptates eius.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="similares_section">
-        <div id="head_similares">
-            <p>Produtos similares:</p>
-        </div>
-        <div id="pai_similares">
-            <div class="lista_similares">
-                <div class="pai_prod">
-                    <div class="oferta">
-                        <p class="desconto">-28%</p>
-                        <div class="div_img">
-                            <img src="https://i.pinimg.com/736x/30/4e/a4/304ea4c6fbcbeca5a6e2ae8420697c7c.jpg" alt="">
+            <div id="pai_similares">
+                <div class="sombra"></div>
+                <div class="lista_similares">
+                    <div class="pai_prod">
+                        <div class="oferta">
+                            <p class="desconto">-28%</p>
+                            <div class="div_img">
+                                <img src="https://i.pinimg.com/736x/30/4e/a4/304ea4c6fbcbeca5a6e2ae8420697c7c.jpg" alt="">
+                            </div>
+                            <p class="peso">120g</p>
                         </div>
-                        <p class="peso">120g</p>
-                    </div>
         
-                    <div class="divDescOferta">
-                        <p class="nome">BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA</p>
-                        <p class="preco">2,99</p>
+                        <div class="divDescOferta">
+                            <p class="nome">Biscoito marilan tortinha sabor chocolate</p>
+                            <p class="preco">2,99</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="pai_prod">
-                    <div class="oferta">
-                        <p class="desconto">-28%</p>
-                        <div class="div_img">
-                            <img src="https://i.pinimg.com/736x/c5/7e/a0/c57ea098ba031b807e46e2493d86c32b.jpg" alt="">
+                <div class="lista_similares" id="lista2">
+                    <div class="pai_prod">
+                        <div class="oferta">
+                            <p class="desconto">-28%</p>
+                            <div class="div_img">
+                                <img src="https://i.pinimg.com/736x/c5/7e/a0/c57ea098ba031b807e46e2493d86c32b.jpg" alt="">
+                            </div>
+                            <p class="peso">120g</p>
                         </div>
-                        <p class="peso">120g</p>
-                    </div>
         
-                    <div class="divDescOferta">
-                        <p class="nome">BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA</p>
-                        <p class="preco">2,99</p>
+                        <div class="divDescOferta">
+                            <p class="nome">BISCOITO RECHEADO BONO SABOR CHOCOLATE COM BAUNILHA</p>
+                            <p class="preco">2,99</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
+    </main>
+
     <script src="prodscripts.js"></script>
 </body>
 </html>

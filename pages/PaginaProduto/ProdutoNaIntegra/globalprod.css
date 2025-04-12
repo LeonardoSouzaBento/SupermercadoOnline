@@ -14,13 +14,13 @@ body{
 }
 
 #prod_section{
-    width: calc(100% - 30px);
+    width: calc(100% - 20px);
     max-width: 430px;
-    margin-left: 15px;
+    margin: auto; 
     margin-bottom: 18px;
     margin-top: 10px;
     background-color: white;
-    padding-bottom: 15px;
+    padding-bottom: 12px;
     border-radius: 8px 8px 20px 20px;
     box-shadow: 0px 1px 3px rgb(182, 182, 182);
 }
@@ -58,8 +58,8 @@ body{
         position: absolute;
         bottom: 9px;
         left: 0px;
-        background-color: rgb(159, 159, 159);
-        color: white;
+        background-color: rgb(214, 214, 214);
+        color: rgb(0, 0, 0);
         border-radius: 13px;
     }
     #div-main-img{
@@ -95,6 +95,7 @@ body{
         font-family: "Inter", sans-serif;
         letter-spacing: 0.9px;
         font-weight: 400;
+        text-transform: uppercase;
     }
 
     #div_variacoes{
@@ -291,17 +292,20 @@ body{
         color: rgb(80, 80, 80);
     }
     #div_info{
-        width: calc(100% - 30px);
+        width: calc(100% - 34px);
         margin: auto;
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
+        padding-bottom: 20px;
+        padding-top: 20px;
         display: none;
     }
     #info_head{
+        width: 100%;
         display: flex;
         margin: auto;
-        align-items: center;
+        justify-content: space-between;
         gap: 8px;
         height: 40px;
     }
@@ -309,23 +313,24 @@ body{
         font-weight: bold;
         color: rgb(95, 95, 95);
     }
-    #div_info_desc>p{
-        width: 90%;
-        margin: auto;
-    }
 
+/*Seção de similares*/
 #similares_section{
     padding-bottom: 10px;
-    width: calc(100% - 30px);
+    width: calc(100% - 20px);
     max-width: 430px;
     margin: auto;
     margin-bottom: 20px;
     padding: 10px;
     padding-top: 5px;
+    padding-bottom: 0px;
     box-sizing: border-box;
-    border-radius: 8px;
-    box-shadow: 0px 0px 4px rgb(162, 162, 162);
+    border-radius: 7px;
+    box-shadow: 0px 0px 4px rgb(171, 171, 171);
     border: 1px solid rgb(187, 187, 187);
+}
+.sombra{
+    display: none;
 }
     #pai_similares{
         width: 100%;
@@ -335,29 +340,26 @@ body{
     #head_similares{
         height: 50px;
         width: 100%;
-        margin-bottom: 14px;
         display: flex;
         align-items: center;
     }
 
     #head_similares>p{
-    width: 100%;
-    text-indent: 10px;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
+        width: 100%;
+        text-indent: 10px;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
     }
 
     .lista_similares{
+        display: flex;
         padding-bottom: 12px;
         display: flex;
         gap: 10px; 
     }
     .pai_prod{
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 47%;
-        height: 300px;
+        width: 100%;
         border: 1px solid rgb(204, 204, 204);
         border-radius: 6px;
         background-color: white;
@@ -365,20 +367,25 @@ body{
         flex: 1 1 auto;
     }
     .oferta{
-        width: 100%;
-        height: 50%;
+        display: flex;
+        justify-content: center;
+        width: 50%;
+        height: 100%;
+        padding: 4px;
+        box-sizing: border-box;
         position: relative;
     }
         .desconto{
-            position: absolute;
-            top: 7px;
-            left: 9px;
+            align-self: flex-start;
             border-radius: 9px;
             background-color: #de4f53;
             padding: 0px 7px;
             color: white;
             z-index: 1;
             font-family: "Poppins",Arial,sans-serif;
+            position: absolute;
+            top: 5px;
+            left: 5px;
         }
         .div_img{
             width: 100%;
@@ -388,6 +395,8 @@ body{
             padding: 5px;
         }
         .div_img>img{
+            display: block;
+            margin: auto;
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -395,25 +404,27 @@ body{
         }
         .peso{
             position: absolute;
-            bottom: 7px;
-            left: 9px;
+            bottom: 5px;
+            left: 5px;
+            align-self: flex-start;
             font-family: "Poppins",Arial,sans-serif;
-            background-color: rgb(108, 108, 108);
-            padding: 1px 6px;
-            color: white;
+            background-color: #D6D6D6;
+            padding: 1px 7px;
             border-radius: 12px;
         }
         
     .divDescOferta{
-        width: 100%;
-        height: 50%;
+        width: 50%;
+        height: 100%;
         display: flex;
         flex-flow: column nowrap;
-        justify-content: space-evenly;
-        padding: 8px;
+        justify-content: space-around;
+        padding: 10px 8px;
+        box-sizing: border-box;
     } 
         .nome{
-            font-family: "Poppins",Arial,sans-serif;
+            text-transform: uppercase;
+            font-family: "Inter",Arial, Helvetica, sans-serif;
         }
         .preco{
             text-align: center;
