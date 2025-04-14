@@ -1,3 +1,7 @@
+.pai_prod{
+    max-height: 163px;
+    max-width: 355px;
+}
 #prod_section{
     width: calc(100% - 28px);
 }
@@ -20,32 +24,36 @@
     #p-head{
         font-size: 1.1em;
     }
+    #main-preco>p{
+        font-size: 1.15em;
+    }
     #variacoes>div>p{
         font-size: 0.92em;
     }
     #p_sub{
         font-size: 1.05em;
     }
-#similares_section{
-    width: calc(100% - 28px);
-}
-
-.nome{
-    font-size: 1em;
-    letter-spacing: 0.8px;
-    line-height: 19px;
-}
 
 /*Seção de similares*/
 #similares_section{
     width: calc(100% - 28px);
+    max-height: 540px;
+    padding-top: 24px;
+    margin-top: -24px;
 }
-
+.sombra2{
+    height: 20px;
+    width: 100%;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.199), rgba(255, 255, 255, 0));
+}
+#head_similares{
+    height: 60px;
+    padding-bottom: 5px;
+}
 #head_similares>p{
-    font-size: 1.2em;
+    font-size: 1.3em;
     letter-spacing: 0.74px;
 }
-
 .desconto{
     font-size: 0.89em;
     letter-spacing: 0.8px;
@@ -54,6 +62,16 @@
     font-size: 0.89em;
     letter-spacing: 0.8px;
 }
-.preco{
-    font-size: 1.25em;
+
+.divDescOferta{
+    min-height: 100%;
+    
 }
+    .nome{
+        font-size: 0.9em;
+        letter-spacing: 0.8px;
+        line-height: 21px;
+    }
+    .preco{
+        font-size: 1.32em;
+    }

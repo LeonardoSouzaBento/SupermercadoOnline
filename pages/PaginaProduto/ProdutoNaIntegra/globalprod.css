@@ -16,13 +16,16 @@ body{
 #prod_section{
     width: calc(100% - 20px);
     max-width: 430px;
+    max-height: max-content;
     margin: auto; 
-    margin-bottom: 18px;
     margin-top: 10px;
     background-color: white;
     padding-bottom: 12px;
     border-radius: 8px 8px 20px 20px;
-    box-shadow: 0px 1px 3px rgb(182, 182, 182);
+    border: 1px solid rgb(185, 185, 185);
+    box-shadow: 0px 0px 4px rgb(161, 161, 161);
+    position: relative;
+    z-index: 2;
 }
 
     #div_pai_prod{
@@ -99,6 +102,17 @@ body{
         text-transform: uppercase;
     }
 
+    #main-preco{
+        height: 36px;
+        border-bottom: 1px solid #cacaca;
+        margin-bottom: 12px;
+    }
+    #main-preco p{
+        width: 100%;
+        text-align: center;
+        font-family: "Inter";
+        font-weight: 500;
+    }
     #div_variacoes{
         width: calc(100% - 30px);
         margin: auto;
@@ -317,21 +331,29 @@ body{
 
 /*Seção de similares*/
 #similares_section{
-    padding-bottom: 10px;
     width: calc(100% - 20px);
     max-width: 430px;
     margin: auto;
     margin-bottom: 20px;
     padding: 10px;
     padding-top: 5px;
-    padding-bottom: 0px;
+    padding-bottom: 20px;
     box-sizing: border-box;
     border-radius: 7px;
-    box-shadow: 0px 0px 4px rgb(171, 171, 171);
-    border: 1px solid rgb(187, 187, 187);
+    border: 1px solid rgb(165, 165, 165);
+    box-shadow: 0px 0px 4px rgb(161, 161, 161);
+    overflow-y: hidden;
+    position: relative;
 }
 .sombra{
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.sombra2{
+    position: absolute;
+    bottom:0;
+    left: 0;
 }
     #pai_similares{
         width: 100%;
@@ -352,10 +374,12 @@ body{
     }
 
     .lista_similares{
+        width: 100%;
         display: flex;
+        flex-direction: column;
+        align-items: center;
         padding-bottom: 12px;
-        display: flex;
-        gap: 10px; 
+        gap: 12px; 
     }
     .pai_prod{
         display: flex;
@@ -370,7 +394,7 @@ body{
         display: flex;
         justify-content: center;
         width: 50%;
-        height: 100%;
+        max-height: 100%;
         padding: 4px;
         box-sizing: border-box;
         position: relative;
@@ -401,6 +425,7 @@ body{
             height: 100%;
             object-fit: contain;
             border-radius: 5px;
+            box-sizing: border-box;
         }
         .peso{
             position: absolute;
@@ -419,8 +444,10 @@ body{
         display: flex;
         flex-flow: column nowrap;
         justify-content: space-around;
-        padding: 10px 8px;
+        padding: 12px 10px;
         box-sizing: border-box;
+        gap: 12px;
+        align-self: center;
     } 
         .nome{
             text-transform: uppercase;

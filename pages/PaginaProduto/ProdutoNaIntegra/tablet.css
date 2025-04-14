@@ -1,23 +1,24 @@
 main{
-    display: flex;
-    padding: 12px 0px;
-    width: 100%;
-    max-width: 570px;
     height: max-content;
+    display: flex;
+    padding: 12px;
+    padding-top: 15px;
+    width: 100%;
     margin: auto;
-    justify-content: space-between;
+    justify-content: center;
     box-sizing: border-box;
 }
 #prod_section{
-    min-width: 350px;
-    max-width: 350px;
+    height: max-content;
+    min-width: 340px;
+    max-width: 450px;
     margin: 0;
-    z-index: 1;
-    border-radius: 9px 9px 15px 15px;
+    border-radius: 0px 15px 15px 0px;
     border: 1px solid rgb(187, 187, 187);
     box-sizing: border-box;
     box-shadow: 0px 0px 3px rgb(182, 182, 182), 4px 0px 8px rgb(210, 210, 210);
     padding-bottom: 20px;
+    flex: 0 1 auto;
 }
     #desconto{
         width: 80px;
@@ -48,15 +49,30 @@ main{
         font-size: 1.05em;
     }
 #similares_section{
-    width: 190px;
+    min-width: 375px;
+    max-width: 400px;
+    min-height: 100%;
+    max-height: 100%;
     margin: 0;
-    border-radius: 7px;
+    border-radius: 15px 0px 0px 15px;
     padding: 0px 12px;
-    padding-right: 15px;
+    padding-right: 0px;
     position: relative;
     box-shadow: 0px 1px 2px rgb(183, 183, 183);
     order: -1;
+    flex: 0 1 auto;
+    border-right: none;
 }
+#similares_section::after{
+    content: '';
+    height: 100%;
+    width: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.073), rgba(255, 255, 255, 0));
+}
+
 .sombra{
     display: block;
     width: 20%;
@@ -72,28 +88,31 @@ main{
     display: none;
 }
 #pai_similares{
-    display: flex;
-    justify-content: center;
+    display: block;
 }
 #head_similares{
     height: 50px;
     margin-bottom: 2px;
 }
 #head_similares>p{
-    text-indent: 0px;
-    text-align: center;
+    text-indent: 5px;
     font-size: 1.15em !important;
     font-weight: 500;
 }
 .lista_similares{
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 168px 168px;
+    grid-template-rows: auto;
+    gap: 13px;
 }
 .pai_prod{
     display: flex;
     flex-direction: column;
-    width: 165px;
-    min-height: 290px;
+    max-width: 165px;
+    min-height: 310px;
+    max-height: 310px;
     background-color: rgb(250, 250, 250);
+    border-radius: 7px;
 }
 .oferta{
     width: 100%;
@@ -108,10 +127,12 @@ main{
 
 .divDescOferta{
     width: 100%;
+    height: 145px;
     display: flex;
     flex-direction: column;
-    padding: 15px 12px;
-    padding-bottom: 18px;
+    justify-content: space-evenly;
+    padding: 12px;
+    padding-bottom: 0px;
     box-sizing: border-box;
     gap: 10px;
 } 
@@ -120,10 +141,14 @@ main{
         font-size: 0.84em;
         letter-spacing: 0.76px;
         line-height: 20px;
+        max-height: 100px;
     }
 
+    #head_similares{
+        height: 55px;
+    }
     #head_similares>p{
-        font-size: 1.2em;
+        font-size: 1.25em !important;
         letter-spacing: 0.74px;
     }
 
@@ -149,4 +174,5 @@ main{
     }
     .preco{
         font-size: 1.2em;
+        padding-bottom: 12px;
     }

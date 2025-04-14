@@ -1,6 +1,12 @@
-// window.onload = function(){
-//     const mais_quant = document.querySelector('.mais_quant');
-//     const div_filha = document.querySelector('.mais_quant>div');
-//     let ajuste = -(mais_quant.clientWidth - div_filha.scrollWidth);
-//     div_filha.style.transform = `translateX(${ajuste}px)`;
-// }
+window.onload = function(){
+    function AlturaSecoes(){
+        const prod_section = document.getElementById('prod_section')
+        const height = prod_section.offsetHeight;
+
+        if(window.innerWidth >= 577){
+        const similares = document.getElementById('similares_section');
+        similares.style.maxHeight = `${height}px`;
+        }
+    }
+    AlturaSecoes();
+}
