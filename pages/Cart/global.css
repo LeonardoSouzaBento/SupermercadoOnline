@@ -30,21 +30,20 @@ main{
     width: 100%;
     margin: auto;
     background-color: white;
-    margin-bottom: 30px;
+    margin-bottom: 12px;
     margin-top: 4px;
     border-radius: 7px;
     padding: 12px;
     padding-top: 0px;
     padding-bottom: 18px;
     box-sizing: border-box;
-    box-shadow: 0px 0px 10px rgb(183, 183, 183);
+    box-shadow: 0px 0px 10px rgb(189, 189, 189);
     border: 1px solid rgb(172, 172, 172);
 }
 #head{
     height: 40px;
     width: 100%;
-    padding-top: 10px;
-    padding-bottom: 6px;
+    padding: 6px 0px;
     display: flex;
     align-items: center;
     margin-bottom: 15px;
@@ -52,6 +51,7 @@ main{
 #head>p{
     width: 100%;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    color: rgb(0, 0, 0);
 }
 .div-options{
     position: absolute;
@@ -89,7 +89,7 @@ main{
         justify-content: space-around;
         align-items: flex-start;
         padding: 0px 12px;
-        padding-right: 15px;
+        padding-right: 20px;
         box-sizing: border-box;
     }
         .nome{
@@ -138,20 +138,21 @@ main{
     }
 
 .div-add{
-    width: 100%;
+    width: 80%;
     margin: auto;
-    height: 42px;
+    height: 40px;
     margin-bottom: 26px;
+    padding-bottom: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0px 1px 2px rgb(208, 208, 208);
-    border: 1px solid rgb(166, 166, 166);
+    background-color: #a63b23d7;
+    border-radius: 20px;
+    box-shadow: 0px 0px 3px rgb(195, 195, 195);
 }
 .div-add>p{
     font-family: "Roboto", Arial, Helvetica, sans-serif;
+    color: #fafafa;
 }
 
 /*Seção finalizar*/
@@ -161,7 +162,7 @@ main{
     background-color: white;
     border: 1px solid rgb(150, 150, 150);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.198);
-    border-radius: 7px 7px 10px 10px;
+    border-radius: 9px 9px 12px 12px;
     padding: 20px 10px;
     padding-top: 16px;
     box-sizing: border-box;
@@ -195,7 +196,7 @@ main{
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
-    background-color: #f6f5ec;
+    background-color: #fafafa;
 }
 #div_cupom>p{
     width: 50%;

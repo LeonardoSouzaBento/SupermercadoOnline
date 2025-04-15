@@ -1,19 +1,20 @@
 main{
-    width: calc(100% - 14px);
+    width: calc(100% - 24px);
 }
 #cart-section{
-    margin-top: 0px;
-    border-radius: 0px 0px 12px 12px;
+    margin-top: 7px;
+    border-radius: 6px 6px 12px 12px;
     padding: 8px;
     padding-top: 0px;
     padding-bottom: 18px;
+    max-width: 400px;
 }
 #head>p{
     text-align: center;
     text-indent: 5px;
     font-size: 1.2em;
     font-weight: 400;
-    color: rgb(76, 76, 76);
+    color: rgb(42, 42, 42);
 }
 .div-prod{
     flex-wrap: wrap;
@@ -30,8 +31,11 @@ main{
     box-sizing: border-box;
 }
     .nome{
-        font-size: 0.9em;
-        line-height: 20px;
+        font-size: 1em;
+        line-height: 22px;
+    }
+    .preco{
+        font-size: 1.08em;
     }
 .div-quant{
     flex-direction: row;
@@ -47,17 +51,27 @@ main{
         height: 40px;
     }
     .div-quant>div>p{
-        font-size: 1.15em;
+        font-size: 1.18em;
     }
-
+.div-falta{
+    height: 50px;
+}
 .div-falta>p{
-    font-size: 0.92em;
+    font-size: 0.97em;
 }
-
+.div-add{
+    max-width: 400px;
+}
 .div-add>p{
-    font-size: 1.1em;
+    font-size: 1.13em;
 }
 
+#secaofinalizar{
+    max-width: 400px;
+}
+#div_aviso{
+    margin-bottom: 15px;
+}
 #div_aviso>p{
     font-size: 1.05em;
     font-weight: 500;
@@ -66,7 +80,18 @@ main{
 #div-continue>p{
     font-size: 1.1em;
 }
-
+#div_cupom>p{
+    font-size: 1.05em;
+    line-height: 21px;
+}
+#div_cupom>input{
+    font-size: 1.05em !important;
+    padding: 4px 17px;
+    width: 45%;
+}
+#div_valor p{
+    font-size: 1.1em;
+}
 
 #entregar{
     font-size: 0.9em;
