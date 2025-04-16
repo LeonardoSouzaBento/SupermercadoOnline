@@ -1,93 +1,59 @@
-main{
-    width: calc(100% - 24px);
-    margin-bottom: 36px;
-}
-#cart-section{
-    margin-top: 7px;
-    border-radius: 6px 6px 12px 12px;
-    padding: 8px;
-    padding-top: 0px;
-    padding-bottom: 18px;
-    max-width: 400px;
-}
-#head>p{
-    text-align: center;
-    text-indent: 5px;
+/* estilo 3 */
+main {
+    /* Mesma consideração sobre o width do estilo 2 */
+    /* width: calc(100% - 24px); */
+    margin-bottom: 36px; /* Esta propriedade não era comum */
+  }
+  
+  #head > p {
     font-size: 1.2em;
     font-weight: 400;
     color: rgb(42, 42, 42);
-}
-.div-prod{
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.div-img{
-    min-height: 125px;
-    min-width: 125px;
-    border-radius: 4px;
-}
-.div-desc{
-    width: calc(100% - 125px);
-    min-height: calc(100% - 40px);
-    box-sizing: border-box;
-}
-    .nome{
-        font-size: 1em;
-        line-height: 22px;
-    }
-    .preco{
-        font-size: 1.08em;
-    }
-.div-quant{
-    flex-direction: row;
-    width: 100%;
-    height: 40px;
-    border-radius: 7px;
-}
-    .div-quant>div{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-    }
-    .div-quant>div>p{
-        font-size: 1.18em;
-    }
-.div-falta{
-    height: 50px;
-}
-.div-falta>p{
+  }
+  
+  .nome {
+    font-size: 1em;
+  }
+  
+  .preco {
+    font-size: 1.08em;
+  }
+  
+  .div-quant > div > p {
+    font-size: 1.18em;
+  }
+  
+  .div-falta {
+    height: 50px; /* Mantido, pois é específico deste estilo */
+  }
+  
+  .div-falta > p {
     font-size: 0.97em;
-}
-.div-add{
+  }
+  
+  .div-add {
     max-width: 320px;
-    margin-bottom: 32px;
-}
-.div-add>p{
+    margin-bottom: 32px; /* Esta propriedade não era comum */
+  }
+  
+  .div-add > p {
     font-size: 1.13em;
-}
-
-#secaofinalizar{
-    max-width: 400px;
-}
-#div_aviso>p{
+  }
+  
+  #div_aviso > p {
     font-size: 1.05em;
     font-weight: 500;
     line-height: 23px;
-}
-#div-continue>p{
+  }
+  
+  #div-continue > p {
     font-size: 1.1em;
-}
-
-
-#entregar{
+  }
+  
+  #entregar {
     font-size: 0.9em;
-}
-#div_frete> p:nth-child(3){
-    font-size: 0.9em;
-    letter-spacing: 0.8px;
-}
-#div_cupom>input{
-    font-size: 0.9em;
-}
+  }
+  
+  #div_cupom > input {
+    font-size: 0.9em !important;
+  }

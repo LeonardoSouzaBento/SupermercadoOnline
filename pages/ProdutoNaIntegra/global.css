@@ -69,6 +69,7 @@ body{
     #div-main-img{
         width: 100%;
         max-width: 500px;
+        height: 320px;
         margin: auto;
         overflow: hidden;
         box-sizing: border-box;
