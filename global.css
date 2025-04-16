@@ -230,14 +230,7 @@ header{
     margin-bottom: -2px;
     background-image: linear-gradient(to right,#e34343,#C7381A);
 }
-@media only screen and (min-width: 993px){
-    header{
-       background-image: linear-gradient(to right,#e34343,#C7381A);
-    }
-    #div_search{
-        background-image: linear-gradient(to right,#e34343,#C7381A);
-    }
-}
+
 div#cabecalho{
     width: 90%;
     margin: auto;
