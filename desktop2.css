@@ -50,11 +50,12 @@ main{
 /*Banner promocional*/
     div#anuncio{
         width: calc(100% - 50px);
-        margin-bottom: 70px;
+        margin-bottom: 65px;
         padding-bottom: 0px;
     }
     div#anuncio>p{
         font-size: 1.3em;
+        margin-bottom: 26px;
     }
     div#imgs_anun{
         height: 190px;
