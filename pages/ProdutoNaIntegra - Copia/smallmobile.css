@@ -1,0 +1,67 @@
+#desconto{
+    width: 80px;
+    font-size: 0.95em;
+}
+#peso{
+    height: 25px;
+    width: 60px;
+    font-size: 0.95em;
+}
+#name_prod>p{
+    font-weight: 500;
+    line-height: 20px;
+    font-size: 0.95em;
+    color: rgb(22, 22, 22);
+}
+#main-preco p{
+   font-size: 1.16em;
+}
+
+/*Seção de similares*/
+#similares_section{
+    display: block;
+    width: calc(100% - 20px);
+    padding-top: 20px;
+    margin-top: -20px;
+}
+.sombra{
+    height: 30px;
+    width: 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0));
+}
+.sombra2{
+    height: 17px;
+    width: 100%;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.146), rgba(255, 255, 255, 0));
+}
+    #head_similares{
+        height: 60px;
+        padding-bottom: 5px;
+    }
+    #head_similares>p{
+    font-size: 1.23em;
+    letter-spacing: 0.71px;
+    }
+
+.oferta{
+    width: 52%;
+}
+    .desconto{
+        font-size: 0.84em;
+        letter-spacing: 0.8px;
+    }
+    .peso{
+        font-size: 0.84em;
+        letter-spacing: 0.8px;
+    }
+
+.divDescOferta{
+    width: 48%;
+} 
+    .nome{
+        font-size: 0.88em;
+        letter-spacing: 0.8px;
+    }
+.preco{
+    font-size: 1.1em;
+}

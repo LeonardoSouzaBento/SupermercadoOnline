@@ -1,6 +1,6 @@
 /* estilo 1 */
 main {
-  width: calc(100% - 14px);
+  width: calc(100% - 10px);
 }
 
 #head > p {
@@ -10,6 +10,7 @@ main {
 
 .nome {
   font-size: 0.9em;
+  line-height: 19px;
 }
 
 .div-quant > div > p {
@@ -17,7 +18,8 @@ main {
 }
 
 .div-falta {
-  height: auto; /* Alterado para remover altura fixa */
+  height: 38px;
+  padding-bottom: 4px;
 }
 
 .div-falta > p {
@@ -35,7 +37,7 @@ main {
 #div_aviso > p {
   font-size: 1.01em;
   font-weight: 500;
-  line-height: 23px;
+  line-height: 22px;
 }
 
 #div-continue > p {

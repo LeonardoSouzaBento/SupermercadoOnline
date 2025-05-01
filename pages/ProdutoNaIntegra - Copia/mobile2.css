@@ -1,0 +1,137 @@
+main{
+    padding: 12px 14px;
+    padding-right: 0px;
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 204px auto;
+    box-sizing: border-box;
+}
+.container-produto{
+    position: relative;
+    order: 2;
+    height: 100vh;
+}
+#prod_section{
+    min-width: 332px;
+    max-width: 332px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+    position: fixed;
+    left: 40.4vw;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.214);
+}
+    #desconto{
+        width: 80px;
+        font-size: 1.05em;
+        font-weight: 600;
+    }
+    #peso{
+        height: 25px;
+        width: 60px;
+        font-size: 1.05em;
+    }
+    #name_prod>p{
+        font-weight: 500;
+        line-height: 25px;
+        font-size: 1em;
+        color: rgb(22, 22, 22);
+    }
+    #main-preco>p{
+        font-size: 1.15em;
+    }
+    #p-head{
+        font-size: 1.1em;
+    }
+    #p_sub{
+        font-size: 1.05em;
+    }
+#similares_section{
+    width: 100%;
+    margin: 0;
+    border-radius: 7px;
+    padding: 0px 14px;
+}
+
+#pai_similares{
+    display: flex;
+    justify-content: center;
+}
+#head_similares{
+    height: 50px;
+    margin-bottom: 2px;
+}
+#head_similares>p{
+    text-indent: 0px;
+    text-align: center;
+    font-size: 1.15em !important;
+    font-weight: 500;
+}
+.lista_similares{
+    gap: 10px;
+}
+.pai_prod{
+    display: flex;
+    flex-direction: column;
+    width: 165px;
+    min-height: 290px;
+
+}
+.oferta{
+    width: 100%;
+    height: 165px;
+    position: relative;
+}
+
+    .div_img>img{
+        max-width: 182px;
+        mix-blend-mode: multiply;
+    }
+
+.divDescOferta{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 12px;
+    padding-bottom: 18px;
+    box-sizing: border-box;
+    gap: 10px;
+} 
+
+    .nome{
+        font-size: 0.84em;
+        letter-spacing: 0.76px;
+        line-height: 20px;
+    }
+
+    #head_similares>p{
+        font-size: 1.2em;
+        letter-spacing: 0.74px;
+    }
+
+    .desconto{
+        width: 60px;
+        align-self: flex-end;
+        font-size: 0.89em;
+        letter-spacing: 0.8px;
+        padding: 0px;
+        text-align: center;
+        left: 10px;
+        bottom: 0px;
+    }
+    .peso{
+        width: 60px;
+        align-self: flex-end;
+        font-size: 0.89em;
+        letter-spacing: 0.8px;
+        left: calc(100% - 70px);
+        bottom: 0px;
+        padding: 0px;
+        text-align: center;
+    }
+    .preco{
+        font-size: 1.2em;
+    }

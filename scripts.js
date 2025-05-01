@@ -319,7 +319,7 @@ let anun_visible = 0;
     let quant_anun = [...document.querySelectorAll('#imgs_anun img')].length;
     let larg_img = document.querySelector('#imgs_anun img').offsetWidth;
     let larg_imgs_anun = gap *(quant_anun-1) + larg_img * quant_anun;
-    if(quant_anun%2!=0) {meio = (larg_anuncio- larg_imgs_anun) /2; impar=true;}
+    if(quant_anun%2!=0) {meio = (larg_anuncio- larg_imgs_anun) /2;}
     else{meio = (larg_anuncio - larg_imgs_anun) /2 - (larg_img/2 + gap/2);}
     fim_anun = larg_anuncio - larg_imgs_anun;
 
@@ -417,8 +417,8 @@ let startTime = null; let speed = 0; let deltaY = null;
 const minSpeed = 0.7;
 const maxSpeed = 2.0;
 const limiar = 4;
-const larg_img = document.querySelector('#imgs_anun img').offsetWidth;
 let arrastando2 = false;
+const larg_img = document.querySelector('#imgs_anun img').offsetWidth;
 
 function atualizarPaginacao() {
   const imagens = [...document.querySelectorAll("#imgs_anun img")];

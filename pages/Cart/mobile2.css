@@ -1,49 +1,96 @@
 /* estilo 3 */
-main {
-    /* Mesma consideração sobre o width do estilo 2 */
-    /* width: calc(100% - 24px); */
-    margin-bottom: 36px; /* Esta propriedade não era comum */
+  main {
+    margin-bottom: 36px;
   }
-  
+  #cart-section{
+    max-width: 470px;
+    border-radius: 10px 10px 15px 15px;
+    margin-bottom: 17px;
+    padding-right: 8px;
+  }
   #head > p {
     font-size: 1.2em;
     font-weight: 400;
     color: rgb(42, 42, 42);
   }
+  .pai-prod{
+    width: 100%;
+  }
+  .div-prod{
+    height: 130px;
+    justify-content: space-between;
+  }
+  .div-options{
+    position: static;
+    height: 100%;
+    width: 30px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+  .div-desc{
+    max-width: 240px;
+    padding: 0px 10px;
+  }
   
   .nome {
     font-size: 1em;
+    line-height: 21px;
   }
   
   .preco {
     font-size: 1.08em;
+    text-indent: 7px;
   }
   
+  .div-quant{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 45px;
+    border-radius: 4px;
+    margin: 0px;
+    background-color: #ec5454;
+  }
   .div-quant > div > p {
-    font-size: 1.18em;
+    font-size: 1.2em;
   }
   
-  .div-falta {
-    height: 50px; /* Mantido, pois é específico deste estilo */
+  .div-falta{
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+    padding-right: 4px;
+    box-sizing: border-box;
   }
-  
   .div-falta > p {
     font-size: 0.97em;
   }
   
   .div-add {
-    max-width: 320px;
-    margin-bottom: 32px; /* Esta propriedade não era comum */
+    max-width: 370px;
   }
   
   .div-add > p {
     font-size: 1.13em;
   }
   
+  #secaofinalizar{
+    max-width: 470px;
+    padding: 24px 20px;
+  }
+
+  #div_aviso{
+    margin-bottom: 16px;
+    padding: 12px 0px;
+  }
   #div_aviso > p {
     font-size: 1.05em;
     font-weight: 500;
     line-height: 23px;
+    width: 100%;
+    text-align: center;
   }
   
   #div-continue > p {
@@ -53,7 +100,16 @@ main {
   #entregar {
     font-size: 0.9em;
   }
-  
+  #div_cupom{
+    padding: 6px 8px;
+  }
   #div_cupom > input {
     font-size: 0.9em !important;
   }
+
+  #div_valor{
+    gap: 15px;
+  }
+#div-continue{
+  height: 44px;
+}

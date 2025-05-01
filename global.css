@@ -717,7 +717,7 @@ footer>div{
     display: flex;
     flex-flow: row wrap;
     height: 40px;
-    width: 28.5%;
+    min-width: 50%;
     justify-content: center;
     align-items: flex-end;
     gap: 3px;
@@ -740,7 +740,7 @@ footer>div>p{
     font-size: 0.9em;
 }
 footer>div>div{
-    width: 90%;
+    width: 100%;
     height: 4px;
     border-radius: 2px;
     background-color: white;

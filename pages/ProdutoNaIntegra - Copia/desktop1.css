@@ -1,0 +1,168 @@
+main{
+    padding: 15px 20px;
+    width: 100%;
+    max-width: 1390px;
+    box-sizing: border-box;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 565px auto;
+    border: 1px solid red;
+}
+.container-produto{
+    position: relative;
+    height: 100vh;
+    order: 2;
+}
+#prod_section{
+    height: max-content;
+    width: max-content;
+    max-width: 350px;
+    margin: 0;
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+    flex: 0 1 auto;
+    position: fixed;
+    left: 59vw;
+    top: 50%;
+    transform: translateY(-50%);
+}
+    #desconto{
+        width: 80px;
+        font-size: 1.05em;
+        font-weight: 600;
+    }
+    #peso{
+        height: 25px;
+        width: 60px;
+        font-size: 1.05em;
+    }
+    #name_prod>p{
+        font-weight: 500;
+        line-height: 25px;
+        font-size: 1em;
+        color: rgb(22, 22, 22);
+    }
+    #main-preco>p{
+        font-size: 1.15em;
+    }
+    #p-head{
+        font-size: 1.1em;
+    }
+    #p_sub{
+        font-size: 1.05em;
+    }
+.container-similares{
+    width: max-content;
+    min-height: 476px;
+    order: 1;
+}    
+#similares_section{
+    min-width: 550px;
+    height: max-content;
+    margin: 0;
+    border-radius: 12px;
+    padding: 0px 12px;
+    box-shadow: 0px 1px 2px rgb(183, 183, 183);
+    order: -1;
+}
+
+.sombra{
+    display: block;
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.082), rgba(255, 255, 255, 0));
+    z-index: 2;
+    display: none;
+}
+
+#pai_similares{
+    display: block;
+}
+#head_similares{
+    height: 50px;
+    margin-bottom: 2px;
+}
+#head_similares>p{
+    text-indent: 5px;
+    font-size: 1.15em !important;
+    font-weight: 500;
+}
+.lista_similares{
+  display: flex;
+  flex-flow: row wrap;
+}
+.pai_prod{
+    display: flex;
+    flex-direction: column;
+    max-width: 165px;
+    min-height: 310px;
+    max-height: 310px;
+    background-color: rgb(250, 250, 250);
+    border-radius: 7px;
+}
+.oferta{
+    width: 100%;
+    height: 165px;
+    position: relative;
+}
+
+    .div_img>img{
+        max-width: 182px;
+        mix-blend-mode: multiply;
+    }
+
+.divDescOferta{
+    width: 100%;
+    height: 145px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 12px;
+    padding-bottom: 0px;
+    box-sizing: border-box;
+    gap: 10px;
+} 
+
+    .nome{
+        font-size: 0.84em;
+        letter-spacing: 0.76px;
+        line-height: 20px;
+        max-height: 100px;
+    }
+
+    #head_similares{
+        height: 55px;
+    }
+    #head_similares>p{
+        font-size: 1.25em !important;
+        letter-spacing: 0.74px;
+    }
+
+    .desconto{
+        width: 60px;
+        align-self: flex-end;
+        font-size: 0.89em;
+        letter-spacing: 0.8px;
+        padding: 0px;
+        text-align: center;
+        left: 10px;
+        bottom: 0px;
+    }
+    .peso{
+        width: 60px;
+        align-self: flex-end;
+        font-size: 0.89em;
+        letter-spacing: 0.8px;
+        left: calc(100% - 70px);
+        bottom: 0px;
+        padding: 0px;
+        text-align: center;
+    }
+    .preco{
+        font-size: 1.2em;
+        padding-bottom: 12px;
+    }
